@@ -17,6 +17,8 @@ reserved = {
     "and": "AND",
     "or": "OR",
     "not": "NOT",
+    "array": "ARRAY",
+    "print": "PRINT"
 }
 
 # List of token names
@@ -45,12 +47,23 @@ tokens = (
     'OR_OP',
     'NOT_OP',
     'STRING',
+    'IDENTITY',
+    'NIDENTITY',
+    'EXPONENTIATION',
+    'INCREMENT',
+    'DECREMENT',
+    'MACUMULATIVE'
+
 ) + tuple(reserved.values())
 
 # Regular expression rules for simple tokens
 t_PLUS    = r'\+'
+t_INCREMENT = r'\+\+'
+t_DECREMENT = r'--'
 t_MINUS   = r'-'
 t_TIMES   = r'\*'
+t_EXPONENTIATION   = r'\*\*'
+t_MACUMULATIVE     = r'\*='
 t_DIVIDE  = r'/'
 t_LPAREN  = r'\('
 t_RPAREN  = r'\)'
@@ -60,7 +73,9 @@ t_LBRACE  = r'\{'
 t_RBRACE  = r'\}'
 t_ASSIGN  = r'='
 t_EQ      = r'=='
+t_IDENTITY     = r'==='
 t_NEQ     = r'!='
+t_NIDENTITY = r'!=='
 t_GT      = r'>'
 t_LT      = r'<'
 t_GE      = r'>='
@@ -127,7 +142,8 @@ $price = 36.37;
 $sum = $var + $price;
 echo "Hello, PHP!";
 if ($var > 5 && $price < 100) {
-    echo "Variables are valid!";
+    echo "Variables are valid!"; ==
+    for while if else ++ + - -- *=
 }
 //Esto no lo va a leer
 '''

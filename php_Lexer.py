@@ -1,5 +1,6 @@
 # PHP Lexer
 import ply.lex as lex
+from datetime import datetime
 
 # Reserved words in PHP
 reserved = {
@@ -52,37 +53,41 @@ tokens = (
     'EXPONENTIATION',
     'INCREMENT',
     'DECREMENT',
-    'MACUMULATIVE'
+    'MACUMULATIVE',
+    'Question',
+    'Dot'
 
 ) + tuple(reserved.values())
 
 # Regular expression rules for simple tokens
-t_PLUS    = r'\+'
+t_PLUS = r'\+'
 t_INCREMENT = r'\+\+'
 t_DECREMENT = r'--'
-t_MINUS   = r'-'
-t_TIMES   = r'\*'
-t_EXPONENTIATION   = r'\*\*'
-t_MACUMULATIVE     = r'\*='
-t_DIVIDE  = r'/'
-t_LPAREN  = r'\('
-t_RPAREN  = r'\)'
-t_MOD     = r'%'
+t_MINUS = r'-'
+t_TIMES = r'\*'
+t_EXPONENTIATION = r'\*\*'
+t_MACUMULATIVE = r'\*='
+t_DIVIDE = r'/'
+t_LPAREN = r'\('
+t_RPAREN = r'\)'
+t_MOD = r'%'
 t_SEMICOL = r';'
-t_LBRACE  = r'\{'
-t_RBRACE  = r'\}'
-t_ASSIGN  = r'='
-t_EQ      = r'=='
-t_IDENTITY     = r'==='
-t_NEQ     = r'!='
+t_LBRACE = r'\{'
+t_RBRACE = r'\}'
+t_ASSIGN = r'='
+t_EQ = r'=='
+t_IDENTITY = r'==='
+t_NEQ = r'!='
 t_NIDENTITY = r'!=='
-t_GT      = r'>'
-t_LT      = r'<'
-t_GE      = r'>='
-t_LE      = r'<='
-t_AND_OP  = r'&&'
-t_OR_OP   = r'\|\|'
-t_NOT_OP  = r'!'
+t_GT = r'>'
+t_LT = r'<'
+t_GE = r'>='
+t_LE = r'<='
+t_AND_OP = r'&&'
+t_OR_OP = r'\|\|'
+t_NOT_OP = r'!'
+t_Question = r'\?'
+t_Dot = r'\.'
 
 # Regular expression for Comments 
 def t_COMMENT(t):
@@ -134,26 +139,27 @@ def t_error(t):
 # Build the lexer
 lexer = lex.lex()
 
-# Test it out
-data = '''
-# Sample PHP code
-$var = 10;
-$price = 36.37;
-$sum = $var + $price;
-echo "Hello, PHP!";
-if ($var > 5 && $price < 100) {
-    echo "Variables are valid!"; ==
-    for while if else ++ + - -- *=
-}
-//Esto no lo va a leer
-'''
+def analyze_file(filename, user_git):
+    with open(filename, 'r') as file:
+        data = file.read()
+    
+    lexer.input(data)
 
-# Give the lexer some input
-lexer.input(data)
+    # Log file name
+    now = datetime.now().strftime("%d%m%Y-%Hh%M")
+    log_filename = f'logs/lexer-{user_git}-{now}.txt'
 
-# Tokenize and print
-while True:
-    tok = lexer.token()
-    if not tok:
-        break  
-    print(tok)
+    with open(log_filename, 'w') as log_file:
+        log_file.write(f"Tokens y Errores para {filename}:\n\n")
+        while True:
+            tok = lexer.token()
+            if not tok:
+                break
+            log_file.write(f"{tok}\n")
+
+    print(f"Log file creado: {log_filename}")
+
+# Run analysis
+user_git = "sebaescu"  #Aqui cambian a su usuario para que quede grabado en el log
+analyze_file('algoritmos/fibonacci.php', user_git)
+

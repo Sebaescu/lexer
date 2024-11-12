@@ -55,7 +55,10 @@ tokens = (
     'DECREMENT',
     'MACUMULATIVE',
     'Question',
-    'Dot'
+    'Dot',
+    'COMA',
+    'LBRACKET',
+    'RBRACKET'
 
 ) + tuple(reserved.values())
 
@@ -88,6 +91,9 @@ t_OR_OP = r'\|\|'
 t_NOT_OP = r'!'
 t_Question = r'\?'
 t_Dot = r'\.'
+t_COMA=r'\,'
+t_LBRACKET=r'\['
+t_RBRACKET=r'\]'
 
 # Regular expression for Comments 
 def t_COMMENT(t):
@@ -160,6 +166,6 @@ def analyze_file(filename, user_git):
     print(f"Log file creado: {log_filename}")
 
 # Run analysis
-user_git = "sebaescu"  #Aqui cambian a su usuario para que quede grabado en el log
-analyze_file('algoritmos/fibonacci.php', user_git)
+user_git = "leoancab"  #Aqui cambian a su usuario para que quede grabado en el log
+analyze_file('algoritmos/busquedaBinaria.php', user_git)
 

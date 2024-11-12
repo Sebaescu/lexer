@@ -28,4 +28,3 @@ $resultado = calcularFactorial($numeroUsuario);
 
 // Mostrar el resultado al usuario
 echo "El factorial de " . $numeroUsuario . " es: " . $resultado;
-?>

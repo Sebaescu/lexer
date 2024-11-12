@@ -19,7 +19,11 @@ reserved = {
     "or": "OR",
     "not": "NOT",
     "array": "ARRAY",
-    "print": "PRINT"
+    "print": "PRINT",
+    "interface": "INTERFACE",
+    "new": "NEW",
+    "SplStack": "STACK",
+    "SplQueue" : "QUEUE"
 }
 
 # List of token names
@@ -166,6 +170,8 @@ def analyze_file(filename, user_git):
     print(f"Log file creado: {log_filename}")
 
 # Run analysis
+
 user_git = "leoancab"  #Aqui cambian a su usuario para que quede grabado en el log
 analyze_file('algoritmos/busquedaBinaria.php', user_git)
+
 

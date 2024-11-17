@@ -62,11 +62,14 @@ tokens = (
     'Dot',
     'COMA',
     'LBRACKET',
-    'RBRACKET'
-
+    'RBRACKET',
+    'PHPBEGIN',
+    'PHPEND'
 ) + tuple(reserved.values())
 
 # Regular expression rules for simple tokens
+t_PHPBEGIN=r'\<\?php'
+t_PHPEND=r'\?\>'
 t_PLUS = r'\+'
 t_INCREMENT = r'\+\+'
 t_DECREMENT = r'--'

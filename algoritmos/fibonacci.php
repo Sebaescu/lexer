@@ -19,6 +19,6 @@ function fibonacci($n) {
 }
 
 // Ejemplo 
-$position = 10; 
+$position = 4; 
 echo "El número Fibonacci en la posición $position es: " . fibonacci($position);
 ?>

@@ -23,7 +23,7 @@ reserved = {
     "interface": "INTERFACE",
     "new": "NEW",
     "SplStack": "STACK",
-    "SplQueue" : "QUEUE"
+    "SplQueue" : "QUEUE",
 }
 
 # List of token names
@@ -160,7 +160,7 @@ def analyze_file(filename, user_git):
 
     # Log file name
     now = datetime.now().strftime("%d%m%Y-%Hh%M")
-    log_filename = f'logs/lexer-{user_git}-{now}.txt'
+    log_filename = f'logs/sintactico-{user_git}-{now}.txt'
 
     with open(log_filename, 'w') as log_file:
         log_file.write(f"Tokens y Errores para {filename}:\n\n")
@@ -175,6 +175,6 @@ def analyze_file(filename, user_git):
 # Run analysis
 
 user_git = "leoancab"  #Aqui cambian a su usuario para que quede grabado en el log
-analyze_file('algoritmos/busquedaBinaria.php', user_git)
+analyze_file('algoritmos/prueba.php', user_git)
 
 

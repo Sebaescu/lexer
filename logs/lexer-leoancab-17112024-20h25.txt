@@ -1,0 +1,6 @@
+Tokens y Errores para algoritmos/prueba.php:
+
+LexToken(PHPBEGIN,'<?php',1,0)
+LexToken(ECHO,'echo',2,6)
+LexToken(STRING,' ',2,11)
+LexToken(SEMICOL,';',2,14)

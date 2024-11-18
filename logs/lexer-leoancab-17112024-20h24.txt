@@ -1,0 +1,17 @@
+Tokens y Errores para algoritmos/prueba.php:
+
+LexToken(Question,'?',1,0)
+LexToken(PHPBEGIN,'<?php',1,1)
+LexToken(VARIABLE,'$nombre',2,7)
+LexToken(ASSIGN,'=',2,14)
+LexToken(STRING,'Leo',2,15)
+LexToken(SEMICOL,';',2,20)
+LexToken(ECHO,'echo',3,22)
+LexToken(STRING,'Hola ',3,27)
+LexToken(COMA,',',3,34)
+LexToken(STRING,'me ',3,35)
+LexToken(COMA,',',3,40)
+LexToken(STRING,'llamo ',3,41)
+LexToken(COMA,',',3,49)
+LexToken(VARIABLE,'$nombre',3,50)
+LexToken(SEMICOL,';',3,57)

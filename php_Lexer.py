@@ -1,8 +1,8 @@
-# PHP Lexer
 import ply.lex as lex
 from datetime import datetime
+import os
 
-# Reserved words in PHP
+# Palabras reservadas en PHP
 reserved = {
     "if": "IF",
     "else": "ELSE",
@@ -23,10 +23,11 @@ reserved = {
     "interface": "INTERFACE",
     "new": "NEW",
     "SplStack": "STACK",
-    "SplQueue" : "QUEUE",
+    "SplQueue": "QUEUE",
+    "readline": "READLINE",
 }
 
-# List of token names
+# Lista de nombres de tokens
 tokens = (
     'NUMBER',
     'PLUS',
@@ -58,18 +59,20 @@ tokens = (
     'INCREMENT',
     'DECREMENT',
     'MACUMULATIVE',
-    'Question',
-    'Dot',
+    'QUESTION',
+    'DOT',
     'COMA',
     'LBRACKET',
     'RBRACKET',
-    'PHPBEGIN',
-    'PHPEND'
+    'PHP_OPEN',
+    'PHP_CLOSE',
+    'INPUT',
+    'READLINE',
 ) + tuple(reserved.values())
 
-# Regular expression rules for simple tokens
-t_PHPBEGIN=r'\<\?php'
-t_PHPEND=r'\?\>'
+# Reglas de expresiones regulares para tokens simples
+t_PHP_OPEN = r'\<\?php'
+t_PHP_CLOSE = r'\?\>'
 t_PLUS = r'\+'
 t_INCREMENT = r'\+\+'
 t_DECREMENT = r'--'
@@ -88,93 +91,121 @@ t_ASSIGN = r'='
 t_EQ = r'=='
 t_IDENTITY = r'==='
 t_NEQ = r'!='
-t_NIDENTITY = r'!=='
-t_GT = r'>'
-t_LT = r'<'
+t_NIDENTITY = r'!==' 
 t_GE = r'>='
 t_LE = r'<='
+t_GT = r'>'
+t_LT = r'<'
 t_AND_OP = r'&&'
 t_OR_OP = r'\|\|'
 t_NOT_OP = r'!'
-t_Question = r'\?'
-t_Dot = r'\.'
-t_COMA=r'\,'
-t_LBRACKET=r'\['
-t_RBRACKET=r'\]'
+t_QUESTION = r'\?'
+t_DOT = r'\.'
+t_COMA = r','
+t_LBRACKET = r'\['
+t_RBRACKET = r'\]'
 
-# Regular expression for Comments 
+# Expresión regular para comentarios
 def t_COMMENT(t):
     r'(\/\/[^\n]*|\#[^\n]*|\/\*[\s\S]*?\*\/)'
-    pass  # No return value, ignore comments
+    t.lexer.comments.append(f"Comentario en la línea {t.lineno}: {t.value}")
+    pass 
 
-# Regular expression for FLOAT
+# Expresión regular para números flotantes
 def t_FLOAT(t):
     r'\d+\.\d+'
     t.value = float(t.value)
     return t
 
-# Regular expression for NUMBER
+# Expresión regular para números enteros
 def t_NUMBER(t):
     r'\d+'
     t.value = int(t.value)
     return t
 
-# Variable pattern
+# Verificación de palabras reservadas e identificadores
+def t_FUNCTION(t):
+    r'[a-zA-Z_][a-zA-Z0-9_]*'
+    t.type = reserved.get(t.value, "FUNCTION")  # Verificar si es palabra reservada
+    return t
+
+# Patrón para el token INPUT
+def t_INPUT(t):
+    r'input'
+    return t
+
+# Patrón para variables
 def t_VARIABLE(t):
     r'\$[a-zA-Z_][a-zA-Z0-9_]*'
     return t
 
-# String literal (single or double quotes)
+# Literales de cadenas (comillas simples o dobles)
 def t_STRING(t):
     r'\"([^\\\n]|(\\.))*?\"|\'([^\\\n]|(\\.))*?\''
-    t.value = t.value[1:-1]  # Remove quotes
+    t.value = t.value[1:-1]  # Eliminar las comillas
     return t
 
-# Function names or reserved words
-def t_FUNCTION(t):
-    r'[a-zA-Z_][a-zA-Z0-9_]*'
-    t.type = reserved.get(t.value, "FUNCTION")  # Check if reserved word
-    return t
-
-# Newline tracking
+# Seguimiento de nuevas líneas
 def t_newline(t):
     r'\n+'
     t.lexer.lineno += len(t.value)
 
-# Ignored characters (spaces and tabs)
+# Caracteres ignorados (espacios y tabulaciones)
 t_ignore = ' \t'
 
-# Error handling rule
+# Manejo de errores
 def t_error(t):
-    print(f"Illegal character '{t.value[0]}' at line {t.lexer.lineno}")
+    t.lexer.errors.append(f"Carácter ilegal '{t.value[0]}' en la línea {t.lexer.lineno}")
     t.lexer.skip(1)
 
-# Build the lexer
+# Construir el analizador léxico
 lexer = lex.lex()
 
+# Inicializar atributos personalizados para el lexer
+lexer.comments = []  
+lexer.errors = []    
+
+# Analizar un archivo y generar logs
 def analyze_file(filename, user_git):
     with open(filename, 'r') as file:
         data = file.read()
     
+    # Reiniciar comentarios y errores
+    lexer.comments = []
+    lexer.errors = []
+
     lexer.input(data)
 
-    # Log file name
+    # Nombre del archivo de logs
     now = datetime.now().strftime("%d%m%Y-%Hh%M")
-    log_filename = f'logs/sintactico-{user_git}-{now}.txt'
+    log_filename = f'logs/lexer-{user_git}-{now}.txt'
 
+    # Crear carpeta de logs si no existe
+    os.makedirs('logs', exist_ok=True)
+
+    # Escribir logs
     with open(log_filename, 'w') as log_file:
         log_file.write(f"Tokens y Errores para {filename}:\n\n")
+
         while True:
             tok = lexer.token()
             if not tok:
                 break
             log_file.write(f"{tok}\n")
 
-    print(f"Log file creado: {log_filename}")
+        if lexer.comments:
+            log_file.write("\nComentarios:\n")
+            for comment in lexer.comments:
+                log_file.write(f"{comment}\n")
 
-# Run analysis
+        if lexer.errors:
+            log_file.write("\nErrores:\n")
+            for error in lexer.errors:
+                log_file.write(f"{error}\n")
 
-user_git = "leoancab"  #Aqui cambian a su usuario para que quede grabado en el log
-analyze_file('algoritmos/prueba.php', user_git)
+    print(f"Archivo de log creado: {log_filename}")
 
-
+# Prueba
+if __name__ == "__main__":
+    user_git = "leoancab"
+    # analyze_file("algoritmos/prueba.php", user_git)

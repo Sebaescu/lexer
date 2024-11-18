@@ -1,0 +1,159 @@
+PLY: PARSE DEBUG START
+
+State  : 0
+Stack  : . LexToken(PHP_OPEN,'<?php',1,0)
+Action : Shift and goto state 2
+
+State  : 2
+Stack  : PHP_OPEN . LexToken(VARIABLE,'$numeroEntero',3,107)
+Action : Shift and goto state 11
+
+State  : 11
+Stack  : PHP_OPEN VARIABLE . LexToken(ASSIGN,'=',3,121)
+Action : Shift and goto state 18
+
+State  : 18
+Stack  : PHP_OPEN VARIABLE ASSIGN . LexToken(NUMBER,10,3,123)
+Action : Shift and goto state 25
+
+State  : 25
+Stack  : PHP_OPEN VARIABLE ASSIGN NUMBER . LexToken(SEMICOL,';',3,125)
+Action : Reduce rule [termino -> NUMBER] with [10] and goto state 22
+Result : <NoneType @ 0x7ffc1cafd290> (None)
+
+State  : 22
+Stack  : PHP_OPEN VARIABLE ASSIGN termino . LexToken(SEMICOL,';',3,125)
+Action : Reduce rule [expresion -> termino] with [None] and goto state 33
+Result : <NoneType @ 0x7ffc1cafd290> (None)
+
+State  : 33
+Stack  : PHP_OPEN VARIABLE ASSIGN expresion . LexToken(SEMICOL,';',3,125)
+Action : Shift and goto state 54
+
+State  : 54
+Stack  : PHP_OPEN VARIABLE ASSIGN expresion SEMICOL . LexToken(VARIABLE,'$numeroFlotante',4,127)
+Action : Reduce rule [asignacion -> VARIABLE ASSIGN expresion SEMICOL] with ['$numeroEntero','=',None,';'] and goto state 5
+Result : <NoneType @ 0x7ffc1cafd290> (None)
+
+State  : 5
+Stack  : PHP_OPEN asignacion . LexToken(VARIABLE,'$numeroFlotante',4,127)
+Action : Reduce rule [statement -> asignacion] with [None] and goto state 4
+Result : <NoneType @ 0x7ffc1cafd290> (None)
+
+State  : 4
+Stack  : PHP_OPEN statement . LexToken(VARIABLE,'$numeroFlotante',4,127)
+Action : Reduce rule [statement_list -> statement] with [None] and goto state 3
+Result : <NoneType @ 0x7ffc1cafd290> (None)
+
+State  : 3
+Stack  : PHP_OPEN statement_list . LexToken(VARIABLE,'$numeroFlotante',4,127)
+Action : Shift and goto state 11
+
+State  : 11
+Stack  : PHP_OPEN statement_list VARIABLE . LexToken(ASSIGN,'=',4,143)
+Action : Shift and goto state 18
+
+State  : 18
+Stack  : PHP_OPEN statement_list VARIABLE ASSIGN . LexToken(FLOAT,5.75,4,145)
+Action : Shift and goto state 26
+
+State  : 26
+Stack  : PHP_OPEN statement_list VARIABLE ASSIGN FLOAT . LexToken(SEMICOL,';',4,149)
+Action : Reduce rule [termino -> FLOAT] with [5.75] and goto state 22
+Result : <NoneType @ 0x7ffc1cafd290> (None)
+
+State  : 22
+Stack  : PHP_OPEN statement_list VARIABLE ASSIGN termino . LexToken(SEMICOL,';',4,149)
+Action : Reduce rule [expresion -> termino] with [None] and goto state 33
+Result : <NoneType @ 0x7ffc1cafd290> (None)
+
+State  : 33
+Stack  : PHP_OPEN statement_list VARIABLE ASSIGN expresion . LexToken(SEMICOL,';',4,149)
+Action : Shift and goto state 54
+
+State  : 54
+Stack  : PHP_OPEN statement_list VARIABLE ASSIGN expresion SEMICOL . LexToken(VARIABLE,'$cadena',5,151)
+Action : Reduce rule [asignacion -> VARIABLE ASSIGN expresion SEMICOL] with [<str @ 0x1e9f65df4f0>,'=',None,';'] and goto state 5
+Result : <NoneType @ 0x7ffc1cafd290> (None)
+
+State  : 5
+Stack  : PHP_OPEN statement_list asignacion . LexToken(VARIABLE,'$cadena',5,151)
+Action : Reduce rule [statement -> asignacion] with [None] and goto state 17
+Result : <NoneType @ 0x7ffc1cafd290> (None)
+
+State  : 17
+Stack  : PHP_OPEN statement_list statement . LexToken(VARIABLE,'$cadena',5,151)
+Action : Reduce rule [statement_list -> statement_list statement] with [None,None] and goto state 3
+Result : <NoneType @ 0x7ffc1cafd290> (None)
+
+State  : 3
+Stack  : PHP_OPEN statement_list . LexToken(VARIABLE,'$cadena',5,151)
+Action : Shift and goto state 11
+
+State  : 11
+Stack  : PHP_OPEN statement_list VARIABLE . LexToken(ASSIGN,'=',5,159)
+Action : Shift and goto state 18
+
+State  : 18
+Stack  : PHP_OPEN statement_list VARIABLE ASSIGN . LexToken(STRING,'Hola, mundo!',5,161)
+Action : Shift and goto state 27
+
+State  : 27
+Stack  : PHP_OPEN statement_list VARIABLE ASSIGN STRING . LexToken(SEMICOL,';',5,175)
+Action : Reduce rule [termino -> STRING] with ['Hola, mundo!'] and goto state 22
+Result : <NoneType @ 0x7ffc1cafd290> (None)
+
+State  : 22
+Stack  : PHP_OPEN statement_list VARIABLE ASSIGN termino . LexToken(SEMICOL,';',5,175)
+Action : Reduce rule [expresion -> termino] with [None] and goto state 33
+Result : <NoneType @ 0x7ffc1cafd290> (None)
+
+State  : 33
+Stack  : PHP_OPEN statement_list VARIABLE ASSIGN expresion . LexToken(SEMICOL,';',5,175)
+Action : Shift and goto state 54
+
+State  : 54
+Stack  : PHP_OPEN statement_list VARIABLE ASSIGN expresion SEMICOL . LexToken(VARIABLE,'$condicional',6,177)
+Action : Reduce rule [asignacion -> VARIABLE ASSIGN expresion SEMICOL] with ['$cadena','=',None,';'] and goto state 5
+Result : <NoneType @ 0x7ffc1cafd290> (None)
+
+State  : 5
+Stack  : PHP_OPEN statement_list asignacion . LexToken(VARIABLE,'$condicional',6,177)
+Action : Reduce rule [statement -> asignacion] with [None] and goto state 17
+Result : <NoneType @ 0x7ffc1cafd290> (None)
+
+State  : 17
+Stack  : PHP_OPEN statement_list statement . LexToken(VARIABLE,'$condicional',6,177)
+Action : Reduce rule [statement_list -> statement_list statement] with [None,None] and goto state 3
+Result : <NoneType @ 0x7ffc1cafd290> (None)
+
+State  : 3
+Stack  : PHP_OPEN statement_list . LexToken(VARIABLE,'$condicional',6,177)
+Action : Shift and goto state 11
+
+State  : 11
+Stack  : PHP_OPEN statement_list VARIABLE . LexToken(ASSIGN,'=',6,190)
+Action : Shift and goto state 18
+
+State  : 18
+Stack  : PHP_OPEN statement_list VARIABLE ASSIGN . LexToken(LPAREN,'(',6,192)
+Action : Shift and goto state 23
+
+State  : 23
+Stack  : PHP_OPEN statement_list VARIABLE ASSIGN LPAREN . LexToken(VARIABLE,'$numeroEntero',6,193)
+Action : Shift and goto state 28
+
+State  : 28
+Stack  : PHP_OPEN statement_list VARIABLE ASSIGN LPAREN VARIABLE . LexToken(GT,'>',6,207)
+Action : Reduce rule [termino -> VARIABLE] with ['$numeroEntero'] and goto state 22
+Result : <NoneType @ 0x7ffc1cafd290> (None)
+
+State  : 22
+Stack  : PHP_OPEN statement_list VARIABLE ASSIGN LPAREN termino . LexToken(GT,'>',6,207)
+Action : Reduce rule [expresion -> termino] with [None] and goto state 47
+Result : <NoneType @ 0x7ffc1cafd290> (None)
+
+State  : 47
+Stack  : PHP_OPEN statement_list VARIABLE ASSIGN LPAREN expresion . LexToken(GT,'>',6,207)
+Error  : PHP_OPEN statement_list VARIABLE ASSIGN LPAREN expresion . LexToken(GT,'>',6,207)
+Error de sintaxis en la linea 6, token inesperado: >

@@ -1,0 +1,55 @@
+PLY: PARSE DEBUG START
+
+State  : 0
+Stack  : . LexToken(PHP_OPEN,'<?php',1,0)
+Action : Shift and goto state 2
+
+State  : 2
+Stack  : PHP_OPEN . LexToken(ECHO,'echo',2,6)
+Action : Shift and goto state 12
+
+State  : 12
+Stack  : PHP_OPEN ECHO . LexToken(STRING,'Introduce tu nombre: ',2,11)
+Action : Shift and goto state 26
+
+State  : 26
+Stack  : PHP_OPEN ECHO STRING . LexToken(SEMICOL,';',2,34)
+Action : Reduce rule [termino -> STRING] with [<str @ 0x1b36b3ea670>] and goto state 22
+Result : <NoneType @ 0x7ffc1cafd290> (None)
+
+State  : 22
+Stack  : PHP_OPEN ECHO termino . LexToken(SEMICOL,';',2,34)
+Action : Reduce rule [expresion -> termino] with [None] and goto state 20
+Result : <NoneType @ 0x7ffc1cafd290> (None)
+
+State  : 20
+Stack  : PHP_OPEN ECHO expresion . LexToken(SEMICOL,';',2,34)
+Action : Shift and goto state 38
+
+State  : 38
+Stack  : PHP_OPEN ECHO expresion SEMICOL . LexToken(VARIABLE,'$nombre',3,36)
+Action : Reduce rule [impresion -> ECHO expresion SEMICOL] with ['echo',None,';'] and goto state 6
+Result : <NoneType @ 0x7ffc1cafd290> (None)
+
+State  : 6
+Stack  : PHP_OPEN impresion . LexToken(VARIABLE,'$nombre',3,36)
+Action : Reduce rule [statement -> impresion] with [None] and goto state 4
+Result : <NoneType @ 0x7ffc1cafd290> (None)
+
+State  : 4
+Stack  : PHP_OPEN statement . LexToken(VARIABLE,'$nombre',3,36)
+Action : Reduce rule [statement_list -> statement] with [None] and goto state 3
+Result : <NoneType @ 0x7ffc1cafd290> (None)
+
+State  : 3
+Stack  : PHP_OPEN statement_list . LexToken(VARIABLE,'$nombre',3,36)
+Action : Shift and goto state 11
+
+State  : 11
+Stack  : PHP_OPEN statement_list VARIABLE . LexToken(ASSIGN,'=',3,44)
+Action : Shift and goto state 18
+
+State  : 18
+Stack  : PHP_OPEN statement_list VARIABLE ASSIGN . LexToken(TRIM,'trim',3,46)
+Error  : PHP_OPEN statement_list VARIABLE ASSIGN . LexToken(TRIM,'trim',3,46)
+Error de sintaxis en la linea 3, token inesperado: trim

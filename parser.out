@@ -33,51 +33,51 @@ Rule 1     php_block -> PHP_OPEN statement_list PHP_CLOSE
 Rule 2     statement_list -> statement
 Rule 3     statement_list -> statement_list statement
 Rule 4     input_statement -> VARIABLE ASSIGN READLINE LPAREN STRING RPAREN SEMICOL
-Rule 5     statement -> asignacion
-Rule 6     statement -> impresion
-Rule 7     statement -> if_statement
-Rule 8     statement -> funcion
-Rule 9     statement -> declarar_array
-Rule 10    statement -> retorno
-Rule 11    statement -> input_statement
-Rule 12    asignacion -> VARIABLE ASSIGN expresion SEMICOL
-Rule 13    asignacion -> VARIABLE ASSIGN condicion SEMICOL
-Rule 14    asignacion -> array_access ASSIGN expresion SEMICOL
-Rule 15    impresion -> ECHO SEMICOL
-Rule 16    impresion -> ECHO expresion SEMICOL
-Rule 17    impresion -> ECHO expresion_list SEMICOL
-Rule 18    expresion_list -> expresion
-Rule 19    expresion_list -> expresion COMA expresion_list
-Rule 20    expresion -> termino
-Rule 21    expresion -> termino operador expresion
-Rule 22    expresion -> termino comparador termino
-Rule 23    expresion -> LPAREN expresion RPAREN operador expresion
-Rule 24    expresion -> LPAREN expresion RPAREN
-Rule 25    expresion -> llamada_funcion
-Rule 26    expresion -> array_access
-Rule 27    termino -> VARIABLE
-Rule 28    termino -> NUMBER
-Rule 29    termino -> FLOAT
-Rule 30    termino -> STRING
-Rule 31    condicion -> expresion comparador expresion
-Rule 32    condicion -> condicion AND_OP condicion
-Rule 33    condicion -> condicion OR_OP condicion
-Rule 34    condicion -> NOT_OP condicion
-Rule 35    condicion -> expresion
-Rule 36    comparador -> EQ
-Rule 37    comparador -> NEQ
-Rule 38    comparador -> GT
-Rule 39    comparador -> LT
-Rule 40    comparador -> GE
-Rule 41    comparador -> LE
-Rule 42    operador -> PLUS
-Rule 43    operador -> MINUS
-Rule 44    operador -> TIMES
-Rule 45    operador -> DIVIDE
-Rule 46    operador -> MOD
-Rule 47    if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE
-Rule 48    if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
-Rule 49    funcion -> FUNCTION LPAREN parametros RPAREN LBRACE statement_list RBRACE
+Rule 5     funcion -> FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE statement_list RBRACE
+Rule 6     statement -> asignacion
+Rule 7     statement -> impresion
+Rule 8     statement -> if_statement
+Rule 9     statement -> funcion
+Rule 10    statement -> declarar_array
+Rule 11    statement -> retorno
+Rule 12    statement -> input_statement
+Rule 13    asignacion -> VARIABLE ASSIGN expresion SEMICOL
+Rule 14    asignacion -> VARIABLE ASSIGN condicion SEMICOL
+Rule 15    asignacion -> array_access ASSIGN expresion SEMICOL
+Rule 16    impresion -> ECHO SEMICOL
+Rule 17    impresion -> ECHO expresion SEMICOL
+Rule 18    impresion -> ECHO expresion_list SEMICOL
+Rule 19    expresion_list -> expresion
+Rule 20    expresion_list -> expresion COMA expresion_list
+Rule 21    expresion -> termino
+Rule 22    expresion -> termino operador expresion
+Rule 23    expresion -> termino comparador termino
+Rule 24    expresion -> LPAREN expresion RPAREN operador expresion
+Rule 25    expresion -> LPAREN expresion RPAREN
+Rule 26    expresion -> llamada_funcion
+Rule 27    expresion -> array_access
+Rule 28    termino -> VARIABLE
+Rule 29    termino -> NUMBER
+Rule 30    termino -> FLOAT
+Rule 31    termino -> STRING
+Rule 32    condicion -> expresion comparador expresion
+Rule 33    condicion -> condicion AND_OP condicion
+Rule 34    condicion -> condicion OR_OP condicion
+Rule 35    condicion -> NOT_OP condicion
+Rule 36    condicion -> expresion
+Rule 37    comparador -> EQ
+Rule 38    comparador -> NEQ
+Rule 39    comparador -> GT
+Rule 40    comparador -> LT
+Rule 41    comparador -> GE
+Rule 42    comparador -> LE
+Rule 43    operador -> PLUS
+Rule 44    operador -> MINUS
+Rule 45    operador -> TIMES
+Rule 46    operador -> DIVIDE
+Rule 47    operador -> MOD
+Rule 48    if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE
+Rule 49    if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
 Rule 50    parametros -> VARIABLE
 Rule 51    parametros -> VARIABLE COMA parametros
 Rule 52    parametros -> empty
@@ -94,89 +94,90 @@ Rule 61    empty -> <empty>
 Terminals, with rules where they appear
 
 AND                  : 
-AND_OP               : 32
+AND_OP               : 33
 ARRAY                : 53
-ASSIGN               : 4 12 13 14 53 54
+ASSIGN               : 4 13 14 15 53 54
 CLASS                : 
-COMA                 : 19 51 56
+COMA                 : 20 51 56
 DECREMENT            : 
-DIVIDE               : 45
+DIVIDE               : 46
 DOT                  : 
-ECHO                 : 15 16 17
-ELSE                 : 48
-EQ                   : 36
+ECHO                 : 16 17 18
+ELSE                 : 49
+EQ                   : 37
 EXPONENTIATION       : 
 FALSE                : 
-FLOAT                : 29
+FLOAT                : 30
 FOR                  : 
-FUNCTION             : 49
-GE                   : 40
-GT                   : 38
+FUNCTION             : 5
+GE                   : 41
+GT                   : 39
 IDENTITY             : 
-IF                   : 47 48
+IF                   : 48 49
 INCREMENT            : 
 INPUT                : 
 INTERFACE            : 
-LBRACE               : 47 48 48 49
+LBRACE               : 5 48 49 49
 LBRACKET             : 54 60
-LE                   : 41
-LPAREN               : 4 23 24 47 48 49 53 59
-LT                   : 39
+LE                   : 42
+LPAREN               : 4 5 24 25 48 49 53 59
+LT                   : 40
 MACUMULATIVE         : 
-MINUS                : 43
-MOD                  : 46
-NEQ                  : 37
+MINUS                : 44
+MOD                  : 47
+NAMEFUNCTION         : 5
+NEQ                  : 38
 NEW                  : 
 NIDENTITY            : 
 NOT                  : 
-NOT_OP               : 34
+NOT_OP               : 35
 NULL                 : 
-NUMBER               : 28
+NUMBER               : 29
 OR                   : 
-OR_OP                : 33
+OR_OP                : 34
 PHP_CLOSE            : 1
 PHP_OPEN             : 1
-PLUS                 : 42
+PLUS                 : 43
 PRINT                : 
 QUESTION             : 
 QUEUE                : 
-RBRACE               : 47 48 48 49
+RBRACE               : 5 48 49 49
 RBRACKET             : 54 60
 READLINE             : 4
 RETURN               : 58
-RPAREN               : 4 23 24 47 48 49 53 59
-SEMICOL              : 4 12 13 14 15 16 17 53 54 58
+RPAREN               : 4 5 24 25 48 49 53 59
+SEMICOL              : 4 13 14 15 16 17 18 53 54 58
 STACK                : 
-STRING               : 4 30
-TIMES                : 44
+STRING               : 4 31
+TIMES                : 45
 TRUE                 : 
-VARIABLE             : 4 12 13 27 50 51 53 54 59 60
+VARIABLE             : 4 13 14 28 50 51 53 54 59 60
 WHILE                : 
 error                : 
 
 Nonterminals, with rules where they appear
 
 argumentos           : 53 54 56 59
-array_access         : 14 26
-asignacion           : 5
-comparador           : 22 31
-condicion            : 13 32 32 33 33 34 47 48
-declarar_array       : 9
+array_access         : 15 27
+asignacion           : 6
+comparador           : 23 32
+condicion            : 14 33 33 34 34 35 48 49
+declarar_array       : 10
 empty                : 52 57
-expresion            : 12 14 16 18 19 21 23 23 24 31 31 35 55 56 58 60
-expresion_list       : 17 19
-funcion              : 8
-if_statement         : 7
-impresion            : 6
-input_statement      : 11
-llamada_funcion      : 25
-operador             : 21 23
-parametros           : 49 51
+expresion            : 13 15 17 19 20 22 24 24 25 32 32 36 55 56 58 60
+expresion_list       : 18 20
+funcion              : 9
+if_statement         : 8
+impresion            : 7
+input_statement      : 12
+llamada_funcion      : 26
+operador             : 22 24
+parametros           : 5 51
 php_block            : 0
-retorno              : 10
+retorno              : 11
 statement            : 2 3
-statement_list       : 1 3 47 48 48 49
-termino              : 20 21 22 22
+statement_list       : 1 3 5 48 49 49
+termino              : 21 22 23 23
 
 Parsing method: LALR
 
@@ -200,22 +201,22 @@ state 2
     (1) php_block -> PHP_OPEN . statement_list PHP_CLOSE
     (2) statement_list -> . statement
     (3) statement_list -> . statement_list statement
-    (5) statement -> . asignacion
-    (6) statement -> . impresion
-    (7) statement -> . if_statement
-    (8) statement -> . funcion
-    (9) statement -> . declarar_array
-    (10) statement -> . retorno
-    (11) statement -> . input_statement
-    (12) asignacion -> . VARIABLE ASSIGN expresion SEMICOL
-    (13) asignacion -> . VARIABLE ASSIGN condicion SEMICOL
-    (14) asignacion -> . array_access ASSIGN expresion SEMICOL
-    (15) impresion -> . ECHO SEMICOL
-    (16) impresion -> . ECHO expresion SEMICOL
-    (17) impresion -> . ECHO expresion_list SEMICOL
-    (47) if_statement -> . IF LPAREN condicion RPAREN LBRACE statement_list RBRACE
-    (48) if_statement -> . IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
-    (49) funcion -> . FUNCTION LPAREN parametros RPAREN LBRACE statement_list RBRACE
+    (6) statement -> . asignacion
+    (7) statement -> . impresion
+    (8) statement -> . if_statement
+    (9) statement -> . funcion
+    (10) statement -> . declarar_array
+    (11) statement -> . retorno
+    (12) statement -> . input_statement
+    (13) asignacion -> . VARIABLE ASSIGN expresion SEMICOL
+    (14) asignacion -> . VARIABLE ASSIGN condicion SEMICOL
+    (15) asignacion -> . array_access ASSIGN expresion SEMICOL
+    (16) impresion -> . ECHO SEMICOL
+    (17) impresion -> . ECHO expresion SEMICOL
+    (18) impresion -> . ECHO expresion_list SEMICOL
+    (48) if_statement -> . IF LPAREN condicion RPAREN LBRACE statement_list RBRACE
+    (49) if_statement -> . IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
+    (5) funcion -> . FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE statement_list RBRACE
     (53) declarar_array -> . VARIABLE ASSIGN ARRAY LPAREN argumentos RPAREN SEMICOL
     (54) declarar_array -> . VARIABLE ASSIGN LBRACKET argumentos RBRACKET SEMICOL
     (58) retorno -> . RETURN expresion SEMICOL
@@ -243,22 +244,22 @@ state 3
 
     (1) php_block -> PHP_OPEN statement_list . PHP_CLOSE
     (3) statement_list -> statement_list . statement
-    (5) statement -> . asignacion
-    (6) statement -> . impresion
-    (7) statement -> . if_statement
-    (8) statement -> . funcion
-    (9) statement -> . declarar_array
-    (10) statement -> . retorno
-    (11) statement -> . input_statement
-    (12) asignacion -> . VARIABLE ASSIGN expresion SEMICOL
-    (13) asignacion -> . VARIABLE ASSIGN condicion SEMICOL
-    (14) asignacion -> . array_access ASSIGN expresion SEMICOL
-    (15) impresion -> . ECHO SEMICOL
-    (16) impresion -> . ECHO expresion SEMICOL
-    (17) impresion -> . ECHO expresion_list SEMICOL
-    (47) if_statement -> . IF LPAREN condicion RPAREN LBRACE statement_list RBRACE
-    (48) if_statement -> . IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
-    (49) funcion -> . FUNCTION LPAREN parametros RPAREN LBRACE statement_list RBRACE
+    (6) statement -> . asignacion
+    (7) statement -> . impresion
+    (8) statement -> . if_statement
+    (9) statement -> . funcion
+    (10) statement -> . declarar_array
+    (11) statement -> . retorno
+    (12) statement -> . input_statement
+    (13) asignacion -> . VARIABLE ASSIGN expresion SEMICOL
+    (14) asignacion -> . VARIABLE ASSIGN condicion SEMICOL
+    (15) asignacion -> . array_access ASSIGN expresion SEMICOL
+    (16) impresion -> . ECHO SEMICOL
+    (17) impresion -> . ECHO expresion SEMICOL
+    (18) impresion -> . ECHO expresion_list SEMICOL
+    (48) if_statement -> . IF LPAREN condicion RPAREN LBRACE statement_list RBRACE
+    (49) if_statement -> . IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
+    (5) funcion -> . FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE statement_list RBRACE
     (53) declarar_array -> . VARIABLE ASSIGN ARRAY LPAREN argumentos RPAREN SEMICOL
     (54) declarar_array -> . VARIABLE ASSIGN LBRACKET argumentos RBRACKET SEMICOL
     (58) retorno -> . RETURN expresion SEMICOL
@@ -297,99 +298,99 @@ state 4
 
 state 5
 
-    (5) statement -> asignacion .
+    (6) statement -> asignacion .
 
-    PHP_CLOSE       reduce using rule 5 (statement -> asignacion .)
-    VARIABLE        reduce using rule 5 (statement -> asignacion .)
-    ECHO            reduce using rule 5 (statement -> asignacion .)
-    IF              reduce using rule 5 (statement -> asignacion .)
-    FUNCTION        reduce using rule 5 (statement -> asignacion .)
-    RETURN          reduce using rule 5 (statement -> asignacion .)
-    RBRACE          reduce using rule 5 (statement -> asignacion .)
+    PHP_CLOSE       reduce using rule 6 (statement -> asignacion .)
+    VARIABLE        reduce using rule 6 (statement -> asignacion .)
+    ECHO            reduce using rule 6 (statement -> asignacion .)
+    IF              reduce using rule 6 (statement -> asignacion .)
+    FUNCTION        reduce using rule 6 (statement -> asignacion .)
+    RETURN          reduce using rule 6 (statement -> asignacion .)
+    RBRACE          reduce using rule 6 (statement -> asignacion .)
 
 
 state 6
 
-    (6) statement -> impresion .
+    (7) statement -> impresion .
 
-    PHP_CLOSE       reduce using rule 6 (statement -> impresion .)
-    VARIABLE        reduce using rule 6 (statement -> impresion .)
-    ECHO            reduce using rule 6 (statement -> impresion .)
-    IF              reduce using rule 6 (statement -> impresion .)
-    FUNCTION        reduce using rule 6 (statement -> impresion .)
-    RETURN          reduce using rule 6 (statement -> impresion .)
-    RBRACE          reduce using rule 6 (statement -> impresion .)
+    PHP_CLOSE       reduce using rule 7 (statement -> impresion .)
+    VARIABLE        reduce using rule 7 (statement -> impresion .)
+    ECHO            reduce using rule 7 (statement -> impresion .)
+    IF              reduce using rule 7 (statement -> impresion .)
+    FUNCTION        reduce using rule 7 (statement -> impresion .)
+    RETURN          reduce using rule 7 (statement -> impresion .)
+    RBRACE          reduce using rule 7 (statement -> impresion .)
 
 
 state 7
 
-    (7) statement -> if_statement .
+    (8) statement -> if_statement .
 
-    PHP_CLOSE       reduce using rule 7 (statement -> if_statement .)
-    VARIABLE        reduce using rule 7 (statement -> if_statement .)
-    ECHO            reduce using rule 7 (statement -> if_statement .)
-    IF              reduce using rule 7 (statement -> if_statement .)
-    FUNCTION        reduce using rule 7 (statement -> if_statement .)
-    RETURN          reduce using rule 7 (statement -> if_statement .)
-    RBRACE          reduce using rule 7 (statement -> if_statement .)
+    PHP_CLOSE       reduce using rule 8 (statement -> if_statement .)
+    VARIABLE        reduce using rule 8 (statement -> if_statement .)
+    ECHO            reduce using rule 8 (statement -> if_statement .)
+    IF              reduce using rule 8 (statement -> if_statement .)
+    FUNCTION        reduce using rule 8 (statement -> if_statement .)
+    RETURN          reduce using rule 8 (statement -> if_statement .)
+    RBRACE          reduce using rule 8 (statement -> if_statement .)
 
 
 state 8
 
-    (8) statement -> funcion .
+    (9) statement -> funcion .
 
-    PHP_CLOSE       reduce using rule 8 (statement -> funcion .)
-    VARIABLE        reduce using rule 8 (statement -> funcion .)
-    ECHO            reduce using rule 8 (statement -> funcion .)
-    IF              reduce using rule 8 (statement -> funcion .)
-    FUNCTION        reduce using rule 8 (statement -> funcion .)
-    RETURN          reduce using rule 8 (statement -> funcion .)
-    RBRACE          reduce using rule 8 (statement -> funcion .)
+    PHP_CLOSE       reduce using rule 9 (statement -> funcion .)
+    VARIABLE        reduce using rule 9 (statement -> funcion .)
+    ECHO            reduce using rule 9 (statement -> funcion .)
+    IF              reduce using rule 9 (statement -> funcion .)
+    FUNCTION        reduce using rule 9 (statement -> funcion .)
+    RETURN          reduce using rule 9 (statement -> funcion .)
+    RBRACE          reduce using rule 9 (statement -> funcion .)
 
 
 state 9
 
-    (9) statement -> declarar_array .
+    (10) statement -> declarar_array .
 
-    PHP_CLOSE       reduce using rule 9 (statement -> declarar_array .)
-    VARIABLE        reduce using rule 9 (statement -> declarar_array .)
-    ECHO            reduce using rule 9 (statement -> declarar_array .)
-    IF              reduce using rule 9 (statement -> declarar_array .)
-    FUNCTION        reduce using rule 9 (statement -> declarar_array .)
-    RETURN          reduce using rule 9 (statement -> declarar_array .)
-    RBRACE          reduce using rule 9 (statement -> declarar_array .)
+    PHP_CLOSE       reduce using rule 10 (statement -> declarar_array .)
+    VARIABLE        reduce using rule 10 (statement -> declarar_array .)
+    ECHO            reduce using rule 10 (statement -> declarar_array .)
+    IF              reduce using rule 10 (statement -> declarar_array .)
+    FUNCTION        reduce using rule 10 (statement -> declarar_array .)
+    RETURN          reduce using rule 10 (statement -> declarar_array .)
+    RBRACE          reduce using rule 10 (statement -> declarar_array .)
 
 
 state 10
 
-    (10) statement -> retorno .
+    (11) statement -> retorno .
 
-    PHP_CLOSE       reduce using rule 10 (statement -> retorno .)
-    VARIABLE        reduce using rule 10 (statement -> retorno .)
-    ECHO            reduce using rule 10 (statement -> retorno .)
-    IF              reduce using rule 10 (statement -> retorno .)
-    FUNCTION        reduce using rule 10 (statement -> retorno .)
-    RETURN          reduce using rule 10 (statement -> retorno .)
-    RBRACE          reduce using rule 10 (statement -> retorno .)
+    PHP_CLOSE       reduce using rule 11 (statement -> retorno .)
+    VARIABLE        reduce using rule 11 (statement -> retorno .)
+    ECHO            reduce using rule 11 (statement -> retorno .)
+    IF              reduce using rule 11 (statement -> retorno .)
+    FUNCTION        reduce using rule 11 (statement -> retorno .)
+    RETURN          reduce using rule 11 (statement -> retorno .)
+    RBRACE          reduce using rule 11 (statement -> retorno .)
 
 
 state 11
 
-    (11) statement -> input_statement .
+    (12) statement -> input_statement .
 
-    PHP_CLOSE       reduce using rule 11 (statement -> input_statement .)
-    VARIABLE        reduce using rule 11 (statement -> input_statement .)
-    ECHO            reduce using rule 11 (statement -> input_statement .)
-    IF              reduce using rule 11 (statement -> input_statement .)
-    FUNCTION        reduce using rule 11 (statement -> input_statement .)
-    RETURN          reduce using rule 11 (statement -> input_statement .)
-    RBRACE          reduce using rule 11 (statement -> input_statement .)
+    PHP_CLOSE       reduce using rule 12 (statement -> input_statement .)
+    VARIABLE        reduce using rule 12 (statement -> input_statement .)
+    ECHO            reduce using rule 12 (statement -> input_statement .)
+    IF              reduce using rule 12 (statement -> input_statement .)
+    FUNCTION        reduce using rule 12 (statement -> input_statement .)
+    RETURN          reduce using rule 12 (statement -> input_statement .)
+    RBRACE          reduce using rule 12 (statement -> input_statement .)
 
 
 state 12
 
-    (12) asignacion -> VARIABLE . ASSIGN expresion SEMICOL
-    (13) asignacion -> VARIABLE . ASSIGN condicion SEMICOL
+    (13) asignacion -> VARIABLE . ASSIGN expresion SEMICOL
+    (14) asignacion -> VARIABLE . ASSIGN condicion SEMICOL
     (53) declarar_array -> VARIABLE . ASSIGN ARRAY LPAREN argumentos RPAREN SEMICOL
     (54) declarar_array -> VARIABLE . ASSIGN LBRACKET argumentos RBRACKET SEMICOL
     (4) input_statement -> VARIABLE . ASSIGN READLINE LPAREN STRING RPAREN SEMICOL
@@ -401,29 +402,29 @@ state 12
 
 state 13
 
-    (14) asignacion -> array_access . ASSIGN expresion SEMICOL
+    (15) asignacion -> array_access . ASSIGN expresion SEMICOL
 
     ASSIGN          shift and go to state 22
 
 
 state 14
 
-    (15) impresion -> ECHO . SEMICOL
-    (16) impresion -> ECHO . expresion SEMICOL
-    (17) impresion -> ECHO . expresion_list SEMICOL
-    (20) expresion -> . termino
-    (21) expresion -> . termino operador expresion
-    (22) expresion -> . termino comparador termino
-    (23) expresion -> . LPAREN expresion RPAREN operador expresion
-    (24) expresion -> . LPAREN expresion RPAREN
-    (25) expresion -> . llamada_funcion
-    (26) expresion -> . array_access
-    (18) expresion_list -> . expresion
-    (19) expresion_list -> . expresion COMA expresion_list
-    (27) termino -> . VARIABLE
-    (28) termino -> . NUMBER
-    (29) termino -> . FLOAT
-    (30) termino -> . STRING
+    (16) impresion -> ECHO . SEMICOL
+    (17) impresion -> ECHO . expresion SEMICOL
+    (18) impresion -> ECHO . expresion_list SEMICOL
+    (21) expresion -> . termino
+    (22) expresion -> . termino operador expresion
+    (23) expresion -> . termino comparador termino
+    (24) expresion -> . LPAREN expresion RPAREN operador expresion
+    (25) expresion -> . LPAREN expresion RPAREN
+    (26) expresion -> . llamada_funcion
+    (27) expresion -> . array_access
+    (19) expresion_list -> . expresion
+    (20) expresion_list -> . expresion COMA expresion_list
+    (28) termino -> . VARIABLE
+    (29) termino -> . NUMBER
+    (30) termino -> . FLOAT
+    (31) termino -> . STRING
     (59) llamada_funcion -> . VARIABLE LPAREN argumentos RPAREN
     (60) array_access -> . VARIABLE LBRACKET expresion RBRACKET
 
@@ -442,33 +443,33 @@ state 14
 
 state 15
 
-    (47) if_statement -> IF . LPAREN condicion RPAREN LBRACE statement_list RBRACE
-    (48) if_statement -> IF . LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
+    (48) if_statement -> IF . LPAREN condicion RPAREN LBRACE statement_list RBRACE
+    (49) if_statement -> IF . LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
 
     LPAREN          shift and go to state 34
 
 
 state 16
 
-    (49) funcion -> FUNCTION . LPAREN parametros RPAREN LBRACE statement_list RBRACE
+    (5) funcion -> FUNCTION . NAMEFUNCTION LPAREN parametros RPAREN LBRACE statement_list RBRACE
 
-    LPAREN          shift and go to state 35
+    NAMEFUNCTION    shift and go to state 35
 
 
 state 17
 
     (58) retorno -> RETURN . expresion SEMICOL
-    (20) expresion -> . termino
-    (21) expresion -> . termino operador expresion
-    (22) expresion -> . termino comparador termino
-    (23) expresion -> . LPAREN expresion RPAREN operador expresion
-    (24) expresion -> . LPAREN expresion RPAREN
-    (25) expresion -> . llamada_funcion
-    (26) expresion -> . array_access
-    (27) termino -> . VARIABLE
-    (28) termino -> . NUMBER
-    (29) termino -> . FLOAT
-    (30) termino -> . STRING
+    (21) expresion -> . termino
+    (22) expresion -> . termino operador expresion
+    (23) expresion -> . termino comparador termino
+    (24) expresion -> . LPAREN expresion RPAREN operador expresion
+    (25) expresion -> . LPAREN expresion RPAREN
+    (26) expresion -> . llamada_funcion
+    (27) expresion -> . array_access
+    (28) termino -> . VARIABLE
+    (29) termino -> . NUMBER
+    (30) termino -> . FLOAT
+    (31) termino -> . STRING
     (59) llamada_funcion -> . VARIABLE LPAREN argumentos RPAREN
     (60) array_access -> . VARIABLE LBRACKET expresion RBRACKET
 
@@ -505,27 +506,27 @@ state 19
 
 state 20
 
-    (12) asignacion -> VARIABLE ASSIGN . expresion SEMICOL
-    (13) asignacion -> VARIABLE ASSIGN . condicion SEMICOL
+    (13) asignacion -> VARIABLE ASSIGN . expresion SEMICOL
+    (14) asignacion -> VARIABLE ASSIGN . condicion SEMICOL
     (53) declarar_array -> VARIABLE ASSIGN . ARRAY LPAREN argumentos RPAREN SEMICOL
     (54) declarar_array -> VARIABLE ASSIGN . LBRACKET argumentos RBRACKET SEMICOL
     (4) input_statement -> VARIABLE ASSIGN . READLINE LPAREN STRING RPAREN SEMICOL
-    (20) expresion -> . termino
-    (21) expresion -> . termino operador expresion
-    (22) expresion -> . termino comparador termino
-    (23) expresion -> . LPAREN expresion RPAREN operador expresion
-    (24) expresion -> . LPAREN expresion RPAREN
-    (25) expresion -> . llamada_funcion
-    (26) expresion -> . array_access
-    (31) condicion -> . expresion comparador expresion
-    (32) condicion -> . condicion AND_OP condicion
-    (33) condicion -> . condicion OR_OP condicion
-    (34) condicion -> . NOT_OP condicion
-    (35) condicion -> . expresion
-    (27) termino -> . VARIABLE
-    (28) termino -> . NUMBER
-    (29) termino -> . FLOAT
-    (30) termino -> . STRING
+    (21) expresion -> . termino
+    (22) expresion -> . termino operador expresion
+    (23) expresion -> . termino comparador termino
+    (24) expresion -> . LPAREN expresion RPAREN operador expresion
+    (25) expresion -> . LPAREN expresion RPAREN
+    (26) expresion -> . llamada_funcion
+    (27) expresion -> . array_access
+    (32) condicion -> . expresion comparador expresion
+    (33) condicion -> . condicion AND_OP condicion
+    (34) condicion -> . condicion OR_OP condicion
+    (35) condicion -> . NOT_OP condicion
+    (36) condicion -> . expresion
+    (28) termino -> . VARIABLE
+    (29) termino -> . NUMBER
+    (30) termino -> . FLOAT
+    (31) termino -> . STRING
     (59) llamada_funcion -> . VARIABLE LPAREN argumentos RPAREN
     (60) array_access -> . VARIABLE LBRACKET expresion RBRACKET
 
@@ -548,17 +549,17 @@ state 20
 state 21
 
     (60) array_access -> VARIABLE LBRACKET . expresion RBRACKET
-    (20) expresion -> . termino
-    (21) expresion -> . termino operador expresion
-    (22) expresion -> . termino comparador termino
-    (23) expresion -> . LPAREN expresion RPAREN operador expresion
-    (24) expresion -> . LPAREN expresion RPAREN
-    (25) expresion -> . llamada_funcion
-    (26) expresion -> . array_access
-    (27) termino -> . VARIABLE
-    (28) termino -> . NUMBER
-    (29) termino -> . FLOAT
-    (30) termino -> . STRING
+    (21) expresion -> . termino
+    (22) expresion -> . termino operador expresion
+    (23) expresion -> . termino comparador termino
+    (24) expresion -> . LPAREN expresion RPAREN operador expresion
+    (25) expresion -> . LPAREN expresion RPAREN
+    (26) expresion -> . llamada_funcion
+    (27) expresion -> . array_access
+    (28) termino -> . VARIABLE
+    (29) termino -> . NUMBER
+    (30) termino -> . FLOAT
+    (31) termino -> . STRING
     (59) llamada_funcion -> . VARIABLE LPAREN argumentos RPAREN
     (60) array_access -> . VARIABLE LBRACKET expresion RBRACKET
 
@@ -575,18 +576,18 @@ state 21
 
 state 22
 
-    (14) asignacion -> array_access ASSIGN . expresion SEMICOL
-    (20) expresion -> . termino
-    (21) expresion -> . termino operador expresion
-    (22) expresion -> . termino comparador termino
-    (23) expresion -> . LPAREN expresion RPAREN operador expresion
-    (24) expresion -> . LPAREN expresion RPAREN
-    (25) expresion -> . llamada_funcion
-    (26) expresion -> . array_access
-    (27) termino -> . VARIABLE
-    (28) termino -> . NUMBER
-    (29) termino -> . FLOAT
-    (30) termino -> . STRING
+    (15) asignacion -> array_access ASSIGN . expresion SEMICOL
+    (21) expresion -> . termino
+    (22) expresion -> . termino operador expresion
+    (23) expresion -> . termino comparador termino
+    (24) expresion -> . LPAREN expresion RPAREN operador expresion
+    (25) expresion -> . LPAREN expresion RPAREN
+    (26) expresion -> . llamada_funcion
+    (27) expresion -> . array_access
+    (28) termino -> . VARIABLE
+    (29) termino -> . NUMBER
+    (30) termino -> . FLOAT
+    (31) termino -> . STRING
     (59) llamada_funcion -> . VARIABLE LPAREN argumentos RPAREN
     (60) array_access -> . VARIABLE LBRACKET expresion RBRACKET
 
@@ -603,53 +604,53 @@ state 22
 
 state 23
 
-    (15) impresion -> ECHO SEMICOL .
+    (16) impresion -> ECHO SEMICOL .
 
-    PHP_CLOSE       reduce using rule 15 (impresion -> ECHO SEMICOL .)
-    VARIABLE        reduce using rule 15 (impresion -> ECHO SEMICOL .)
-    ECHO            reduce using rule 15 (impresion -> ECHO SEMICOL .)
-    IF              reduce using rule 15 (impresion -> ECHO SEMICOL .)
-    FUNCTION        reduce using rule 15 (impresion -> ECHO SEMICOL .)
-    RETURN          reduce using rule 15 (impresion -> ECHO SEMICOL .)
-    RBRACE          reduce using rule 15 (impresion -> ECHO SEMICOL .)
+    PHP_CLOSE       reduce using rule 16 (impresion -> ECHO SEMICOL .)
+    VARIABLE        reduce using rule 16 (impresion -> ECHO SEMICOL .)
+    ECHO            reduce using rule 16 (impresion -> ECHO SEMICOL .)
+    IF              reduce using rule 16 (impresion -> ECHO SEMICOL .)
+    FUNCTION        reduce using rule 16 (impresion -> ECHO SEMICOL .)
+    RETURN          reduce using rule 16 (impresion -> ECHO SEMICOL .)
+    RBRACE          reduce using rule 16 (impresion -> ECHO SEMICOL .)
 
 
 state 24
 
-    (16) impresion -> ECHO expresion . SEMICOL
-    (18) expresion_list -> expresion .
-    (19) expresion_list -> expresion . COMA expresion_list
+    (17) impresion -> ECHO expresion . SEMICOL
+    (19) expresion_list -> expresion .
+    (20) expresion_list -> expresion . COMA expresion_list
 
   ! shift/reduce conflict for SEMICOL resolved as shift
     SEMICOL         shift and go to state 45
     COMA            shift and go to state 46
 
-  ! SEMICOL         [ reduce using rule 18 (expresion_list -> expresion .) ]
+  ! SEMICOL         [ reduce using rule 19 (expresion_list -> expresion .) ]
 
 
 state 25
 
-    (17) impresion -> ECHO expresion_list . SEMICOL
+    (18) impresion -> ECHO expresion_list . SEMICOL
 
     SEMICOL         shift and go to state 47
 
 
 state 26
 
-    (20) expresion -> termino .
-    (21) expresion -> termino . operador expresion
-    (22) expresion -> termino . comparador termino
-    (42) operador -> . PLUS
-    (43) operador -> . MINUS
-    (44) operador -> . TIMES
-    (45) operador -> . DIVIDE
-    (46) operador -> . MOD
-    (36) comparador -> . EQ
-    (37) comparador -> . NEQ
-    (38) comparador -> . GT
-    (39) comparador -> . LT
-    (40) comparador -> . GE
-    (41) comparador -> . LE
+    (21) expresion -> termino .
+    (22) expresion -> termino . operador expresion
+    (23) expresion -> termino . comparador termino
+    (43) operador -> . PLUS
+    (44) operador -> . MINUS
+    (45) operador -> . TIMES
+    (46) operador -> . DIVIDE
+    (47) operador -> . MOD
+    (37) comparador -> . EQ
+    (38) comparador -> . NEQ
+    (39) comparador -> . GT
+    (40) comparador -> . LT
+    (41) comparador -> . GE
+    (42) comparador -> . LE
 
   ! shift/reduce conflict for EQ resolved as shift
   ! shift/reduce conflict for NEQ resolved as shift
@@ -657,12 +658,12 @@ state 26
   ! shift/reduce conflict for LT resolved as shift
   ! shift/reduce conflict for GE resolved as shift
   ! shift/reduce conflict for LE resolved as shift
-    SEMICOL         reduce using rule 20 (expresion -> termino .)
-    COMA            reduce using rule 20 (expresion -> termino .)
-    AND_OP          reduce using rule 20 (expresion -> termino .)
-    OR_OP           reduce using rule 20 (expresion -> termino .)
-    RBRACKET        reduce using rule 20 (expresion -> termino .)
-    RPAREN          reduce using rule 20 (expresion -> termino .)
+    SEMICOL         reduce using rule 21 (expresion -> termino .)
+    COMA            reduce using rule 21 (expresion -> termino .)
+    AND_OP          reduce using rule 21 (expresion -> termino .)
+    OR_OP           reduce using rule 21 (expresion -> termino .)
+    RBRACKET        reduce using rule 21 (expresion -> termino .)
+    RPAREN          reduce using rule 21 (expresion -> termino .)
     PLUS            shift and go to state 50
     MINUS           shift and go to state 51
     TIMES           shift and go to state 52
@@ -675,31 +676,31 @@ state 26
     GE              shift and go to state 59
     LE              shift and go to state 60
 
-  ! EQ              [ reduce using rule 20 (expresion -> termino .) ]
-  ! NEQ             [ reduce using rule 20 (expresion -> termino .) ]
-  ! GT              [ reduce using rule 20 (expresion -> termino .) ]
-  ! LT              [ reduce using rule 20 (expresion -> termino .) ]
-  ! GE              [ reduce using rule 20 (expresion -> termino .) ]
-  ! LE              [ reduce using rule 20 (expresion -> termino .) ]
+  ! EQ              [ reduce using rule 21 (expresion -> termino .) ]
+  ! NEQ             [ reduce using rule 21 (expresion -> termino .) ]
+  ! GT              [ reduce using rule 21 (expresion -> termino .) ]
+  ! LT              [ reduce using rule 21 (expresion -> termino .) ]
+  ! GE              [ reduce using rule 21 (expresion -> termino .) ]
+  ! LE              [ reduce using rule 21 (expresion -> termino .) ]
 
     operador                       shift and go to state 48
     comparador                     shift and go to state 49
 
 state 27
 
-    (23) expresion -> LPAREN . expresion RPAREN operador expresion
-    (24) expresion -> LPAREN . expresion RPAREN
-    (20) expresion -> . termino
-    (21) expresion -> . termino operador expresion
-    (22) expresion -> . termino comparador termino
-    (23) expresion -> . LPAREN expresion RPAREN operador expresion
-    (24) expresion -> . LPAREN expresion RPAREN
-    (25) expresion -> . llamada_funcion
-    (26) expresion -> . array_access
-    (27) termino -> . VARIABLE
-    (28) termino -> . NUMBER
-    (29) termino -> . FLOAT
-    (30) termino -> . STRING
+    (24) expresion -> LPAREN . expresion RPAREN operador expresion
+    (25) expresion -> LPAREN . expresion RPAREN
+    (21) expresion -> . termino
+    (22) expresion -> . termino operador expresion
+    (23) expresion -> . termino comparador termino
+    (24) expresion -> . LPAREN expresion RPAREN operador expresion
+    (25) expresion -> . LPAREN expresion RPAREN
+    (26) expresion -> . llamada_funcion
+    (27) expresion -> . array_access
+    (28) termino -> . VARIABLE
+    (29) termino -> . NUMBER
+    (30) termino -> . FLOAT
+    (31) termino -> . STRING
     (59) llamada_funcion -> . VARIABLE LPAREN argumentos RPAREN
     (60) array_access -> . VARIABLE LBRACKET expresion RBRACKET
 
@@ -716,156 +717,156 @@ state 27
 
 state 28
 
-    (25) expresion -> llamada_funcion .
+    (26) expresion -> llamada_funcion .
 
-    SEMICOL         reduce using rule 25 (expresion -> llamada_funcion .)
-    COMA            reduce using rule 25 (expresion -> llamada_funcion .)
-    EQ              reduce using rule 25 (expresion -> llamada_funcion .)
-    NEQ             reduce using rule 25 (expresion -> llamada_funcion .)
-    GT              reduce using rule 25 (expresion -> llamada_funcion .)
-    LT              reduce using rule 25 (expresion -> llamada_funcion .)
-    GE              reduce using rule 25 (expresion -> llamada_funcion .)
-    LE              reduce using rule 25 (expresion -> llamada_funcion .)
-    AND_OP          reduce using rule 25 (expresion -> llamada_funcion .)
-    OR_OP           reduce using rule 25 (expresion -> llamada_funcion .)
-    RBRACKET        reduce using rule 25 (expresion -> llamada_funcion .)
-    RPAREN          reduce using rule 25 (expresion -> llamada_funcion .)
+    SEMICOL         reduce using rule 26 (expresion -> llamada_funcion .)
+    COMA            reduce using rule 26 (expresion -> llamada_funcion .)
+    EQ              reduce using rule 26 (expresion -> llamada_funcion .)
+    NEQ             reduce using rule 26 (expresion -> llamada_funcion .)
+    GT              reduce using rule 26 (expresion -> llamada_funcion .)
+    LT              reduce using rule 26 (expresion -> llamada_funcion .)
+    GE              reduce using rule 26 (expresion -> llamada_funcion .)
+    LE              reduce using rule 26 (expresion -> llamada_funcion .)
+    AND_OP          reduce using rule 26 (expresion -> llamada_funcion .)
+    OR_OP           reduce using rule 26 (expresion -> llamada_funcion .)
+    RBRACKET        reduce using rule 26 (expresion -> llamada_funcion .)
+    RPAREN          reduce using rule 26 (expresion -> llamada_funcion .)
 
 
 state 29
 
-    (26) expresion -> array_access .
+    (27) expresion -> array_access .
 
-    SEMICOL         reduce using rule 26 (expresion -> array_access .)
-    COMA            reduce using rule 26 (expresion -> array_access .)
-    EQ              reduce using rule 26 (expresion -> array_access .)
-    NEQ             reduce using rule 26 (expresion -> array_access .)
-    GT              reduce using rule 26 (expresion -> array_access .)
-    LT              reduce using rule 26 (expresion -> array_access .)
-    GE              reduce using rule 26 (expresion -> array_access .)
-    LE              reduce using rule 26 (expresion -> array_access .)
-    AND_OP          reduce using rule 26 (expresion -> array_access .)
-    OR_OP           reduce using rule 26 (expresion -> array_access .)
-    RBRACKET        reduce using rule 26 (expresion -> array_access .)
-    RPAREN          reduce using rule 26 (expresion -> array_access .)
+    SEMICOL         reduce using rule 27 (expresion -> array_access .)
+    COMA            reduce using rule 27 (expresion -> array_access .)
+    EQ              reduce using rule 27 (expresion -> array_access .)
+    NEQ             reduce using rule 27 (expresion -> array_access .)
+    GT              reduce using rule 27 (expresion -> array_access .)
+    LT              reduce using rule 27 (expresion -> array_access .)
+    GE              reduce using rule 27 (expresion -> array_access .)
+    LE              reduce using rule 27 (expresion -> array_access .)
+    AND_OP          reduce using rule 27 (expresion -> array_access .)
+    OR_OP           reduce using rule 27 (expresion -> array_access .)
+    RBRACKET        reduce using rule 27 (expresion -> array_access .)
+    RPAREN          reduce using rule 27 (expresion -> array_access .)
 
 
 state 30
 
-    (27) termino -> VARIABLE .
+    (28) termino -> VARIABLE .
     (59) llamada_funcion -> VARIABLE . LPAREN argumentos RPAREN
     (60) array_access -> VARIABLE . LBRACKET expresion RBRACKET
 
-    PLUS            reduce using rule 27 (termino -> VARIABLE .)
-    MINUS           reduce using rule 27 (termino -> VARIABLE .)
-    TIMES           reduce using rule 27 (termino -> VARIABLE .)
-    DIVIDE          reduce using rule 27 (termino -> VARIABLE .)
-    MOD             reduce using rule 27 (termino -> VARIABLE .)
-    EQ              reduce using rule 27 (termino -> VARIABLE .)
-    NEQ             reduce using rule 27 (termino -> VARIABLE .)
-    GT              reduce using rule 27 (termino -> VARIABLE .)
-    LT              reduce using rule 27 (termino -> VARIABLE .)
-    GE              reduce using rule 27 (termino -> VARIABLE .)
-    LE              reduce using rule 27 (termino -> VARIABLE .)
-    SEMICOL         reduce using rule 27 (termino -> VARIABLE .)
-    COMA            reduce using rule 27 (termino -> VARIABLE .)
-    AND_OP          reduce using rule 27 (termino -> VARIABLE .)
-    OR_OP           reduce using rule 27 (termino -> VARIABLE .)
-    RBRACKET        reduce using rule 27 (termino -> VARIABLE .)
-    RPAREN          reduce using rule 27 (termino -> VARIABLE .)
+    PLUS            reduce using rule 28 (termino -> VARIABLE .)
+    MINUS           reduce using rule 28 (termino -> VARIABLE .)
+    TIMES           reduce using rule 28 (termino -> VARIABLE .)
+    DIVIDE          reduce using rule 28 (termino -> VARIABLE .)
+    MOD             reduce using rule 28 (termino -> VARIABLE .)
+    EQ              reduce using rule 28 (termino -> VARIABLE .)
+    NEQ             reduce using rule 28 (termino -> VARIABLE .)
+    GT              reduce using rule 28 (termino -> VARIABLE .)
+    LT              reduce using rule 28 (termino -> VARIABLE .)
+    GE              reduce using rule 28 (termino -> VARIABLE .)
+    LE              reduce using rule 28 (termino -> VARIABLE .)
+    SEMICOL         reduce using rule 28 (termino -> VARIABLE .)
+    COMA            reduce using rule 28 (termino -> VARIABLE .)
+    AND_OP          reduce using rule 28 (termino -> VARIABLE .)
+    OR_OP           reduce using rule 28 (termino -> VARIABLE .)
+    RBRACKET        reduce using rule 28 (termino -> VARIABLE .)
+    RPAREN          reduce using rule 28 (termino -> VARIABLE .)
     LPAREN          shift and go to state 62
     LBRACKET        shift and go to state 21
 
 
 state 31
 
-    (28) termino -> NUMBER .
+    (29) termino -> NUMBER .
 
-    PLUS            reduce using rule 28 (termino -> NUMBER .)
-    MINUS           reduce using rule 28 (termino -> NUMBER .)
-    TIMES           reduce using rule 28 (termino -> NUMBER .)
-    DIVIDE          reduce using rule 28 (termino -> NUMBER .)
-    MOD             reduce using rule 28 (termino -> NUMBER .)
-    EQ              reduce using rule 28 (termino -> NUMBER .)
-    NEQ             reduce using rule 28 (termino -> NUMBER .)
-    GT              reduce using rule 28 (termino -> NUMBER .)
-    LT              reduce using rule 28 (termino -> NUMBER .)
-    GE              reduce using rule 28 (termino -> NUMBER .)
-    LE              reduce using rule 28 (termino -> NUMBER .)
-    SEMICOL         reduce using rule 28 (termino -> NUMBER .)
-    COMA            reduce using rule 28 (termino -> NUMBER .)
-    AND_OP          reduce using rule 28 (termino -> NUMBER .)
-    OR_OP           reduce using rule 28 (termino -> NUMBER .)
-    RBRACKET        reduce using rule 28 (termino -> NUMBER .)
-    RPAREN          reduce using rule 28 (termino -> NUMBER .)
+    PLUS            reduce using rule 29 (termino -> NUMBER .)
+    MINUS           reduce using rule 29 (termino -> NUMBER .)
+    TIMES           reduce using rule 29 (termino -> NUMBER .)
+    DIVIDE          reduce using rule 29 (termino -> NUMBER .)
+    MOD             reduce using rule 29 (termino -> NUMBER .)
+    EQ              reduce using rule 29 (termino -> NUMBER .)
+    NEQ             reduce using rule 29 (termino -> NUMBER .)
+    GT              reduce using rule 29 (termino -> NUMBER .)
+    LT              reduce using rule 29 (termino -> NUMBER .)
+    GE              reduce using rule 29 (termino -> NUMBER .)
+    LE              reduce using rule 29 (termino -> NUMBER .)
+    SEMICOL         reduce using rule 29 (termino -> NUMBER .)
+    COMA            reduce using rule 29 (termino -> NUMBER .)
+    AND_OP          reduce using rule 29 (termino -> NUMBER .)
+    OR_OP           reduce using rule 29 (termino -> NUMBER .)
+    RBRACKET        reduce using rule 29 (termino -> NUMBER .)
+    RPAREN          reduce using rule 29 (termino -> NUMBER .)
 
 
 state 32
 
-    (29) termino -> FLOAT .
+    (30) termino -> FLOAT .
 
-    PLUS            reduce using rule 29 (termino -> FLOAT .)
-    MINUS           reduce using rule 29 (termino -> FLOAT .)
-    TIMES           reduce using rule 29 (termino -> FLOAT .)
-    DIVIDE          reduce using rule 29 (termino -> FLOAT .)
-    MOD             reduce using rule 29 (termino -> FLOAT .)
-    EQ              reduce using rule 29 (termino -> FLOAT .)
-    NEQ             reduce using rule 29 (termino -> FLOAT .)
-    GT              reduce using rule 29 (termino -> FLOAT .)
-    LT              reduce using rule 29 (termino -> FLOAT .)
-    GE              reduce using rule 29 (termino -> FLOAT .)
-    LE              reduce using rule 29 (termino -> FLOAT .)
-    SEMICOL         reduce using rule 29 (termino -> FLOAT .)
-    COMA            reduce using rule 29 (termino -> FLOAT .)
-    AND_OP          reduce using rule 29 (termino -> FLOAT .)
-    OR_OP           reduce using rule 29 (termino -> FLOAT .)
-    RBRACKET        reduce using rule 29 (termino -> FLOAT .)
-    RPAREN          reduce using rule 29 (termino -> FLOAT .)
+    PLUS            reduce using rule 30 (termino -> FLOAT .)
+    MINUS           reduce using rule 30 (termino -> FLOAT .)
+    TIMES           reduce using rule 30 (termino -> FLOAT .)
+    DIVIDE          reduce using rule 30 (termino -> FLOAT .)
+    MOD             reduce using rule 30 (termino -> FLOAT .)
+    EQ              reduce using rule 30 (termino -> FLOAT .)
+    NEQ             reduce using rule 30 (termino -> FLOAT .)
+    GT              reduce using rule 30 (termino -> FLOAT .)
+    LT              reduce using rule 30 (termino -> FLOAT .)
+    GE              reduce using rule 30 (termino -> FLOAT .)
+    LE              reduce using rule 30 (termino -> FLOAT .)
+    SEMICOL         reduce using rule 30 (termino -> FLOAT .)
+    COMA            reduce using rule 30 (termino -> FLOAT .)
+    AND_OP          reduce using rule 30 (termino -> FLOAT .)
+    OR_OP           reduce using rule 30 (termino -> FLOAT .)
+    RBRACKET        reduce using rule 30 (termino -> FLOAT .)
+    RPAREN          reduce using rule 30 (termino -> FLOAT .)
 
 
 state 33
 
-    (30) termino -> STRING .
+    (31) termino -> STRING .
 
-    PLUS            reduce using rule 30 (termino -> STRING .)
-    MINUS           reduce using rule 30 (termino -> STRING .)
-    TIMES           reduce using rule 30 (termino -> STRING .)
-    DIVIDE          reduce using rule 30 (termino -> STRING .)
-    MOD             reduce using rule 30 (termino -> STRING .)
-    EQ              reduce using rule 30 (termino -> STRING .)
-    NEQ             reduce using rule 30 (termino -> STRING .)
-    GT              reduce using rule 30 (termino -> STRING .)
-    LT              reduce using rule 30 (termino -> STRING .)
-    GE              reduce using rule 30 (termino -> STRING .)
-    LE              reduce using rule 30 (termino -> STRING .)
-    SEMICOL         reduce using rule 30 (termino -> STRING .)
-    COMA            reduce using rule 30 (termino -> STRING .)
-    AND_OP          reduce using rule 30 (termino -> STRING .)
-    OR_OP           reduce using rule 30 (termino -> STRING .)
-    RBRACKET        reduce using rule 30 (termino -> STRING .)
-    RPAREN          reduce using rule 30 (termino -> STRING .)
+    PLUS            reduce using rule 31 (termino -> STRING .)
+    MINUS           reduce using rule 31 (termino -> STRING .)
+    TIMES           reduce using rule 31 (termino -> STRING .)
+    DIVIDE          reduce using rule 31 (termino -> STRING .)
+    MOD             reduce using rule 31 (termino -> STRING .)
+    EQ              reduce using rule 31 (termino -> STRING .)
+    NEQ             reduce using rule 31 (termino -> STRING .)
+    GT              reduce using rule 31 (termino -> STRING .)
+    LT              reduce using rule 31 (termino -> STRING .)
+    GE              reduce using rule 31 (termino -> STRING .)
+    LE              reduce using rule 31 (termino -> STRING .)
+    SEMICOL         reduce using rule 31 (termino -> STRING .)
+    COMA            reduce using rule 31 (termino -> STRING .)
+    AND_OP          reduce using rule 31 (termino -> STRING .)
+    OR_OP           reduce using rule 31 (termino -> STRING .)
+    RBRACKET        reduce using rule 31 (termino -> STRING .)
+    RPAREN          reduce using rule 31 (termino -> STRING .)
 
 
 state 34
 
-    (47) if_statement -> IF LPAREN . condicion RPAREN LBRACE statement_list RBRACE
-    (48) if_statement -> IF LPAREN . condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
-    (31) condicion -> . expresion comparador expresion
-    (32) condicion -> . condicion AND_OP condicion
-    (33) condicion -> . condicion OR_OP condicion
-    (34) condicion -> . NOT_OP condicion
-    (35) condicion -> . expresion
-    (20) expresion -> . termino
-    (21) expresion -> . termino operador expresion
-    (22) expresion -> . termino comparador termino
-    (23) expresion -> . LPAREN expresion RPAREN operador expresion
-    (24) expresion -> . LPAREN expresion RPAREN
-    (25) expresion -> . llamada_funcion
-    (26) expresion -> . array_access
-    (27) termino -> . VARIABLE
-    (28) termino -> . NUMBER
-    (29) termino -> . FLOAT
-    (30) termino -> . STRING
+    (48) if_statement -> IF LPAREN . condicion RPAREN LBRACE statement_list RBRACE
+    (49) if_statement -> IF LPAREN . condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
+    (32) condicion -> . expresion comparador expresion
+    (33) condicion -> . condicion AND_OP condicion
+    (34) condicion -> . condicion OR_OP condicion
+    (35) condicion -> . NOT_OP condicion
+    (36) condicion -> . expresion
+    (21) expresion -> . termino
+    (22) expresion -> . termino operador expresion
+    (23) expresion -> . termino comparador termino
+    (24) expresion -> . LPAREN expresion RPAREN operador expresion
+    (25) expresion -> . LPAREN expresion RPAREN
+    (26) expresion -> . llamada_funcion
+    (27) expresion -> . array_access
+    (28) termino -> . VARIABLE
+    (29) termino -> . NUMBER
+    (30) termino -> . FLOAT
+    (31) termino -> . STRING
     (59) llamada_funcion -> . VARIABLE LPAREN argumentos RPAREN
     (60) array_access -> . VARIABLE LBRACKET expresion RBRACKET
 
@@ -884,41 +885,34 @@ state 34
 
 state 35
 
-    (49) funcion -> FUNCTION LPAREN . parametros RPAREN LBRACE statement_list RBRACE
-    (50) parametros -> . VARIABLE
-    (51) parametros -> . VARIABLE COMA parametros
-    (52) parametros -> . empty
-    (61) empty -> .
+    (5) funcion -> FUNCTION NAMEFUNCTION . LPAREN parametros RPAREN LBRACE statement_list RBRACE
 
-    VARIABLE        shift and go to state 66
-    RPAREN          reduce using rule 61 (empty -> .)
+    LPAREN          shift and go to state 65
 
-    parametros                     shift and go to state 65
-    empty                          shift and go to state 67
 
 state 36
 
     (58) retorno -> RETURN expresion . SEMICOL
 
-    SEMICOL         shift and go to state 68
+    SEMICOL         shift and go to state 66
 
 
 state 37
 
-    (12) asignacion -> VARIABLE ASSIGN expresion . SEMICOL
-    (31) condicion -> expresion . comparador expresion
-    (35) condicion -> expresion .
-    (36) comparador -> . EQ
-    (37) comparador -> . NEQ
-    (38) comparador -> . GT
-    (39) comparador -> . LT
-    (40) comparador -> . GE
-    (41) comparador -> . LE
+    (13) asignacion -> VARIABLE ASSIGN expresion . SEMICOL
+    (32) condicion -> expresion . comparador expresion
+    (36) condicion -> expresion .
+    (37) comparador -> . EQ
+    (38) comparador -> . NEQ
+    (39) comparador -> . GT
+    (40) comparador -> . LT
+    (41) comparador -> . GE
+    (42) comparador -> . LE
 
   ! shift/reduce conflict for SEMICOL resolved as shift
-    SEMICOL         shift and go to state 69
-    AND_OP          reduce using rule 35 (condicion -> expresion .)
-    OR_OP           reduce using rule 35 (condicion -> expresion .)
+    SEMICOL         shift and go to state 67
+    AND_OP          reduce using rule 36 (condicion -> expresion .)
+    OR_OP           reduce using rule 36 (condicion -> expresion .)
     EQ              shift and go to state 55
     NEQ             shift and go to state 56
     GT              shift and go to state 57
@@ -926,26 +920,26 @@ state 37
     GE              shift and go to state 59
     LE              shift and go to state 60
 
-  ! SEMICOL         [ reduce using rule 35 (condicion -> expresion .) ]
+  ! SEMICOL         [ reduce using rule 36 (condicion -> expresion .) ]
 
-    comparador                     shift and go to state 70
+    comparador                     shift and go to state 68
 
 state 38
 
-    (13) asignacion -> VARIABLE ASSIGN condicion . SEMICOL
-    (32) condicion -> condicion . AND_OP condicion
-    (33) condicion -> condicion . OR_OP condicion
+    (14) asignacion -> VARIABLE ASSIGN condicion . SEMICOL
+    (33) condicion -> condicion . AND_OP condicion
+    (34) condicion -> condicion . OR_OP condicion
 
-    SEMICOL         shift and go to state 71
-    AND_OP          shift and go to state 72
-    OR_OP           shift and go to state 73
+    SEMICOL         shift and go to state 69
+    AND_OP          shift and go to state 70
+    OR_OP           shift and go to state 71
 
 
 state 39
 
     (53) declarar_array -> VARIABLE ASSIGN ARRAY . LPAREN argumentos RPAREN SEMICOL
 
-    LPAREN          shift and go to state 74
+    LPAREN          shift and go to state 72
 
 
 state 40
@@ -954,18 +948,18 @@ state 40
     (55) argumentos -> . expresion
     (56) argumentos -> . expresion COMA argumentos
     (57) argumentos -> . empty
-    (20) expresion -> . termino
-    (21) expresion -> . termino operador expresion
-    (22) expresion -> . termino comparador termino
-    (23) expresion -> . LPAREN expresion RPAREN operador expresion
-    (24) expresion -> . LPAREN expresion RPAREN
-    (25) expresion -> . llamada_funcion
-    (26) expresion -> . array_access
+    (21) expresion -> . termino
+    (22) expresion -> . termino operador expresion
+    (23) expresion -> . termino comparador termino
+    (24) expresion -> . LPAREN expresion RPAREN operador expresion
+    (25) expresion -> . LPAREN expresion RPAREN
+    (26) expresion -> . llamada_funcion
+    (27) expresion -> . array_access
     (61) empty -> .
-    (27) termino -> . VARIABLE
-    (28) termino -> . NUMBER
-    (29) termino -> . FLOAT
-    (30) termino -> . STRING
+    (28) termino -> . VARIABLE
+    (29) termino -> . NUMBER
+    (30) termino -> . FLOAT
+    (31) termino -> . STRING
     (59) llamada_funcion -> . VARIABLE LPAREN argumentos RPAREN
     (60) array_access -> . VARIABLE LBRACKET expresion RBRACKET
 
@@ -976,9 +970,9 @@ state 40
     FLOAT           shift and go to state 32
     STRING          shift and go to state 33
 
-    argumentos                     shift and go to state 75
-    expresion                      shift and go to state 76
-    empty                          shift and go to state 77
+    argumentos                     shift and go to state 73
+    expresion                      shift and go to state 74
+    empty                          shift and go to state 75
     termino                        shift and go to state 26
     llamada_funcion                shift and go to state 28
     array_access                   shift and go to state 29
@@ -987,28 +981,28 @@ state 41
 
     (4) input_statement -> VARIABLE ASSIGN READLINE . LPAREN STRING RPAREN SEMICOL
 
-    LPAREN          shift and go to state 78
+    LPAREN          shift and go to state 76
 
 
 state 42
 
-    (34) condicion -> NOT_OP . condicion
-    (31) condicion -> . expresion comparador expresion
-    (32) condicion -> . condicion AND_OP condicion
-    (33) condicion -> . condicion OR_OP condicion
-    (34) condicion -> . NOT_OP condicion
-    (35) condicion -> . expresion
-    (20) expresion -> . termino
-    (21) expresion -> . termino operador expresion
-    (22) expresion -> . termino comparador termino
-    (23) expresion -> . LPAREN expresion RPAREN operador expresion
-    (24) expresion -> . LPAREN expresion RPAREN
-    (25) expresion -> . llamada_funcion
-    (26) expresion -> . array_access
-    (27) termino -> . VARIABLE
-    (28) termino -> . NUMBER
-    (29) termino -> . FLOAT
-    (30) termino -> . STRING
+    (35) condicion -> NOT_OP . condicion
+    (32) condicion -> . expresion comparador expresion
+    (33) condicion -> . condicion AND_OP condicion
+    (34) condicion -> . condicion OR_OP condicion
+    (35) condicion -> . NOT_OP condicion
+    (36) condicion -> . expresion
+    (21) expresion -> . termino
+    (22) expresion -> . termino operador expresion
+    (23) expresion -> . termino comparador termino
+    (24) expresion -> . LPAREN expresion RPAREN operador expresion
+    (25) expresion -> . LPAREN expresion RPAREN
+    (26) expresion -> . llamada_funcion
+    (27) expresion -> . array_access
+    (28) termino -> . VARIABLE
+    (29) termino -> . NUMBER
+    (30) termino -> . FLOAT
+    (31) termino -> . STRING
     (59) llamada_funcion -> . VARIABLE LPAREN argumentos RPAREN
     (60) array_access -> . VARIABLE LBRACKET expresion RBRACKET
 
@@ -1019,7 +1013,7 @@ state 42
     FLOAT           shift and go to state 32
     STRING          shift and go to state 33
 
-    condicion                      shift and go to state 79
+    condicion                      shift and go to state 77
     expresion                      shift and go to state 64
     termino                        shift and go to state 26
     llamada_funcion                shift and go to state 28
@@ -1029,45 +1023,45 @@ state 43
 
     (60) array_access -> VARIABLE LBRACKET expresion . RBRACKET
 
-    RBRACKET        shift and go to state 80
+    RBRACKET        shift and go to state 78
 
 
 state 44
 
-    (14) asignacion -> array_access ASSIGN expresion . SEMICOL
+    (15) asignacion -> array_access ASSIGN expresion . SEMICOL
 
-    SEMICOL         shift and go to state 81
+    SEMICOL         shift and go to state 79
 
 
 state 45
 
-    (16) impresion -> ECHO expresion SEMICOL .
+    (17) impresion -> ECHO expresion SEMICOL .
 
-    PHP_CLOSE       reduce using rule 16 (impresion -> ECHO expresion SEMICOL .)
-    VARIABLE        reduce using rule 16 (impresion -> ECHO expresion SEMICOL .)
-    ECHO            reduce using rule 16 (impresion -> ECHO expresion SEMICOL .)
-    IF              reduce using rule 16 (impresion -> ECHO expresion SEMICOL .)
-    FUNCTION        reduce using rule 16 (impresion -> ECHO expresion SEMICOL .)
-    RETURN          reduce using rule 16 (impresion -> ECHO expresion SEMICOL .)
-    RBRACE          reduce using rule 16 (impresion -> ECHO expresion SEMICOL .)
+    PHP_CLOSE       reduce using rule 17 (impresion -> ECHO expresion SEMICOL .)
+    VARIABLE        reduce using rule 17 (impresion -> ECHO expresion SEMICOL .)
+    ECHO            reduce using rule 17 (impresion -> ECHO expresion SEMICOL .)
+    IF              reduce using rule 17 (impresion -> ECHO expresion SEMICOL .)
+    FUNCTION        reduce using rule 17 (impresion -> ECHO expresion SEMICOL .)
+    RETURN          reduce using rule 17 (impresion -> ECHO expresion SEMICOL .)
+    RBRACE          reduce using rule 17 (impresion -> ECHO expresion SEMICOL .)
 
 
 state 46
 
-    (19) expresion_list -> expresion COMA . expresion_list
-    (18) expresion_list -> . expresion
-    (19) expresion_list -> . expresion COMA expresion_list
-    (20) expresion -> . termino
-    (21) expresion -> . termino operador expresion
-    (22) expresion -> . termino comparador termino
-    (23) expresion -> . LPAREN expresion RPAREN operador expresion
-    (24) expresion -> . LPAREN expresion RPAREN
-    (25) expresion -> . llamada_funcion
-    (26) expresion -> . array_access
-    (27) termino -> . VARIABLE
-    (28) termino -> . NUMBER
-    (29) termino -> . FLOAT
-    (30) termino -> . STRING
+    (20) expresion_list -> expresion COMA . expresion_list
+    (19) expresion_list -> . expresion
+    (20) expresion_list -> . expresion COMA expresion_list
+    (21) expresion -> . termino
+    (22) expresion -> . termino operador expresion
+    (23) expresion -> . termino comparador termino
+    (24) expresion -> . LPAREN expresion RPAREN operador expresion
+    (25) expresion -> . LPAREN expresion RPAREN
+    (26) expresion -> . llamada_funcion
+    (27) expresion -> . array_access
+    (28) termino -> . VARIABLE
+    (29) termino -> . NUMBER
+    (30) termino -> . FLOAT
+    (31) termino -> . STRING
     (59) llamada_funcion -> . VARIABLE LPAREN argumentos RPAREN
     (60) array_access -> . VARIABLE LBRACKET expresion RBRACKET
 
@@ -1077,39 +1071,39 @@ state 46
     FLOAT           shift and go to state 32
     STRING          shift and go to state 33
 
-    expresion                      shift and go to state 82
-    expresion_list                 shift and go to state 83
+    expresion                      shift and go to state 80
+    expresion_list                 shift and go to state 81
     termino                        shift and go to state 26
     llamada_funcion                shift and go to state 28
     array_access                   shift and go to state 29
 
 state 47
 
-    (17) impresion -> ECHO expresion_list SEMICOL .
+    (18) impresion -> ECHO expresion_list SEMICOL .
 
-    PHP_CLOSE       reduce using rule 17 (impresion -> ECHO expresion_list SEMICOL .)
-    VARIABLE        reduce using rule 17 (impresion -> ECHO expresion_list SEMICOL .)
-    ECHO            reduce using rule 17 (impresion -> ECHO expresion_list SEMICOL .)
-    IF              reduce using rule 17 (impresion -> ECHO expresion_list SEMICOL .)
-    FUNCTION        reduce using rule 17 (impresion -> ECHO expresion_list SEMICOL .)
-    RETURN          reduce using rule 17 (impresion -> ECHO expresion_list SEMICOL .)
-    RBRACE          reduce using rule 17 (impresion -> ECHO expresion_list SEMICOL .)
+    PHP_CLOSE       reduce using rule 18 (impresion -> ECHO expresion_list SEMICOL .)
+    VARIABLE        reduce using rule 18 (impresion -> ECHO expresion_list SEMICOL .)
+    ECHO            reduce using rule 18 (impresion -> ECHO expresion_list SEMICOL .)
+    IF              reduce using rule 18 (impresion -> ECHO expresion_list SEMICOL .)
+    FUNCTION        reduce using rule 18 (impresion -> ECHO expresion_list SEMICOL .)
+    RETURN          reduce using rule 18 (impresion -> ECHO expresion_list SEMICOL .)
+    RBRACE          reduce using rule 18 (impresion -> ECHO expresion_list SEMICOL .)
 
 
 state 48
 
-    (21) expresion -> termino operador . expresion
-    (20) expresion -> . termino
-    (21) expresion -> . termino operador expresion
-    (22) expresion -> . termino comparador termino
-    (23) expresion -> . LPAREN expresion RPAREN operador expresion
-    (24) expresion -> . LPAREN expresion RPAREN
-    (25) expresion -> . llamada_funcion
-    (26) expresion -> . array_access
-    (27) termino -> . VARIABLE
-    (28) termino -> . NUMBER
-    (29) termino -> . FLOAT
-    (30) termino -> . STRING
+    (22) expresion -> termino operador . expresion
+    (21) expresion -> . termino
+    (22) expresion -> . termino operador expresion
+    (23) expresion -> . termino comparador termino
+    (24) expresion -> . LPAREN expresion RPAREN operador expresion
+    (25) expresion -> . LPAREN expresion RPAREN
+    (26) expresion -> . llamada_funcion
+    (27) expresion -> . array_access
+    (28) termino -> . VARIABLE
+    (29) termino -> . NUMBER
+    (30) termino -> . FLOAT
+    (31) termino -> . STRING
     (59) llamada_funcion -> . VARIABLE LPAREN argumentos RPAREN
     (60) array_access -> . VARIABLE LBRACKET expresion RBRACKET
 
@@ -1120,152 +1114,152 @@ state 48
     STRING          shift and go to state 33
 
     termino                        shift and go to state 26
-    expresion                      shift and go to state 84
+    expresion                      shift and go to state 82
     llamada_funcion                shift and go to state 28
     array_access                   shift and go to state 29
 
 state 49
 
-    (22) expresion -> termino comparador . termino
-    (27) termino -> . VARIABLE
-    (28) termino -> . NUMBER
-    (29) termino -> . FLOAT
-    (30) termino -> . STRING
+    (23) expresion -> termino comparador . termino
+    (28) termino -> . VARIABLE
+    (29) termino -> . NUMBER
+    (30) termino -> . FLOAT
+    (31) termino -> . STRING
 
-    VARIABLE        shift and go to state 86
+    VARIABLE        shift and go to state 84
     NUMBER          shift and go to state 31
     FLOAT           shift and go to state 32
     STRING          shift and go to state 33
 
-    termino                        shift and go to state 85
+    termino                        shift and go to state 83
 
 state 50
 
-    (42) operador -> PLUS .
+    (43) operador -> PLUS .
 
-    LPAREN          reduce using rule 42 (operador -> PLUS .)
-    VARIABLE        reduce using rule 42 (operador -> PLUS .)
-    NUMBER          reduce using rule 42 (operador -> PLUS .)
-    FLOAT           reduce using rule 42 (operador -> PLUS .)
-    STRING          reduce using rule 42 (operador -> PLUS .)
+    LPAREN          reduce using rule 43 (operador -> PLUS .)
+    VARIABLE        reduce using rule 43 (operador -> PLUS .)
+    NUMBER          reduce using rule 43 (operador -> PLUS .)
+    FLOAT           reduce using rule 43 (operador -> PLUS .)
+    STRING          reduce using rule 43 (operador -> PLUS .)
 
 
 state 51
 
-    (43) operador -> MINUS .
+    (44) operador -> MINUS .
 
-    LPAREN          reduce using rule 43 (operador -> MINUS .)
-    VARIABLE        reduce using rule 43 (operador -> MINUS .)
-    NUMBER          reduce using rule 43 (operador -> MINUS .)
-    FLOAT           reduce using rule 43 (operador -> MINUS .)
-    STRING          reduce using rule 43 (operador -> MINUS .)
+    LPAREN          reduce using rule 44 (operador -> MINUS .)
+    VARIABLE        reduce using rule 44 (operador -> MINUS .)
+    NUMBER          reduce using rule 44 (operador -> MINUS .)
+    FLOAT           reduce using rule 44 (operador -> MINUS .)
+    STRING          reduce using rule 44 (operador -> MINUS .)
 
 
 state 52
 
-    (44) operador -> TIMES .
+    (45) operador -> TIMES .
 
-    LPAREN          reduce using rule 44 (operador -> TIMES .)
-    VARIABLE        reduce using rule 44 (operador -> TIMES .)
-    NUMBER          reduce using rule 44 (operador -> TIMES .)
-    FLOAT           reduce using rule 44 (operador -> TIMES .)
-    STRING          reduce using rule 44 (operador -> TIMES .)
+    LPAREN          reduce using rule 45 (operador -> TIMES .)
+    VARIABLE        reduce using rule 45 (operador -> TIMES .)
+    NUMBER          reduce using rule 45 (operador -> TIMES .)
+    FLOAT           reduce using rule 45 (operador -> TIMES .)
+    STRING          reduce using rule 45 (operador -> TIMES .)
 
 
 state 53
 
-    (45) operador -> DIVIDE .
+    (46) operador -> DIVIDE .
 
-    LPAREN          reduce using rule 45 (operador -> DIVIDE .)
-    VARIABLE        reduce using rule 45 (operador -> DIVIDE .)
-    NUMBER          reduce using rule 45 (operador -> DIVIDE .)
-    FLOAT           reduce using rule 45 (operador -> DIVIDE .)
-    STRING          reduce using rule 45 (operador -> DIVIDE .)
+    LPAREN          reduce using rule 46 (operador -> DIVIDE .)
+    VARIABLE        reduce using rule 46 (operador -> DIVIDE .)
+    NUMBER          reduce using rule 46 (operador -> DIVIDE .)
+    FLOAT           reduce using rule 46 (operador -> DIVIDE .)
+    STRING          reduce using rule 46 (operador -> DIVIDE .)
 
 
 state 54
 
-    (46) operador -> MOD .
+    (47) operador -> MOD .
 
-    LPAREN          reduce using rule 46 (operador -> MOD .)
-    VARIABLE        reduce using rule 46 (operador -> MOD .)
-    NUMBER          reduce using rule 46 (operador -> MOD .)
-    FLOAT           reduce using rule 46 (operador -> MOD .)
-    STRING          reduce using rule 46 (operador -> MOD .)
+    LPAREN          reduce using rule 47 (operador -> MOD .)
+    VARIABLE        reduce using rule 47 (operador -> MOD .)
+    NUMBER          reduce using rule 47 (operador -> MOD .)
+    FLOAT           reduce using rule 47 (operador -> MOD .)
+    STRING          reduce using rule 47 (operador -> MOD .)
 
 
 state 55
 
-    (36) comparador -> EQ .
+    (37) comparador -> EQ .
 
-    VARIABLE        reduce using rule 36 (comparador -> EQ .)
-    NUMBER          reduce using rule 36 (comparador -> EQ .)
-    FLOAT           reduce using rule 36 (comparador -> EQ .)
-    STRING          reduce using rule 36 (comparador -> EQ .)
-    LPAREN          reduce using rule 36 (comparador -> EQ .)
+    VARIABLE        reduce using rule 37 (comparador -> EQ .)
+    NUMBER          reduce using rule 37 (comparador -> EQ .)
+    FLOAT           reduce using rule 37 (comparador -> EQ .)
+    STRING          reduce using rule 37 (comparador -> EQ .)
+    LPAREN          reduce using rule 37 (comparador -> EQ .)
 
 
 state 56
 
-    (37) comparador -> NEQ .
+    (38) comparador -> NEQ .
 
-    VARIABLE        reduce using rule 37 (comparador -> NEQ .)
-    NUMBER          reduce using rule 37 (comparador -> NEQ .)
-    FLOAT           reduce using rule 37 (comparador -> NEQ .)
-    STRING          reduce using rule 37 (comparador -> NEQ .)
-    LPAREN          reduce using rule 37 (comparador -> NEQ .)
+    VARIABLE        reduce using rule 38 (comparador -> NEQ .)
+    NUMBER          reduce using rule 38 (comparador -> NEQ .)
+    FLOAT           reduce using rule 38 (comparador -> NEQ .)
+    STRING          reduce using rule 38 (comparador -> NEQ .)
+    LPAREN          reduce using rule 38 (comparador -> NEQ .)
 
 
 state 57
 
-    (38) comparador -> GT .
+    (39) comparador -> GT .
 
-    VARIABLE        reduce using rule 38 (comparador -> GT .)
-    NUMBER          reduce using rule 38 (comparador -> GT .)
-    FLOAT           reduce using rule 38 (comparador -> GT .)
-    STRING          reduce using rule 38 (comparador -> GT .)
-    LPAREN          reduce using rule 38 (comparador -> GT .)
+    VARIABLE        reduce using rule 39 (comparador -> GT .)
+    NUMBER          reduce using rule 39 (comparador -> GT .)
+    FLOAT           reduce using rule 39 (comparador -> GT .)
+    STRING          reduce using rule 39 (comparador -> GT .)
+    LPAREN          reduce using rule 39 (comparador -> GT .)
 
 
 state 58
 
-    (39) comparador -> LT .
+    (40) comparador -> LT .
 
-    VARIABLE        reduce using rule 39 (comparador -> LT .)
-    NUMBER          reduce using rule 39 (comparador -> LT .)
-    FLOAT           reduce using rule 39 (comparador -> LT .)
-    STRING          reduce using rule 39 (comparador -> LT .)
-    LPAREN          reduce using rule 39 (comparador -> LT .)
+    VARIABLE        reduce using rule 40 (comparador -> LT .)
+    NUMBER          reduce using rule 40 (comparador -> LT .)
+    FLOAT           reduce using rule 40 (comparador -> LT .)
+    STRING          reduce using rule 40 (comparador -> LT .)
+    LPAREN          reduce using rule 40 (comparador -> LT .)
 
 
 state 59
 
-    (40) comparador -> GE .
+    (41) comparador -> GE .
 
-    VARIABLE        reduce using rule 40 (comparador -> GE .)
-    NUMBER          reduce using rule 40 (comparador -> GE .)
-    FLOAT           reduce using rule 40 (comparador -> GE .)
-    STRING          reduce using rule 40 (comparador -> GE .)
-    LPAREN          reduce using rule 40 (comparador -> GE .)
+    VARIABLE        reduce using rule 41 (comparador -> GE .)
+    NUMBER          reduce using rule 41 (comparador -> GE .)
+    FLOAT           reduce using rule 41 (comparador -> GE .)
+    STRING          reduce using rule 41 (comparador -> GE .)
+    LPAREN          reduce using rule 41 (comparador -> GE .)
 
 
 state 60
 
-    (41) comparador -> LE .
+    (42) comparador -> LE .
 
-    VARIABLE        reduce using rule 41 (comparador -> LE .)
-    NUMBER          reduce using rule 41 (comparador -> LE .)
-    FLOAT           reduce using rule 41 (comparador -> LE .)
-    STRING          reduce using rule 41 (comparador -> LE .)
-    LPAREN          reduce using rule 41 (comparador -> LE .)
+    VARIABLE        reduce using rule 42 (comparador -> LE .)
+    NUMBER          reduce using rule 42 (comparador -> LE .)
+    FLOAT           reduce using rule 42 (comparador -> LE .)
+    STRING          reduce using rule 42 (comparador -> LE .)
+    LPAREN          reduce using rule 42 (comparador -> LE .)
 
 
 state 61
 
-    (23) expresion -> LPAREN expresion . RPAREN operador expresion
-    (24) expresion -> LPAREN expresion . RPAREN
+    (24) expresion -> LPAREN expresion . RPAREN operador expresion
+    (25) expresion -> LPAREN expresion . RPAREN
 
-    RPAREN          shift and go to state 87
+    RPAREN          shift and go to state 85
 
 
 state 62
@@ -1274,18 +1268,18 @@ state 62
     (55) argumentos -> . expresion
     (56) argumentos -> . expresion COMA argumentos
     (57) argumentos -> . empty
-    (20) expresion -> . termino
-    (21) expresion -> . termino operador expresion
-    (22) expresion -> . termino comparador termino
-    (23) expresion -> . LPAREN expresion RPAREN operador expresion
-    (24) expresion -> . LPAREN expresion RPAREN
-    (25) expresion -> . llamada_funcion
-    (26) expresion -> . array_access
+    (21) expresion -> . termino
+    (22) expresion -> . termino operador expresion
+    (23) expresion -> . termino comparador termino
+    (24) expresion -> . LPAREN expresion RPAREN operador expresion
+    (25) expresion -> . LPAREN expresion RPAREN
+    (26) expresion -> . llamada_funcion
+    (27) expresion -> . array_access
     (61) empty -> .
-    (27) termino -> . VARIABLE
-    (28) termino -> . NUMBER
-    (29) termino -> . FLOAT
-    (30) termino -> . STRING
+    (28) termino -> . VARIABLE
+    (29) termino -> . NUMBER
+    (30) termino -> . FLOAT
+    (31) termino -> . STRING
     (59) llamada_funcion -> . VARIABLE LPAREN argumentos RPAREN
     (60) array_access -> . VARIABLE LBRACKET expresion RBRACKET
 
@@ -1296,40 +1290,40 @@ state 62
     FLOAT           shift and go to state 32
     STRING          shift and go to state 33
 
-    argumentos                     shift and go to state 88
-    expresion                      shift and go to state 76
-    empty                          shift and go to state 77
+    argumentos                     shift and go to state 86
+    expresion                      shift and go to state 74
+    empty                          shift and go to state 75
     termino                        shift and go to state 26
     llamada_funcion                shift and go to state 28
     array_access                   shift and go to state 29
 
 state 63
 
-    (47) if_statement -> IF LPAREN condicion . RPAREN LBRACE statement_list RBRACE
-    (48) if_statement -> IF LPAREN condicion . RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
-    (32) condicion -> condicion . AND_OP condicion
-    (33) condicion -> condicion . OR_OP condicion
+    (48) if_statement -> IF LPAREN condicion . RPAREN LBRACE statement_list RBRACE
+    (49) if_statement -> IF LPAREN condicion . RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
+    (33) condicion -> condicion . AND_OP condicion
+    (34) condicion -> condicion . OR_OP condicion
 
-    RPAREN          shift and go to state 89
-    AND_OP          shift and go to state 72
-    OR_OP           shift and go to state 73
+    RPAREN          shift and go to state 87
+    AND_OP          shift and go to state 70
+    OR_OP           shift and go to state 71
 
 
 state 64
 
-    (31) condicion -> expresion . comparador expresion
-    (35) condicion -> expresion .
-    (36) comparador -> . EQ
-    (37) comparador -> . NEQ
-    (38) comparador -> . GT
-    (39) comparador -> . LT
-    (40) comparador -> . GE
-    (41) comparador -> . LE
+    (32) condicion -> expresion . comparador expresion
+    (36) condicion -> expresion .
+    (37) comparador -> . EQ
+    (38) comparador -> . NEQ
+    (39) comparador -> . GT
+    (40) comparador -> . LT
+    (41) comparador -> . GE
+    (42) comparador -> . LE
 
-    RPAREN          reduce using rule 35 (condicion -> expresion .)
-    AND_OP          reduce using rule 35 (condicion -> expresion .)
-    OR_OP           reduce using rule 35 (condicion -> expresion .)
-    SEMICOL         reduce using rule 35 (condicion -> expresion .)
+    RPAREN          reduce using rule 36 (condicion -> expresion .)
+    AND_OP          reduce using rule 36 (condicion -> expresion .)
+    OR_OP           reduce using rule 36 (condicion -> expresion .)
+    SEMICOL         reduce using rule 36 (condicion -> expresion .)
     EQ              shift and go to state 55
     NEQ             shift and go to state 56
     GT              shift and go to state 57
@@ -1337,32 +1331,23 @@ state 64
     GE              shift and go to state 59
     LE              shift and go to state 60
 
-    comparador                     shift and go to state 70
+    comparador                     shift and go to state 68
 
 state 65
 
-    (49) funcion -> FUNCTION LPAREN parametros . RPAREN LBRACE statement_list RBRACE
+    (5) funcion -> FUNCTION NAMEFUNCTION LPAREN . parametros RPAREN LBRACE statement_list RBRACE
+    (50) parametros -> . VARIABLE
+    (51) parametros -> . VARIABLE COMA parametros
+    (52) parametros -> . empty
+    (61) empty -> .
 
-    RPAREN          shift and go to state 90
+    VARIABLE        shift and go to state 89
+    RPAREN          reduce using rule 61 (empty -> .)
 
+    parametros                     shift and go to state 88
+    empty                          shift and go to state 90
 
 state 66
-
-    (50) parametros -> VARIABLE .
-    (51) parametros -> VARIABLE . COMA parametros
-
-    RPAREN          reduce using rule 50 (parametros -> VARIABLE .)
-    COMA            shift and go to state 91
-
-
-state 67
-
-    (52) parametros -> empty .
-
-    RPAREN          reduce using rule 52 (parametros -> empty .)
-
-
-state 68
 
     (58) retorno -> RETURN expresion SEMICOL .
 
@@ -1375,33 +1360,33 @@ state 68
     RBRACE          reduce using rule 58 (retorno -> RETURN expresion SEMICOL .)
 
 
-state 69
+state 67
 
-    (12) asignacion -> VARIABLE ASSIGN expresion SEMICOL .
+    (13) asignacion -> VARIABLE ASSIGN expresion SEMICOL .
 
-    PHP_CLOSE       reduce using rule 12 (asignacion -> VARIABLE ASSIGN expresion SEMICOL .)
-    VARIABLE        reduce using rule 12 (asignacion -> VARIABLE ASSIGN expresion SEMICOL .)
-    ECHO            reduce using rule 12 (asignacion -> VARIABLE ASSIGN expresion SEMICOL .)
-    IF              reduce using rule 12 (asignacion -> VARIABLE ASSIGN expresion SEMICOL .)
-    FUNCTION        reduce using rule 12 (asignacion -> VARIABLE ASSIGN expresion SEMICOL .)
-    RETURN          reduce using rule 12 (asignacion -> VARIABLE ASSIGN expresion SEMICOL .)
-    RBRACE          reduce using rule 12 (asignacion -> VARIABLE ASSIGN expresion SEMICOL .)
+    PHP_CLOSE       reduce using rule 13 (asignacion -> VARIABLE ASSIGN expresion SEMICOL .)
+    VARIABLE        reduce using rule 13 (asignacion -> VARIABLE ASSIGN expresion SEMICOL .)
+    ECHO            reduce using rule 13 (asignacion -> VARIABLE ASSIGN expresion SEMICOL .)
+    IF              reduce using rule 13 (asignacion -> VARIABLE ASSIGN expresion SEMICOL .)
+    FUNCTION        reduce using rule 13 (asignacion -> VARIABLE ASSIGN expresion SEMICOL .)
+    RETURN          reduce using rule 13 (asignacion -> VARIABLE ASSIGN expresion SEMICOL .)
+    RBRACE          reduce using rule 13 (asignacion -> VARIABLE ASSIGN expresion SEMICOL .)
 
 
-state 70
+state 68
 
-    (31) condicion -> expresion comparador . expresion
-    (20) expresion -> . termino
-    (21) expresion -> . termino operador expresion
-    (22) expresion -> . termino comparador termino
-    (23) expresion -> . LPAREN expresion RPAREN operador expresion
-    (24) expresion -> . LPAREN expresion RPAREN
-    (25) expresion -> . llamada_funcion
-    (26) expresion -> . array_access
-    (27) termino -> . VARIABLE
-    (28) termino -> . NUMBER
-    (29) termino -> . FLOAT
-    (30) termino -> . STRING
+    (32) condicion -> expresion comparador . expresion
+    (21) expresion -> . termino
+    (22) expresion -> . termino operador expresion
+    (23) expresion -> . termino comparador termino
+    (24) expresion -> . LPAREN expresion RPAREN operador expresion
+    (25) expresion -> . LPAREN expresion RPAREN
+    (26) expresion -> . llamada_funcion
+    (27) expresion -> . array_access
+    (28) termino -> . VARIABLE
+    (29) termino -> . NUMBER
+    (30) termino -> . FLOAT
+    (31) termino -> . STRING
     (59) llamada_funcion -> . VARIABLE LPAREN argumentos RPAREN
     (60) array_access -> . VARIABLE LBRACKET expresion RBRACKET
 
@@ -1411,43 +1396,78 @@ state 70
     FLOAT           shift and go to state 32
     STRING          shift and go to state 33
 
-    expresion                      shift and go to state 92
+    expresion                      shift and go to state 91
+    termino                        shift and go to state 26
+    llamada_funcion                shift and go to state 28
+    array_access                   shift and go to state 29
+
+state 69
+
+    (14) asignacion -> VARIABLE ASSIGN condicion SEMICOL .
+
+    PHP_CLOSE       reduce using rule 14 (asignacion -> VARIABLE ASSIGN condicion SEMICOL .)
+    VARIABLE        reduce using rule 14 (asignacion -> VARIABLE ASSIGN condicion SEMICOL .)
+    ECHO            reduce using rule 14 (asignacion -> VARIABLE ASSIGN condicion SEMICOL .)
+    IF              reduce using rule 14 (asignacion -> VARIABLE ASSIGN condicion SEMICOL .)
+    FUNCTION        reduce using rule 14 (asignacion -> VARIABLE ASSIGN condicion SEMICOL .)
+    RETURN          reduce using rule 14 (asignacion -> VARIABLE ASSIGN condicion SEMICOL .)
+    RBRACE          reduce using rule 14 (asignacion -> VARIABLE ASSIGN condicion SEMICOL .)
+
+
+state 70
+
+    (33) condicion -> condicion AND_OP . condicion
+    (32) condicion -> . expresion comparador expresion
+    (33) condicion -> . condicion AND_OP condicion
+    (34) condicion -> . condicion OR_OP condicion
+    (35) condicion -> . NOT_OP condicion
+    (36) condicion -> . expresion
+    (21) expresion -> . termino
+    (22) expresion -> . termino operador expresion
+    (23) expresion -> . termino comparador termino
+    (24) expresion -> . LPAREN expresion RPAREN operador expresion
+    (25) expresion -> . LPAREN expresion RPAREN
+    (26) expresion -> . llamada_funcion
+    (27) expresion -> . array_access
+    (28) termino -> . VARIABLE
+    (29) termino -> . NUMBER
+    (30) termino -> . FLOAT
+    (31) termino -> . STRING
+    (59) llamada_funcion -> . VARIABLE LPAREN argumentos RPAREN
+    (60) array_access -> . VARIABLE LBRACKET expresion RBRACKET
+
+    NOT_OP          shift and go to state 42
+    LPAREN          shift and go to state 27
+    VARIABLE        shift and go to state 30
+    NUMBER          shift and go to state 31
+    FLOAT           shift and go to state 32
+    STRING          shift and go to state 33
+
+    condicion                      shift and go to state 92
+    expresion                      shift and go to state 64
     termino                        shift and go to state 26
     llamada_funcion                shift and go to state 28
     array_access                   shift and go to state 29
 
 state 71
 
-    (13) asignacion -> VARIABLE ASSIGN condicion SEMICOL .
-
-    PHP_CLOSE       reduce using rule 13 (asignacion -> VARIABLE ASSIGN condicion SEMICOL .)
-    VARIABLE        reduce using rule 13 (asignacion -> VARIABLE ASSIGN condicion SEMICOL .)
-    ECHO            reduce using rule 13 (asignacion -> VARIABLE ASSIGN condicion SEMICOL .)
-    IF              reduce using rule 13 (asignacion -> VARIABLE ASSIGN condicion SEMICOL .)
-    FUNCTION        reduce using rule 13 (asignacion -> VARIABLE ASSIGN condicion SEMICOL .)
-    RETURN          reduce using rule 13 (asignacion -> VARIABLE ASSIGN condicion SEMICOL .)
-    RBRACE          reduce using rule 13 (asignacion -> VARIABLE ASSIGN condicion SEMICOL .)
-
-
-state 72
-
-    (32) condicion -> condicion AND_OP . condicion
-    (31) condicion -> . expresion comparador expresion
-    (32) condicion -> . condicion AND_OP condicion
-    (33) condicion -> . condicion OR_OP condicion
-    (34) condicion -> . NOT_OP condicion
-    (35) condicion -> . expresion
-    (20) expresion -> . termino
-    (21) expresion -> . termino operador expresion
-    (22) expresion -> . termino comparador termino
-    (23) expresion -> . LPAREN expresion RPAREN operador expresion
-    (24) expresion -> . LPAREN expresion RPAREN
-    (25) expresion -> . llamada_funcion
-    (26) expresion -> . array_access
-    (27) termino -> . VARIABLE
-    (28) termino -> . NUMBER
-    (29) termino -> . FLOAT
-    (30) termino -> . STRING
+    (34) condicion -> condicion OR_OP . condicion
+    (32) condicion -> . expresion comparador expresion
+    (33) condicion -> . condicion AND_OP condicion
+    (34) condicion -> . condicion OR_OP condicion
+    (35) condicion -> . NOT_OP condicion
+    (36) condicion -> . expresion
+    (21) expresion -> . termino
+    (22) expresion -> . termino operador expresion
+    (23) expresion -> . termino comparador termino
+    (24) expresion -> . LPAREN expresion RPAREN operador expresion
+    (25) expresion -> . LPAREN expresion RPAREN
+    (26) expresion -> . llamada_funcion
+    (27) expresion -> . array_access
+    (28) termino -> . VARIABLE
+    (29) termino -> . NUMBER
+    (30) termino -> . FLOAT
+    (31) termino -> . STRING
     (59) llamada_funcion -> . VARIABLE LPAREN argumentos RPAREN
     (60) array_access -> . VARIABLE LBRACKET expresion RBRACKET
 
@@ -1464,59 +1484,24 @@ state 72
     llamada_funcion                shift and go to state 28
     array_access                   shift and go to state 29
 
-state 73
-
-    (33) condicion -> condicion OR_OP . condicion
-    (31) condicion -> . expresion comparador expresion
-    (32) condicion -> . condicion AND_OP condicion
-    (33) condicion -> . condicion OR_OP condicion
-    (34) condicion -> . NOT_OP condicion
-    (35) condicion -> . expresion
-    (20) expresion -> . termino
-    (21) expresion -> . termino operador expresion
-    (22) expresion -> . termino comparador termino
-    (23) expresion -> . LPAREN expresion RPAREN operador expresion
-    (24) expresion -> . LPAREN expresion RPAREN
-    (25) expresion -> . llamada_funcion
-    (26) expresion -> . array_access
-    (27) termino -> . VARIABLE
-    (28) termino -> . NUMBER
-    (29) termino -> . FLOAT
-    (30) termino -> . STRING
-    (59) llamada_funcion -> . VARIABLE LPAREN argumentos RPAREN
-    (60) array_access -> . VARIABLE LBRACKET expresion RBRACKET
-
-    NOT_OP          shift and go to state 42
-    LPAREN          shift and go to state 27
-    VARIABLE        shift and go to state 30
-    NUMBER          shift and go to state 31
-    FLOAT           shift and go to state 32
-    STRING          shift and go to state 33
-
-    condicion                      shift and go to state 94
-    expresion                      shift and go to state 64
-    termino                        shift and go to state 26
-    llamada_funcion                shift and go to state 28
-    array_access                   shift and go to state 29
-
-state 74
+state 72
 
     (53) declarar_array -> VARIABLE ASSIGN ARRAY LPAREN . argumentos RPAREN SEMICOL
     (55) argumentos -> . expresion
     (56) argumentos -> . expresion COMA argumentos
     (57) argumentos -> . empty
-    (20) expresion -> . termino
-    (21) expresion -> . termino operador expresion
-    (22) expresion -> . termino comparador termino
-    (23) expresion -> . LPAREN expresion RPAREN operador expresion
-    (24) expresion -> . LPAREN expresion RPAREN
-    (25) expresion -> . llamada_funcion
-    (26) expresion -> . array_access
+    (21) expresion -> . termino
+    (22) expresion -> . termino operador expresion
+    (23) expresion -> . termino comparador termino
+    (24) expresion -> . LPAREN expresion RPAREN operador expresion
+    (25) expresion -> . LPAREN expresion RPAREN
+    (26) expresion -> . llamada_funcion
+    (27) expresion -> . array_access
     (61) empty -> .
-    (27) termino -> . VARIABLE
-    (28) termino -> . NUMBER
-    (29) termino -> . FLOAT
-    (30) termino -> . STRING
+    (28) termino -> . VARIABLE
+    (29) termino -> . NUMBER
+    (30) termino -> . FLOAT
+    (31) termino -> . STRING
     (59) llamada_funcion -> . VARIABLE LPAREN argumentos RPAREN
     (60) array_access -> . VARIABLE LBRACKET expresion RBRACKET
 
@@ -1527,31 +1512,31 @@ state 74
     FLOAT           shift and go to state 32
     STRING          shift and go to state 33
 
-    argumentos                     shift and go to state 95
-    expresion                      shift and go to state 76
-    empty                          shift and go to state 77
+    argumentos                     shift and go to state 94
+    expresion                      shift and go to state 74
+    empty                          shift and go to state 75
     termino                        shift and go to state 26
     llamada_funcion                shift and go to state 28
     array_access                   shift and go to state 29
 
-state 75
+state 73
 
     (54) declarar_array -> VARIABLE ASSIGN LBRACKET argumentos . RBRACKET SEMICOL
 
-    RBRACKET        shift and go to state 96
+    RBRACKET        shift and go to state 95
 
 
-state 76
+state 74
 
     (55) argumentos -> expresion .
     (56) argumentos -> expresion . COMA argumentos
 
     RBRACKET        reduce using rule 55 (argumentos -> expresion .)
     RPAREN          reduce using rule 55 (argumentos -> expresion .)
-    COMA            shift and go to state 97
+    COMA            shift and go to state 96
 
 
-state 77
+state 75
 
     (57) argumentos -> empty .
 
@@ -1559,29 +1544,29 @@ state 77
     RPAREN          reduce using rule 57 (argumentos -> empty .)
 
 
-state 78
+state 76
 
     (4) input_statement -> VARIABLE ASSIGN READLINE LPAREN . STRING RPAREN SEMICOL
 
-    STRING          shift and go to state 98
+    STRING          shift and go to state 97
 
 
-state 79
+state 77
 
-    (34) condicion -> NOT_OP condicion .
-    (32) condicion -> condicion . AND_OP condicion
-    (33) condicion -> condicion . OR_OP condicion
+    (35) condicion -> NOT_OP condicion .
+    (33) condicion -> condicion . AND_OP condicion
+    (34) condicion -> condicion . OR_OP condicion
 
-    SEMICOL         reduce using rule 34 (condicion -> NOT_OP condicion .)
-    AND_OP          reduce using rule 34 (condicion -> NOT_OP condicion .)
-    OR_OP           reduce using rule 34 (condicion -> NOT_OP condicion .)
-    RPAREN          reduce using rule 34 (condicion -> NOT_OP condicion .)
+    SEMICOL         reduce using rule 35 (condicion -> NOT_OP condicion .)
+    AND_OP          reduce using rule 35 (condicion -> NOT_OP condicion .)
+    OR_OP           reduce using rule 35 (condicion -> NOT_OP condicion .)
+    RPAREN          reduce using rule 35 (condicion -> NOT_OP condicion .)
 
-  ! AND_OP          [ shift and go to state 72 ]
-  ! OR_OP           [ shift and go to state 73 ]
+  ! AND_OP          [ shift and go to state 70 ]
+  ! OR_OP           [ shift and go to state 71 ]
 
 
-state 80
+state 78
 
     (60) array_access -> VARIABLE LBRACKET expresion RBRACKET .
 
@@ -1600,227 +1585,229 @@ state 80
     RPAREN          reduce using rule 60 (array_access -> VARIABLE LBRACKET expresion RBRACKET .)
 
 
+state 79
+
+    (15) asignacion -> array_access ASSIGN expresion SEMICOL .
+
+    PHP_CLOSE       reduce using rule 15 (asignacion -> array_access ASSIGN expresion SEMICOL .)
+    VARIABLE        reduce using rule 15 (asignacion -> array_access ASSIGN expresion SEMICOL .)
+    ECHO            reduce using rule 15 (asignacion -> array_access ASSIGN expresion SEMICOL .)
+    IF              reduce using rule 15 (asignacion -> array_access ASSIGN expresion SEMICOL .)
+    FUNCTION        reduce using rule 15 (asignacion -> array_access ASSIGN expresion SEMICOL .)
+    RETURN          reduce using rule 15 (asignacion -> array_access ASSIGN expresion SEMICOL .)
+    RBRACE          reduce using rule 15 (asignacion -> array_access ASSIGN expresion SEMICOL .)
+
+
+state 80
+
+    (19) expresion_list -> expresion .
+    (20) expresion_list -> expresion . COMA expresion_list
+
+    SEMICOL         reduce using rule 19 (expresion_list -> expresion .)
+    COMA            shift and go to state 46
+
+
 state 81
 
-    (14) asignacion -> array_access ASSIGN expresion SEMICOL .
+    (20) expresion_list -> expresion COMA expresion_list .
 
-    PHP_CLOSE       reduce using rule 14 (asignacion -> array_access ASSIGN expresion SEMICOL .)
-    VARIABLE        reduce using rule 14 (asignacion -> array_access ASSIGN expresion SEMICOL .)
-    ECHO            reduce using rule 14 (asignacion -> array_access ASSIGN expresion SEMICOL .)
-    IF              reduce using rule 14 (asignacion -> array_access ASSIGN expresion SEMICOL .)
-    FUNCTION        reduce using rule 14 (asignacion -> array_access ASSIGN expresion SEMICOL .)
-    RETURN          reduce using rule 14 (asignacion -> array_access ASSIGN expresion SEMICOL .)
-    RBRACE          reduce using rule 14 (asignacion -> array_access ASSIGN expresion SEMICOL .)
+    SEMICOL         reduce using rule 20 (expresion_list -> expresion COMA expresion_list .)
 
 
 state 82
 
-    (18) expresion_list -> expresion .
-    (19) expresion_list -> expresion . COMA expresion_list
+    (22) expresion -> termino operador expresion .
 
-    SEMICOL         reduce using rule 18 (expresion_list -> expresion .)
-    COMA            shift and go to state 46
+    SEMICOL         reduce using rule 22 (expresion -> termino operador expresion .)
+    COMA            reduce using rule 22 (expresion -> termino operador expresion .)
+    EQ              reduce using rule 22 (expresion -> termino operador expresion .)
+    NEQ             reduce using rule 22 (expresion -> termino operador expresion .)
+    GT              reduce using rule 22 (expresion -> termino operador expresion .)
+    LT              reduce using rule 22 (expresion -> termino operador expresion .)
+    GE              reduce using rule 22 (expresion -> termino operador expresion .)
+    LE              reduce using rule 22 (expresion -> termino operador expresion .)
+    AND_OP          reduce using rule 22 (expresion -> termino operador expresion .)
+    OR_OP           reduce using rule 22 (expresion -> termino operador expresion .)
+    RBRACKET        reduce using rule 22 (expresion -> termino operador expresion .)
+    RPAREN          reduce using rule 22 (expresion -> termino operador expresion .)
 
 
 state 83
 
-    (19) expresion_list -> expresion COMA expresion_list .
+    (23) expresion -> termino comparador termino .
 
-    SEMICOL         reduce using rule 19 (expresion_list -> expresion COMA expresion_list .)
+    SEMICOL         reduce using rule 23 (expresion -> termino comparador termino .)
+    COMA            reduce using rule 23 (expresion -> termino comparador termino .)
+    EQ              reduce using rule 23 (expresion -> termino comparador termino .)
+    NEQ             reduce using rule 23 (expresion -> termino comparador termino .)
+    GT              reduce using rule 23 (expresion -> termino comparador termino .)
+    LT              reduce using rule 23 (expresion -> termino comparador termino .)
+    GE              reduce using rule 23 (expresion -> termino comparador termino .)
+    LE              reduce using rule 23 (expresion -> termino comparador termino .)
+    AND_OP          reduce using rule 23 (expresion -> termino comparador termino .)
+    OR_OP           reduce using rule 23 (expresion -> termino comparador termino .)
+    RBRACKET        reduce using rule 23 (expresion -> termino comparador termino .)
+    RPAREN          reduce using rule 23 (expresion -> termino comparador termino .)
 
 
 state 84
 
-    (21) expresion -> termino operador expresion .
+    (28) termino -> VARIABLE .
 
-    SEMICOL         reduce using rule 21 (expresion -> termino operador expresion .)
-    COMA            reduce using rule 21 (expresion -> termino operador expresion .)
-    EQ              reduce using rule 21 (expresion -> termino operador expresion .)
-    NEQ             reduce using rule 21 (expresion -> termino operador expresion .)
-    GT              reduce using rule 21 (expresion -> termino operador expresion .)
-    LT              reduce using rule 21 (expresion -> termino operador expresion .)
-    GE              reduce using rule 21 (expresion -> termino operador expresion .)
-    LE              reduce using rule 21 (expresion -> termino operador expresion .)
-    AND_OP          reduce using rule 21 (expresion -> termino operador expresion .)
-    OR_OP           reduce using rule 21 (expresion -> termino operador expresion .)
-    RBRACKET        reduce using rule 21 (expresion -> termino operador expresion .)
-    RPAREN          reduce using rule 21 (expresion -> termino operador expresion .)
+    SEMICOL         reduce using rule 28 (termino -> VARIABLE .)
+    COMA            reduce using rule 28 (termino -> VARIABLE .)
+    EQ              reduce using rule 28 (termino -> VARIABLE .)
+    NEQ             reduce using rule 28 (termino -> VARIABLE .)
+    GT              reduce using rule 28 (termino -> VARIABLE .)
+    LT              reduce using rule 28 (termino -> VARIABLE .)
+    GE              reduce using rule 28 (termino -> VARIABLE .)
+    LE              reduce using rule 28 (termino -> VARIABLE .)
+    AND_OP          reduce using rule 28 (termino -> VARIABLE .)
+    OR_OP           reduce using rule 28 (termino -> VARIABLE .)
+    RBRACKET        reduce using rule 28 (termino -> VARIABLE .)
+    RPAREN          reduce using rule 28 (termino -> VARIABLE .)
 
 
 state 85
 
-    (22) expresion -> termino comparador termino .
+    (24) expresion -> LPAREN expresion RPAREN . operador expresion
+    (25) expresion -> LPAREN expresion RPAREN .
+    (43) operador -> . PLUS
+    (44) operador -> . MINUS
+    (45) operador -> . TIMES
+    (46) operador -> . DIVIDE
+    (47) operador -> . MOD
 
-    SEMICOL         reduce using rule 22 (expresion -> termino comparador termino .)
-    COMA            reduce using rule 22 (expresion -> termino comparador termino .)
-    EQ              reduce using rule 22 (expresion -> termino comparador termino .)
-    NEQ             reduce using rule 22 (expresion -> termino comparador termino .)
-    GT              reduce using rule 22 (expresion -> termino comparador termino .)
-    LT              reduce using rule 22 (expresion -> termino comparador termino .)
-    GE              reduce using rule 22 (expresion -> termino comparador termino .)
-    LE              reduce using rule 22 (expresion -> termino comparador termino .)
-    AND_OP          reduce using rule 22 (expresion -> termino comparador termino .)
-    OR_OP           reduce using rule 22 (expresion -> termino comparador termino .)
-    RBRACKET        reduce using rule 22 (expresion -> termino comparador termino .)
-    RPAREN          reduce using rule 22 (expresion -> termino comparador termino .)
-
-
-state 86
-
-    (27) termino -> VARIABLE .
-
-    SEMICOL         reduce using rule 27 (termino -> VARIABLE .)
-    COMA            reduce using rule 27 (termino -> VARIABLE .)
-    EQ              reduce using rule 27 (termino -> VARIABLE .)
-    NEQ             reduce using rule 27 (termino -> VARIABLE .)
-    GT              reduce using rule 27 (termino -> VARIABLE .)
-    LT              reduce using rule 27 (termino -> VARIABLE .)
-    GE              reduce using rule 27 (termino -> VARIABLE .)
-    LE              reduce using rule 27 (termino -> VARIABLE .)
-    AND_OP          reduce using rule 27 (termino -> VARIABLE .)
-    OR_OP           reduce using rule 27 (termino -> VARIABLE .)
-    RBRACKET        reduce using rule 27 (termino -> VARIABLE .)
-    RPAREN          reduce using rule 27 (termino -> VARIABLE .)
-
-
-state 87
-
-    (23) expresion -> LPAREN expresion RPAREN . operador expresion
-    (24) expresion -> LPAREN expresion RPAREN .
-    (42) operador -> . PLUS
-    (43) operador -> . MINUS
-    (44) operador -> . TIMES
-    (45) operador -> . DIVIDE
-    (46) operador -> . MOD
-
-    SEMICOL         reduce using rule 24 (expresion -> LPAREN expresion RPAREN .)
-    COMA            reduce using rule 24 (expresion -> LPAREN expresion RPAREN .)
-    EQ              reduce using rule 24 (expresion -> LPAREN expresion RPAREN .)
-    NEQ             reduce using rule 24 (expresion -> LPAREN expresion RPAREN .)
-    GT              reduce using rule 24 (expresion -> LPAREN expresion RPAREN .)
-    LT              reduce using rule 24 (expresion -> LPAREN expresion RPAREN .)
-    GE              reduce using rule 24 (expresion -> LPAREN expresion RPAREN .)
-    LE              reduce using rule 24 (expresion -> LPAREN expresion RPAREN .)
-    AND_OP          reduce using rule 24 (expresion -> LPAREN expresion RPAREN .)
-    OR_OP           reduce using rule 24 (expresion -> LPAREN expresion RPAREN .)
-    RBRACKET        reduce using rule 24 (expresion -> LPAREN expresion RPAREN .)
-    RPAREN          reduce using rule 24 (expresion -> LPAREN expresion RPAREN .)
+    SEMICOL         reduce using rule 25 (expresion -> LPAREN expresion RPAREN .)
+    COMA            reduce using rule 25 (expresion -> LPAREN expresion RPAREN .)
+    EQ              reduce using rule 25 (expresion -> LPAREN expresion RPAREN .)
+    NEQ             reduce using rule 25 (expresion -> LPAREN expresion RPAREN .)
+    GT              reduce using rule 25 (expresion -> LPAREN expresion RPAREN .)
+    LT              reduce using rule 25 (expresion -> LPAREN expresion RPAREN .)
+    GE              reduce using rule 25 (expresion -> LPAREN expresion RPAREN .)
+    LE              reduce using rule 25 (expresion -> LPAREN expresion RPAREN .)
+    AND_OP          reduce using rule 25 (expresion -> LPAREN expresion RPAREN .)
+    OR_OP           reduce using rule 25 (expresion -> LPAREN expresion RPAREN .)
+    RBRACKET        reduce using rule 25 (expresion -> LPAREN expresion RPAREN .)
+    RPAREN          reduce using rule 25 (expresion -> LPAREN expresion RPAREN .)
     PLUS            shift and go to state 50
     MINUS           shift and go to state 51
     TIMES           shift and go to state 52
     DIVIDE          shift and go to state 53
     MOD             shift and go to state 54
 
-    operador                       shift and go to state 99
+    operador                       shift and go to state 98
 
-state 88
+state 86
 
     (59) llamada_funcion -> VARIABLE LPAREN argumentos . RPAREN
 
-    RPAREN          shift and go to state 100
+    RPAREN          shift and go to state 99
+
+
+state 87
+
+    (48) if_statement -> IF LPAREN condicion RPAREN . LBRACE statement_list RBRACE
+    (49) if_statement -> IF LPAREN condicion RPAREN . LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
+
+    LBRACE          shift and go to state 100
+
+
+state 88
+
+    (5) funcion -> FUNCTION NAMEFUNCTION LPAREN parametros . RPAREN LBRACE statement_list RBRACE
+
+    RPAREN          shift and go to state 101
 
 
 state 89
 
-    (47) if_statement -> IF LPAREN condicion RPAREN . LBRACE statement_list RBRACE
-    (48) if_statement -> IF LPAREN condicion RPAREN . LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
+    (50) parametros -> VARIABLE .
+    (51) parametros -> VARIABLE . COMA parametros
 
-    LBRACE          shift and go to state 101
+    RPAREN          reduce using rule 50 (parametros -> VARIABLE .)
+    COMA            shift and go to state 102
 
 
 state 90
 
-    (49) funcion -> FUNCTION LPAREN parametros RPAREN . LBRACE statement_list RBRACE
+    (52) parametros -> empty .
 
-    LBRACE          shift and go to state 102
+    RPAREN          reduce using rule 52 (parametros -> empty .)
 
 
 state 91
 
-    (51) parametros -> VARIABLE COMA . parametros
-    (50) parametros -> . VARIABLE
-    (51) parametros -> . VARIABLE COMA parametros
-    (52) parametros -> . empty
-    (61) empty -> .
+    (32) condicion -> expresion comparador expresion .
 
-    VARIABLE        shift and go to state 66
-    RPAREN          reduce using rule 61 (empty -> .)
+    SEMICOL         reduce using rule 32 (condicion -> expresion comparador expresion .)
+    AND_OP          reduce using rule 32 (condicion -> expresion comparador expresion .)
+    OR_OP           reduce using rule 32 (condicion -> expresion comparador expresion .)
+    RPAREN          reduce using rule 32 (condicion -> expresion comparador expresion .)
 
-    parametros                     shift and go to state 103
-    empty                          shift and go to state 67
 
 state 92
 
-    (31) condicion -> expresion comparador expresion .
+    (33) condicion -> condicion AND_OP condicion .
+    (33) condicion -> condicion . AND_OP condicion
+    (34) condicion -> condicion . OR_OP condicion
 
-    SEMICOL         reduce using rule 31 (condicion -> expresion comparador expresion .)
-    AND_OP          reduce using rule 31 (condicion -> expresion comparador expresion .)
-    OR_OP           reduce using rule 31 (condicion -> expresion comparador expresion .)
-    RPAREN          reduce using rule 31 (condicion -> expresion comparador expresion .)
+    SEMICOL         reduce using rule 33 (condicion -> condicion AND_OP condicion .)
+    AND_OP          reduce using rule 33 (condicion -> condicion AND_OP condicion .)
+    OR_OP           reduce using rule 33 (condicion -> condicion AND_OP condicion .)
+    RPAREN          reduce using rule 33 (condicion -> condicion AND_OP condicion .)
+
+  ! AND_OP          [ shift and go to state 70 ]
+  ! OR_OP           [ shift and go to state 71 ]
 
 
 state 93
 
-    (32) condicion -> condicion AND_OP condicion .
-    (32) condicion -> condicion . AND_OP condicion
-    (33) condicion -> condicion . OR_OP condicion
+    (34) condicion -> condicion OR_OP condicion .
+    (33) condicion -> condicion . AND_OP condicion
+    (34) condicion -> condicion . OR_OP condicion
 
-    SEMICOL         reduce using rule 32 (condicion -> condicion AND_OP condicion .)
-    AND_OP          reduce using rule 32 (condicion -> condicion AND_OP condicion .)
-    OR_OP           reduce using rule 32 (condicion -> condicion AND_OP condicion .)
-    RPAREN          reduce using rule 32 (condicion -> condicion AND_OP condicion .)
+    SEMICOL         reduce using rule 34 (condicion -> condicion OR_OP condicion .)
+    OR_OP           reduce using rule 34 (condicion -> condicion OR_OP condicion .)
+    RPAREN          reduce using rule 34 (condicion -> condicion OR_OP condicion .)
+    AND_OP          shift and go to state 70
 
-  ! AND_OP          [ shift and go to state 72 ]
-  ! OR_OP           [ shift and go to state 73 ]
+  ! AND_OP          [ reduce using rule 34 (condicion -> condicion OR_OP condicion .) ]
+  ! OR_OP           [ shift and go to state 71 ]
 
 
 state 94
 
-    (33) condicion -> condicion OR_OP condicion .
-    (32) condicion -> condicion . AND_OP condicion
-    (33) condicion -> condicion . OR_OP condicion
+    (53) declarar_array -> VARIABLE ASSIGN ARRAY LPAREN argumentos . RPAREN SEMICOL
 
-    SEMICOL         reduce using rule 33 (condicion -> condicion OR_OP condicion .)
-    OR_OP           reduce using rule 33 (condicion -> condicion OR_OP condicion .)
-    RPAREN          reduce using rule 33 (condicion -> condicion OR_OP condicion .)
-    AND_OP          shift and go to state 72
-
-  ! AND_OP          [ reduce using rule 33 (condicion -> condicion OR_OP condicion .) ]
-  ! OR_OP           [ shift and go to state 73 ]
+    RPAREN          shift and go to state 103
 
 
 state 95
 
-    (53) declarar_array -> VARIABLE ASSIGN ARRAY LPAREN argumentos . RPAREN SEMICOL
+    (54) declarar_array -> VARIABLE ASSIGN LBRACKET argumentos RBRACKET . SEMICOL
 
-    RPAREN          shift and go to state 104
+    SEMICOL         shift and go to state 104
 
 
 state 96
-
-    (54) declarar_array -> VARIABLE ASSIGN LBRACKET argumentos RBRACKET . SEMICOL
-
-    SEMICOL         shift and go to state 105
-
-
-state 97
 
     (56) argumentos -> expresion COMA . argumentos
     (55) argumentos -> . expresion
     (56) argumentos -> . expresion COMA argumentos
     (57) argumentos -> . empty
-    (20) expresion -> . termino
-    (21) expresion -> . termino operador expresion
-    (22) expresion -> . termino comparador termino
-    (23) expresion -> . LPAREN expresion RPAREN operador expresion
-    (24) expresion -> . LPAREN expresion RPAREN
-    (25) expresion -> . llamada_funcion
-    (26) expresion -> . array_access
+    (21) expresion -> . termino
+    (22) expresion -> . termino operador expresion
+    (23) expresion -> . termino comparador termino
+    (24) expresion -> . LPAREN expresion RPAREN operador expresion
+    (25) expresion -> . LPAREN expresion RPAREN
+    (26) expresion -> . llamada_funcion
+    (27) expresion -> . array_access
     (61) empty -> .
-    (27) termino -> . VARIABLE
-    (28) termino -> . NUMBER
-    (29) termino -> . FLOAT
-    (30) termino -> . STRING
+    (28) termino -> . VARIABLE
+    (29) termino -> . NUMBER
+    (30) termino -> . FLOAT
+    (31) termino -> . STRING
     (59) llamada_funcion -> . VARIABLE LPAREN argumentos RPAREN
     (60) array_access -> . VARIABLE LBRACKET expresion RBRACKET
 
@@ -1832,34 +1819,34 @@ state 97
     FLOAT           shift and go to state 32
     STRING          shift and go to state 33
 
-    expresion                      shift and go to state 76
-    argumentos                     shift and go to state 106
-    empty                          shift and go to state 77
+    expresion                      shift and go to state 74
+    argumentos                     shift and go to state 105
+    empty                          shift and go to state 75
     termino                        shift and go to state 26
     llamada_funcion                shift and go to state 28
     array_access                   shift and go to state 29
 
-state 98
+state 97
 
     (4) input_statement -> VARIABLE ASSIGN READLINE LPAREN STRING . RPAREN SEMICOL
 
-    RPAREN          shift and go to state 107
+    RPAREN          shift and go to state 106
 
 
-state 99
+state 98
 
-    (23) expresion -> LPAREN expresion RPAREN operador . expresion
-    (20) expresion -> . termino
-    (21) expresion -> . termino operador expresion
-    (22) expresion -> . termino comparador termino
-    (23) expresion -> . LPAREN expresion RPAREN operador expresion
-    (24) expresion -> . LPAREN expresion RPAREN
-    (25) expresion -> . llamada_funcion
-    (26) expresion -> . array_access
-    (27) termino -> . VARIABLE
-    (28) termino -> . NUMBER
-    (29) termino -> . FLOAT
-    (30) termino -> . STRING
+    (24) expresion -> LPAREN expresion RPAREN operador . expresion
+    (21) expresion -> . termino
+    (22) expresion -> . termino operador expresion
+    (23) expresion -> . termino comparador termino
+    (24) expresion -> . LPAREN expresion RPAREN operador expresion
+    (25) expresion -> . LPAREN expresion RPAREN
+    (26) expresion -> . llamada_funcion
+    (27) expresion -> . array_access
+    (28) termino -> . VARIABLE
+    (29) termino -> . NUMBER
+    (30) termino -> . FLOAT
+    (31) termino -> . STRING
     (59) llamada_funcion -> . VARIABLE LPAREN argumentos RPAREN
     (60) array_access -> . VARIABLE LBRACKET expresion RBRACKET
 
@@ -1869,12 +1856,12 @@ state 99
     FLOAT           shift and go to state 32
     STRING          shift and go to state 33
 
-    expresion                      shift and go to state 108
+    expresion                      shift and go to state 107
     termino                        shift and go to state 26
     llamada_funcion                shift and go to state 28
     array_access                   shift and go to state 29
 
-state 100
+state 99
 
     (59) llamada_funcion -> VARIABLE LPAREN argumentos RPAREN .
 
@@ -1892,28 +1879,28 @@ state 100
     RPAREN          reduce using rule 59 (llamada_funcion -> VARIABLE LPAREN argumentos RPAREN .)
 
 
-state 101
+state 100
 
-    (47) if_statement -> IF LPAREN condicion RPAREN LBRACE . statement_list RBRACE
-    (48) if_statement -> IF LPAREN condicion RPAREN LBRACE . statement_list RBRACE ELSE LBRACE statement_list RBRACE
+    (48) if_statement -> IF LPAREN condicion RPAREN LBRACE . statement_list RBRACE
+    (49) if_statement -> IF LPAREN condicion RPAREN LBRACE . statement_list RBRACE ELSE LBRACE statement_list RBRACE
     (2) statement_list -> . statement
     (3) statement_list -> . statement_list statement
-    (5) statement -> . asignacion
-    (6) statement -> . impresion
-    (7) statement -> . if_statement
-    (8) statement -> . funcion
-    (9) statement -> . declarar_array
-    (10) statement -> . retorno
-    (11) statement -> . input_statement
-    (12) asignacion -> . VARIABLE ASSIGN expresion SEMICOL
-    (13) asignacion -> . VARIABLE ASSIGN condicion SEMICOL
-    (14) asignacion -> . array_access ASSIGN expresion SEMICOL
-    (15) impresion -> . ECHO SEMICOL
-    (16) impresion -> . ECHO expresion SEMICOL
-    (17) impresion -> . ECHO expresion_list SEMICOL
-    (47) if_statement -> . IF LPAREN condicion RPAREN LBRACE statement_list RBRACE
-    (48) if_statement -> . IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
-    (49) funcion -> . FUNCTION LPAREN parametros RPAREN LBRACE statement_list RBRACE
+    (6) statement -> . asignacion
+    (7) statement -> . impresion
+    (8) statement -> . if_statement
+    (9) statement -> . funcion
+    (10) statement -> . declarar_array
+    (11) statement -> . retorno
+    (12) statement -> . input_statement
+    (13) asignacion -> . VARIABLE ASSIGN expresion SEMICOL
+    (14) asignacion -> . VARIABLE ASSIGN condicion SEMICOL
+    (15) asignacion -> . array_access ASSIGN expresion SEMICOL
+    (16) impresion -> . ECHO SEMICOL
+    (17) impresion -> . ECHO expresion SEMICOL
+    (18) impresion -> . ECHO expresion_list SEMICOL
+    (48) if_statement -> . IF LPAREN condicion RPAREN LBRACE statement_list RBRACE
+    (49) if_statement -> . IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
+    (5) funcion -> . FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE statement_list RBRACE
     (53) declarar_array -> . VARIABLE ASSIGN ARRAY LPAREN argumentos RPAREN SEMICOL
     (54) declarar_array -> . VARIABLE ASSIGN LBRACKET argumentos RBRACKET SEMICOL
     (58) retorno -> . RETURN expresion SEMICOL
@@ -1926,7 +1913,7 @@ state 101
     FUNCTION        shift and go to state 16
     RETURN          shift and go to state 17
 
-    statement_list                 shift and go to state 109
+    statement_list                 shift and go to state 108
     statement                      shift and go to state 4
     asignacion                     shift and go to state 5
     impresion                      shift and go to state 6
@@ -1936,66 +1923,36 @@ state 101
     retorno                        shift and go to state 10
     input_statement                shift and go to state 11
     array_access                   shift and go to state 13
+
+state 101
+
+    (5) funcion -> FUNCTION NAMEFUNCTION LPAREN parametros RPAREN . LBRACE statement_list RBRACE
+
+    LBRACE          shift and go to state 109
+
 
 state 102
 
-    (49) funcion -> FUNCTION LPAREN parametros RPAREN LBRACE . statement_list RBRACE
-    (2) statement_list -> . statement
-    (3) statement_list -> . statement_list statement
-    (5) statement -> . asignacion
-    (6) statement -> . impresion
-    (7) statement -> . if_statement
-    (8) statement -> . funcion
-    (9) statement -> . declarar_array
-    (10) statement -> . retorno
-    (11) statement -> . input_statement
-    (12) asignacion -> . VARIABLE ASSIGN expresion SEMICOL
-    (13) asignacion -> . VARIABLE ASSIGN condicion SEMICOL
-    (14) asignacion -> . array_access ASSIGN expresion SEMICOL
-    (15) impresion -> . ECHO SEMICOL
-    (16) impresion -> . ECHO expresion SEMICOL
-    (17) impresion -> . ECHO expresion_list SEMICOL
-    (47) if_statement -> . IF LPAREN condicion RPAREN LBRACE statement_list RBRACE
-    (48) if_statement -> . IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
-    (49) funcion -> . FUNCTION LPAREN parametros RPAREN LBRACE statement_list RBRACE
-    (53) declarar_array -> . VARIABLE ASSIGN ARRAY LPAREN argumentos RPAREN SEMICOL
-    (54) declarar_array -> . VARIABLE ASSIGN LBRACKET argumentos RBRACKET SEMICOL
-    (58) retorno -> . RETURN expresion SEMICOL
-    (4) input_statement -> . VARIABLE ASSIGN READLINE LPAREN STRING RPAREN SEMICOL
-    (60) array_access -> . VARIABLE LBRACKET expresion RBRACKET
+    (51) parametros -> VARIABLE COMA . parametros
+    (50) parametros -> . VARIABLE
+    (51) parametros -> . VARIABLE COMA parametros
+    (52) parametros -> . empty
+    (61) empty -> .
 
-    VARIABLE        shift and go to state 12
-    ECHO            shift and go to state 14
-    IF              shift and go to state 15
-    FUNCTION        shift and go to state 16
-    RETURN          shift and go to state 17
+    VARIABLE        shift and go to state 89
+    RPAREN          reduce using rule 61 (empty -> .)
 
-    statement_list                 shift and go to state 110
-    statement                      shift and go to state 4
-    asignacion                     shift and go to state 5
-    impresion                      shift and go to state 6
-    if_statement                   shift and go to state 7
-    funcion                        shift and go to state 8
-    declarar_array                 shift and go to state 9
-    retorno                        shift and go to state 10
-    input_statement                shift and go to state 11
-    array_access                   shift and go to state 13
+    parametros                     shift and go to state 110
+    empty                          shift and go to state 90
 
 state 103
-
-    (51) parametros -> VARIABLE COMA parametros .
-
-    RPAREN          reduce using rule 51 (parametros -> VARIABLE COMA parametros .)
-
-
-state 104
 
     (53) declarar_array -> VARIABLE ASSIGN ARRAY LPAREN argumentos RPAREN . SEMICOL
 
     SEMICOL         shift and go to state 111
 
 
-state 105
+state 104
 
     (54) declarar_array -> VARIABLE ASSIGN LBRACKET argumentos RBRACKET SEMICOL .
 
@@ -2008,7 +1965,7 @@ state 105
     RBRACE          reduce using rule 54 (declarar_array -> VARIABLE ASSIGN LBRACKET argumentos RBRACKET SEMICOL .)
 
 
-state 106
+state 105
 
     (56) argumentos -> expresion COMA argumentos .
 
@@ -2016,52 +1973,52 @@ state 106
     RPAREN          reduce using rule 56 (argumentos -> expresion COMA argumentos .)
 
 
-state 107
+state 106
 
     (4) input_statement -> VARIABLE ASSIGN READLINE LPAREN STRING RPAREN . SEMICOL
 
     SEMICOL         shift and go to state 112
 
 
+state 107
+
+    (24) expresion -> LPAREN expresion RPAREN operador expresion .
+
+    SEMICOL         reduce using rule 24 (expresion -> LPAREN expresion RPAREN operador expresion .)
+    COMA            reduce using rule 24 (expresion -> LPAREN expresion RPAREN operador expresion .)
+    EQ              reduce using rule 24 (expresion -> LPAREN expresion RPAREN operador expresion .)
+    NEQ             reduce using rule 24 (expresion -> LPAREN expresion RPAREN operador expresion .)
+    GT              reduce using rule 24 (expresion -> LPAREN expresion RPAREN operador expresion .)
+    LT              reduce using rule 24 (expresion -> LPAREN expresion RPAREN operador expresion .)
+    GE              reduce using rule 24 (expresion -> LPAREN expresion RPAREN operador expresion .)
+    LE              reduce using rule 24 (expresion -> LPAREN expresion RPAREN operador expresion .)
+    AND_OP          reduce using rule 24 (expresion -> LPAREN expresion RPAREN operador expresion .)
+    OR_OP           reduce using rule 24 (expresion -> LPAREN expresion RPAREN operador expresion .)
+    RBRACKET        reduce using rule 24 (expresion -> LPAREN expresion RPAREN operador expresion .)
+    RPAREN          reduce using rule 24 (expresion -> LPAREN expresion RPAREN operador expresion .)
+
+
 state 108
 
-    (23) expresion -> LPAREN expresion RPAREN operador expresion .
-
-    SEMICOL         reduce using rule 23 (expresion -> LPAREN expresion RPAREN operador expresion .)
-    COMA            reduce using rule 23 (expresion -> LPAREN expresion RPAREN operador expresion .)
-    EQ              reduce using rule 23 (expresion -> LPAREN expresion RPAREN operador expresion .)
-    NEQ             reduce using rule 23 (expresion -> LPAREN expresion RPAREN operador expresion .)
-    GT              reduce using rule 23 (expresion -> LPAREN expresion RPAREN operador expresion .)
-    LT              reduce using rule 23 (expresion -> LPAREN expresion RPAREN operador expresion .)
-    GE              reduce using rule 23 (expresion -> LPAREN expresion RPAREN operador expresion .)
-    LE              reduce using rule 23 (expresion -> LPAREN expresion RPAREN operador expresion .)
-    AND_OP          reduce using rule 23 (expresion -> LPAREN expresion RPAREN operador expresion .)
-    OR_OP           reduce using rule 23 (expresion -> LPAREN expresion RPAREN operador expresion .)
-    RBRACKET        reduce using rule 23 (expresion -> LPAREN expresion RPAREN operador expresion .)
-    RPAREN          reduce using rule 23 (expresion -> LPAREN expresion RPAREN operador expresion .)
-
-
-state 109
-
-    (47) if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list . RBRACE
-    (48) if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list . RBRACE ELSE LBRACE statement_list RBRACE
+    (48) if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list . RBRACE
+    (49) if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list . RBRACE ELSE LBRACE statement_list RBRACE
     (3) statement_list -> statement_list . statement
-    (5) statement -> . asignacion
-    (6) statement -> . impresion
-    (7) statement -> . if_statement
-    (8) statement -> . funcion
-    (9) statement -> . declarar_array
-    (10) statement -> . retorno
-    (11) statement -> . input_statement
-    (12) asignacion -> . VARIABLE ASSIGN expresion SEMICOL
-    (13) asignacion -> . VARIABLE ASSIGN condicion SEMICOL
-    (14) asignacion -> . array_access ASSIGN expresion SEMICOL
-    (15) impresion -> . ECHO SEMICOL
-    (16) impresion -> . ECHO expresion SEMICOL
-    (17) impresion -> . ECHO expresion_list SEMICOL
-    (47) if_statement -> . IF LPAREN condicion RPAREN LBRACE statement_list RBRACE
-    (48) if_statement -> . IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
-    (49) funcion -> . FUNCTION LPAREN parametros RPAREN LBRACE statement_list RBRACE
+    (6) statement -> . asignacion
+    (7) statement -> . impresion
+    (8) statement -> . if_statement
+    (9) statement -> . funcion
+    (10) statement -> . declarar_array
+    (11) statement -> . retorno
+    (12) statement -> . input_statement
+    (13) asignacion -> . VARIABLE ASSIGN expresion SEMICOL
+    (14) asignacion -> . VARIABLE ASSIGN condicion SEMICOL
+    (15) asignacion -> . array_access ASSIGN expresion SEMICOL
+    (16) impresion -> . ECHO SEMICOL
+    (17) impresion -> . ECHO expresion SEMICOL
+    (18) impresion -> . ECHO expresion_list SEMICOL
+    (48) if_statement -> . IF LPAREN condicion RPAREN LBRACE statement_list RBRACE
+    (49) if_statement -> . IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
+    (5) funcion -> . FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE statement_list RBRACE
     (53) declarar_array -> . VARIABLE ASSIGN ARRAY LPAREN argumentos RPAREN SEMICOL
     (54) declarar_array -> . VARIABLE ASSIGN LBRACKET argumentos RBRACKET SEMICOL
     (58) retorno -> . RETURN expresion SEMICOL
@@ -2085,40 +2042,41 @@ state 109
     input_statement                shift and go to state 11
     array_access                   shift and go to state 13
 
-state 110
+state 109
 
-    (49) funcion -> FUNCTION LPAREN parametros RPAREN LBRACE statement_list . RBRACE
-    (3) statement_list -> statement_list . statement
-    (5) statement -> . asignacion
-    (6) statement -> . impresion
-    (7) statement -> . if_statement
-    (8) statement -> . funcion
-    (9) statement -> . declarar_array
-    (10) statement -> . retorno
-    (11) statement -> . input_statement
-    (12) asignacion -> . VARIABLE ASSIGN expresion SEMICOL
-    (13) asignacion -> . VARIABLE ASSIGN condicion SEMICOL
-    (14) asignacion -> . array_access ASSIGN expresion SEMICOL
-    (15) impresion -> . ECHO SEMICOL
-    (16) impresion -> . ECHO expresion SEMICOL
-    (17) impresion -> . ECHO expresion_list SEMICOL
-    (47) if_statement -> . IF LPAREN condicion RPAREN LBRACE statement_list RBRACE
-    (48) if_statement -> . IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
-    (49) funcion -> . FUNCTION LPAREN parametros RPAREN LBRACE statement_list RBRACE
+    (5) funcion -> FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE . statement_list RBRACE
+    (2) statement_list -> . statement
+    (3) statement_list -> . statement_list statement
+    (6) statement -> . asignacion
+    (7) statement -> . impresion
+    (8) statement -> . if_statement
+    (9) statement -> . funcion
+    (10) statement -> . declarar_array
+    (11) statement -> . retorno
+    (12) statement -> . input_statement
+    (13) asignacion -> . VARIABLE ASSIGN expresion SEMICOL
+    (14) asignacion -> . VARIABLE ASSIGN condicion SEMICOL
+    (15) asignacion -> . array_access ASSIGN expresion SEMICOL
+    (16) impresion -> . ECHO SEMICOL
+    (17) impresion -> . ECHO expresion SEMICOL
+    (18) impresion -> . ECHO expresion_list SEMICOL
+    (48) if_statement -> . IF LPAREN condicion RPAREN LBRACE statement_list RBRACE
+    (49) if_statement -> . IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
+    (5) funcion -> . FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE statement_list RBRACE
     (53) declarar_array -> . VARIABLE ASSIGN ARRAY LPAREN argumentos RPAREN SEMICOL
     (54) declarar_array -> . VARIABLE ASSIGN LBRACKET argumentos RBRACKET SEMICOL
     (58) retorno -> . RETURN expresion SEMICOL
     (4) input_statement -> . VARIABLE ASSIGN READLINE LPAREN STRING RPAREN SEMICOL
     (60) array_access -> . VARIABLE LBRACKET expresion RBRACKET
 
-    RBRACE          shift and go to state 114
     VARIABLE        shift and go to state 12
     ECHO            shift and go to state 14
     IF              shift and go to state 15
     FUNCTION        shift and go to state 16
     RETURN          shift and go to state 17
 
-    statement                      shift and go to state 19
+    statement_list                 shift and go to state 114
+    statement                      shift and go to state 4
     asignacion                     shift and go to state 5
     impresion                      shift and go to state 6
     if_statement                   shift and go to state 7
@@ -2127,6 +2085,13 @@ state 110
     retorno                        shift and go to state 10
     input_statement                shift and go to state 11
     array_access                   shift and go to state 13
+
+state 110
+
+    (51) parametros -> VARIABLE COMA parametros .
+
+    RPAREN          reduce using rule 51 (parametros -> VARIABLE COMA parametros .)
+
 
 state 111
 
@@ -2156,110 +2121,46 @@ state 112
 
 state 113
 
-    (47) if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE .
-    (48) if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE . ELSE LBRACE statement_list RBRACE
+    (48) if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE .
+    (49) if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE . ELSE LBRACE statement_list RBRACE
 
-    PHP_CLOSE       reduce using rule 47 (if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE .)
-    VARIABLE        reduce using rule 47 (if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE .)
-    ECHO            reduce using rule 47 (if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE .)
-    IF              reduce using rule 47 (if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE .)
-    FUNCTION        reduce using rule 47 (if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE .)
-    RETURN          reduce using rule 47 (if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE .)
-    RBRACE          reduce using rule 47 (if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE .)
+    PHP_CLOSE       reduce using rule 48 (if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE .)
+    VARIABLE        reduce using rule 48 (if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE .)
+    ECHO            reduce using rule 48 (if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE .)
+    IF              reduce using rule 48 (if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE .)
+    FUNCTION        reduce using rule 48 (if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE .)
+    RETURN          reduce using rule 48 (if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE .)
+    RBRACE          reduce using rule 48 (if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE .)
     ELSE            shift and go to state 115
 
 
 state 114
 
-    (49) funcion -> FUNCTION LPAREN parametros RPAREN LBRACE statement_list RBRACE .
-
-    PHP_CLOSE       reduce using rule 49 (funcion -> FUNCTION LPAREN parametros RPAREN LBRACE statement_list RBRACE .)
-    VARIABLE        reduce using rule 49 (funcion -> FUNCTION LPAREN parametros RPAREN LBRACE statement_list RBRACE .)
-    ECHO            reduce using rule 49 (funcion -> FUNCTION LPAREN parametros RPAREN LBRACE statement_list RBRACE .)
-    IF              reduce using rule 49 (funcion -> FUNCTION LPAREN parametros RPAREN LBRACE statement_list RBRACE .)
-    FUNCTION        reduce using rule 49 (funcion -> FUNCTION LPAREN parametros RPAREN LBRACE statement_list RBRACE .)
-    RETURN          reduce using rule 49 (funcion -> FUNCTION LPAREN parametros RPAREN LBRACE statement_list RBRACE .)
-    RBRACE          reduce using rule 49 (funcion -> FUNCTION LPAREN parametros RPAREN LBRACE statement_list RBRACE .)
-
-
-state 115
-
-    (48) if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE . LBRACE statement_list RBRACE
-
-    LBRACE          shift and go to state 116
-
-
-state 116
-
-    (48) if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE . statement_list RBRACE
-    (2) statement_list -> . statement
-    (3) statement_list -> . statement_list statement
-    (5) statement -> . asignacion
-    (6) statement -> . impresion
-    (7) statement -> . if_statement
-    (8) statement -> . funcion
-    (9) statement -> . declarar_array
-    (10) statement -> . retorno
-    (11) statement -> . input_statement
-    (12) asignacion -> . VARIABLE ASSIGN expresion SEMICOL
-    (13) asignacion -> . VARIABLE ASSIGN condicion SEMICOL
-    (14) asignacion -> . array_access ASSIGN expresion SEMICOL
-    (15) impresion -> . ECHO SEMICOL
-    (16) impresion -> . ECHO expresion SEMICOL
-    (17) impresion -> . ECHO expresion_list SEMICOL
-    (47) if_statement -> . IF LPAREN condicion RPAREN LBRACE statement_list RBRACE
-    (48) if_statement -> . IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
-    (49) funcion -> . FUNCTION LPAREN parametros RPAREN LBRACE statement_list RBRACE
-    (53) declarar_array -> . VARIABLE ASSIGN ARRAY LPAREN argumentos RPAREN SEMICOL
-    (54) declarar_array -> . VARIABLE ASSIGN LBRACKET argumentos RBRACKET SEMICOL
-    (58) retorno -> . RETURN expresion SEMICOL
-    (4) input_statement -> . VARIABLE ASSIGN READLINE LPAREN STRING RPAREN SEMICOL
-    (60) array_access -> . VARIABLE LBRACKET expresion RBRACKET
-
-    VARIABLE        shift and go to state 12
-    ECHO            shift and go to state 14
-    IF              shift and go to state 15
-    FUNCTION        shift and go to state 16
-    RETURN          shift and go to state 17
-
-    statement_list                 shift and go to state 117
-    statement                      shift and go to state 4
-    asignacion                     shift and go to state 5
-    impresion                      shift and go to state 6
-    if_statement                   shift and go to state 7
-    funcion                        shift and go to state 8
-    declarar_array                 shift and go to state 9
-    retorno                        shift and go to state 10
-    input_statement                shift and go to state 11
-    array_access                   shift and go to state 13
-
-state 117
-
-    (48) if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list . RBRACE
+    (5) funcion -> FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE statement_list . RBRACE
     (3) statement_list -> statement_list . statement
-    (5) statement -> . asignacion
-    (6) statement -> . impresion
-    (7) statement -> . if_statement
-    (8) statement -> . funcion
-    (9) statement -> . declarar_array
-    (10) statement -> . retorno
-    (11) statement -> . input_statement
-    (12) asignacion -> . VARIABLE ASSIGN expresion SEMICOL
-    (13) asignacion -> . VARIABLE ASSIGN condicion SEMICOL
-    (14) asignacion -> . array_access ASSIGN expresion SEMICOL
-    (15) impresion -> . ECHO SEMICOL
-    (16) impresion -> . ECHO expresion SEMICOL
-    (17) impresion -> . ECHO expresion_list SEMICOL
-    (47) if_statement -> . IF LPAREN condicion RPAREN LBRACE statement_list RBRACE
-    (48) if_statement -> . IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
-    (49) funcion -> . FUNCTION LPAREN parametros RPAREN LBRACE statement_list RBRACE
+    (6) statement -> . asignacion
+    (7) statement -> . impresion
+    (8) statement -> . if_statement
+    (9) statement -> . funcion
+    (10) statement -> . declarar_array
+    (11) statement -> . retorno
+    (12) statement -> . input_statement
+    (13) asignacion -> . VARIABLE ASSIGN expresion SEMICOL
+    (14) asignacion -> . VARIABLE ASSIGN condicion SEMICOL
+    (15) asignacion -> . array_access ASSIGN expresion SEMICOL
+    (16) impresion -> . ECHO SEMICOL
+    (17) impresion -> . ECHO expresion SEMICOL
+    (18) impresion -> . ECHO expresion_list SEMICOL
+    (48) if_statement -> . IF LPAREN condicion RPAREN LBRACE statement_list RBRACE
+    (49) if_statement -> . IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
+    (5) funcion -> . FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE statement_list RBRACE
     (53) declarar_array -> . VARIABLE ASSIGN ARRAY LPAREN argumentos RPAREN SEMICOL
     (54) declarar_array -> . VARIABLE ASSIGN LBRACKET argumentos RBRACKET SEMICOL
     (58) retorno -> . RETURN expresion SEMICOL
     (4) input_statement -> . VARIABLE ASSIGN READLINE LPAREN STRING RPAREN SEMICOL
     (60) array_access -> . VARIABLE LBRACKET expresion RBRACKET
 
-    RBRACE          shift and go to state 118
+    RBRACE          shift and go to state 116
     VARIABLE        shift and go to state 12
     ECHO            shift and go to state 14
     IF              shift and go to state 15
@@ -2276,17 +2177,124 @@ state 117
     input_statement                shift and go to state 11
     array_access                   shift and go to state 13
 
+state 115
+
+    (49) if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE . LBRACE statement_list RBRACE
+
+    LBRACE          shift and go to state 117
+
+
+state 116
+
+    (5) funcion -> FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE statement_list RBRACE .
+
+    PHP_CLOSE       reduce using rule 5 (funcion -> FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE statement_list RBRACE .)
+    VARIABLE        reduce using rule 5 (funcion -> FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE statement_list RBRACE .)
+    ECHO            reduce using rule 5 (funcion -> FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE statement_list RBRACE .)
+    IF              reduce using rule 5 (funcion -> FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE statement_list RBRACE .)
+    FUNCTION        reduce using rule 5 (funcion -> FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE statement_list RBRACE .)
+    RETURN          reduce using rule 5 (funcion -> FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE statement_list RBRACE .)
+    RBRACE          reduce using rule 5 (funcion -> FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE statement_list RBRACE .)
+
+
+state 117
+
+    (49) if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE . statement_list RBRACE
+    (2) statement_list -> . statement
+    (3) statement_list -> . statement_list statement
+    (6) statement -> . asignacion
+    (7) statement -> . impresion
+    (8) statement -> . if_statement
+    (9) statement -> . funcion
+    (10) statement -> . declarar_array
+    (11) statement -> . retorno
+    (12) statement -> . input_statement
+    (13) asignacion -> . VARIABLE ASSIGN expresion SEMICOL
+    (14) asignacion -> . VARIABLE ASSIGN condicion SEMICOL
+    (15) asignacion -> . array_access ASSIGN expresion SEMICOL
+    (16) impresion -> . ECHO SEMICOL
+    (17) impresion -> . ECHO expresion SEMICOL
+    (18) impresion -> . ECHO expresion_list SEMICOL
+    (48) if_statement -> . IF LPAREN condicion RPAREN LBRACE statement_list RBRACE
+    (49) if_statement -> . IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
+    (5) funcion -> . FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE statement_list RBRACE
+    (53) declarar_array -> . VARIABLE ASSIGN ARRAY LPAREN argumentos RPAREN SEMICOL
+    (54) declarar_array -> . VARIABLE ASSIGN LBRACKET argumentos RBRACKET SEMICOL
+    (58) retorno -> . RETURN expresion SEMICOL
+    (4) input_statement -> . VARIABLE ASSIGN READLINE LPAREN STRING RPAREN SEMICOL
+    (60) array_access -> . VARIABLE LBRACKET expresion RBRACKET
+
+    VARIABLE        shift and go to state 12
+    ECHO            shift and go to state 14
+    IF              shift and go to state 15
+    FUNCTION        shift and go to state 16
+    RETURN          shift and go to state 17
+
+    statement_list                 shift and go to state 118
+    statement                      shift and go to state 4
+    asignacion                     shift and go to state 5
+    impresion                      shift and go to state 6
+    if_statement                   shift and go to state 7
+    funcion                        shift and go to state 8
+    declarar_array                 shift and go to state 9
+    retorno                        shift and go to state 10
+    input_statement                shift and go to state 11
+    array_access                   shift and go to state 13
+
 state 118
 
-    (48) if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE .
+    (49) if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list . RBRACE
+    (3) statement_list -> statement_list . statement
+    (6) statement -> . asignacion
+    (7) statement -> . impresion
+    (8) statement -> . if_statement
+    (9) statement -> . funcion
+    (10) statement -> . declarar_array
+    (11) statement -> . retorno
+    (12) statement -> . input_statement
+    (13) asignacion -> . VARIABLE ASSIGN expresion SEMICOL
+    (14) asignacion -> . VARIABLE ASSIGN condicion SEMICOL
+    (15) asignacion -> . array_access ASSIGN expresion SEMICOL
+    (16) impresion -> . ECHO SEMICOL
+    (17) impresion -> . ECHO expresion SEMICOL
+    (18) impresion -> . ECHO expresion_list SEMICOL
+    (48) if_statement -> . IF LPAREN condicion RPAREN LBRACE statement_list RBRACE
+    (49) if_statement -> . IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
+    (5) funcion -> . FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE statement_list RBRACE
+    (53) declarar_array -> . VARIABLE ASSIGN ARRAY LPAREN argumentos RPAREN SEMICOL
+    (54) declarar_array -> . VARIABLE ASSIGN LBRACKET argumentos RBRACKET SEMICOL
+    (58) retorno -> . RETURN expresion SEMICOL
+    (4) input_statement -> . VARIABLE ASSIGN READLINE LPAREN STRING RPAREN SEMICOL
+    (60) array_access -> . VARIABLE LBRACKET expresion RBRACKET
 
-    PHP_CLOSE       reduce using rule 48 (if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE .)
-    VARIABLE        reduce using rule 48 (if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE .)
-    ECHO            reduce using rule 48 (if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE .)
-    IF              reduce using rule 48 (if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE .)
-    FUNCTION        reduce using rule 48 (if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE .)
-    RETURN          reduce using rule 48 (if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE .)
-    RBRACE          reduce using rule 48 (if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE .)
+    RBRACE          shift and go to state 119
+    VARIABLE        shift and go to state 12
+    ECHO            shift and go to state 14
+    IF              shift and go to state 15
+    FUNCTION        shift and go to state 16
+    RETURN          shift and go to state 17
+
+    statement                      shift and go to state 19
+    asignacion                     shift and go to state 5
+    impresion                      shift and go to state 6
+    if_statement                   shift and go to state 7
+    funcion                        shift and go to state 8
+    declarar_array                 shift and go to state 9
+    retorno                        shift and go to state 10
+    input_statement                shift and go to state 11
+    array_access                   shift and go to state 13
+
+state 119
+
+    (49) if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE .
+
+    PHP_CLOSE       reduce using rule 49 (if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE .)
+    VARIABLE        reduce using rule 49 (if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE .)
+    ECHO            reduce using rule 49 (if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE .)
+    IF              reduce using rule 49 (if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE .)
+    FUNCTION        reduce using rule 49 (if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE .)
+    RETURN          reduce using rule 49 (if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE .)
+    RBRACE          reduce using rule 49 (if_statement -> IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE .)
 
 WARNING: 
 WARNING: Conflicts:

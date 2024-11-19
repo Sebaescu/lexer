@@ -6,7 +6,7 @@ $cadena = "Hola, mundo!";
 $condicional = ($numeroEntero > $numeroFlotante); // Expresion condicional
 
 // Impresion con cero, uno o más argumentos
-echo; // Impresion vacia
+echo ""; // Impresion vacia
 echo "Un solo argumento"; // Impresion con un argumento
 echo $numeroEntero, ", ", $numeroFlotante, ", ", $cadena; // Impresion con multiples argumentos
 
@@ -33,11 +33,13 @@ if ($array[0] > 50 && $numeroFlotante < 10 || $condicional) {
 }
 
 // Declaracion de una funcion
-function sumar($a, $b) {
+
+function sumar ( $a, $b ) {
     return $a + $b;
 }
-
+/*
 // Definicion de una funcion con parametros opcionales y retorno
+
 function dividir($a, $b = 1) {
     if ($b == 0) {
         return "No se puede dividir por cero.";
@@ -59,5 +61,5 @@ echo "Resultado con error: ", $resultadoDivisionConError;
 foreach ($array as $elemento) {
     echo "Elemento del array: ", $elemento;
 }
-
+*/
 ?>

@@ -68,6 +68,7 @@ tokens = (
     'PHP_CLOSE',
     'INPUT',
     'READLINE',
+    'NAMEFUNCTION'
 ) + tuple(reserved.values())
 
 # Reglas de expresiones regulares para tokens simples
@@ -124,7 +125,13 @@ def t_NUMBER(t):
     return t
 
 # Verificación de palabras reservadas e identificadores
-def t_FUNCTION(t):
+
+#def t_FUNCTION(t):
+#    r'[a-zA-Z_][a-zA-Z0-9_]*'
+#    t.type = reserved.get(t.value, "FUNCTION")  # Verificar si es palabra reservada
+#    return t
+
+def t_NAMEFUNCTION(t):
     r'[a-zA-Z_][a-zA-Z0-9_]*'
     t.type = reserved.get(t.value, "FUNCTION")  # Verificar si es palabra reservada
     return t

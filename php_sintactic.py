@@ -33,6 +33,11 @@ def p_input_statement(p):
     '''input_statement : VARIABLE ASSIGN READLINE LPAREN STRING RPAREN SEMICOL'''
     pass
 
+# Definición de una función
+def p_funcion(p):
+    '''funcion : FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE statement_list RBRACE'''
+    pass
+
 def p_statement(p):
     '''statement : asignacion
                  | impresion
@@ -117,11 +122,6 @@ def p_if_statement(p):
                     | IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE %prec ELSE'''
     pass
 
-# Definición de una función
-def p_funcion(p):
-    '''funcion : FUNCTION LPAREN parametros RPAREN LBRACE statement_list RBRACE'''
-    pass
-
 def p_parametros(p):
     '''parametros : VARIABLE
                   | VARIABLE COMA parametros
@@ -204,5 +204,5 @@ def analyze_php_file_with_logs(filename, user_git):
 
 # Prueba
 if __name__ == "__main__":
-    user_git = "sebaescu"
+    user_git = "leoancab"
     analyze_php_file_with_logs("algoritmos/test.php", user_git)

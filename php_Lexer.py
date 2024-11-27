@@ -19,7 +19,6 @@ reserved = {
     "or": "OR",
     "not": "NOT",
     "array": "ARRAY",
-    "print": "PRINT",
     "interface": "INTERFACE",
     "new": "NEW",
     "SplStack": "STACK",
@@ -109,7 +108,7 @@ t_RBRACKET = r'\]'
 # Expresión regular para comentarios
 def t_COMMENT(t):
     r'(\/\/[^\n]*|\#[^\n]*|\/\*[\s\S]*?\*\/)'
-    t.lexer.comments.append(f"Comentario en la línea {t.lineno}: {t.value}")
+    t.lexer.comments.append(f"Comentario en la linea {t.lineno}: {t.value}")
     pass 
 
 # Expresión regular para números flotantes
@@ -162,7 +161,7 @@ t_ignore = ' \t'
 
 # Manejo de errores
 def t_error(t):
-    t.lexer.errors.append(f"Carácter ilegal '{t.value[0]}' en la línea {t.lexer.lineno}")
+    t.lexer.errors.append(f"Caracter ilegal '{t.value[0]}' en la linea {t.lexer.lineno}")
     t.lexer.skip(1)
 
 # Construir el analizador léxico
@@ -214,5 +213,37 @@ def analyze_file(filename, user_git):
 
 # Prueba
 if __name__ == "__main__":
-    user_git = "leoancab"
-    # analyze_file("algoritmos/prueba.php", user_git)
+    user_git = "sebaescu"
+    #analyze_file("algoritmos/fibonacci.php", user_git)
+
+def analyze_Lexico(filename):
+    with open(filename, 'r') as file:
+        data = file.read()
+    
+    lexer.comments = []  # Reiniciar comentarios
+    lexer.errors = []    # Reiniciar errores
+
+    lexer.input(data)  # Analizar el código PHP
+
+    log_content = ""  # Variable para almacenar el contenido a mostrar
+
+    log_content += f"Tokens y Errores para {filename}:\n\n"
+
+    # Analizar léxicamente
+    while True:
+        tok = lexer.token()
+        if not tok:
+            break
+        log_content += f"{tok}\n"
+    
+    if lexer.comments:
+        log_content += "\nComentarios:\n"
+        for comment in lexer.comments:
+            log_content += f"{comment}\n"
+    
+    if lexer.errors:
+        log_content += "\nErrores Léxicos:\n"
+        for error in lexer.errors:
+            log_content += f"{error}\n"
+    
+    return log_content  # Retornar el contenido para mostrar en la interfaz

@@ -4,6 +4,10 @@ import os
 import logging
 from datetime import datetime
 
+
+logging.basicConfig(level=logging.DEBUG, format='%(message)s')
+logger = logging.getLogger()
+
 # Precedencia para resolver conflictos
 precedence = (
     ('left', 'OR_OP'),
@@ -175,7 +179,7 @@ def p_error(p):
         raise SyntaxError(error_message)
 
 # Construcción del parser
-parser = yacc.yacc()
+parser = yacc.yacc(debug=True, debuglog=logger)
 
 # Análisis y generación de logs
 def analyze_php_file_with_logs(filename, user_git):
@@ -204,5 +208,25 @@ def analyze_php_file_with_logs(filename, user_git):
 
 # Prueba
 if __name__ == "__main__":
-    user_git = "leoancab"
-    analyze_php_file_with_logs("algoritmos/test.php", user_git)
+    user_git = "sebaescu"
+    analyze_php_file_with_logs("algoritmos/fibonacci.php", user_git)
+
+def analyze_sintactico(filename):
+    with open(filename, 'r') as file:
+        data = file.read()
+
+    log_content = ""  # Para almacenar el contenido a mostrar en el área de texto
+
+    try:
+        # Ejecutar el análisis sintáctico con depuración
+        result = parser.parse(data)  # 'parser' es tu analizador sintáctico
+        log_content += f"Análisis sintáctico completado correctamente para {filename}.\n\n"
+        log_content += "Resultado del análisis sintáctico:\n"
+        log_content += str(result)  # Mostrar los resultados del análisis (esto dependerá de tu parser)
+    except SyntaxError as e:
+        # Capturamos el error de sintaxis y lo mostramos
+        log_content += f"Error de sintaxis: {str(e)}\n"
+    except Exception as e:
+        log_content += f"Error inesperado al analizar el archivo: {e}\n"
+
+    return log_content  # Retornar el contenido para mostrar en la interfaz

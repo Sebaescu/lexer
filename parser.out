@@ -16,7 +16,6 @@ Unused terminals:
     NOT
     NULL
     OR
-    PRINT
     QUESTION
     QUEUE
     STACK
@@ -146,8 +145,7 @@ OR                   :
 OR_OP                : 36
 PHP_CLOSE            : 1
 PHP_OPEN             : 1
-PLUS                 : 45
-PRINT                : 
+PLUS                 : 43
 QUESTION             : 
 QUEUE                : 
 RBRACE               : 14 50 51 51 52 52 53 54 55

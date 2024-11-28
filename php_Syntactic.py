@@ -4,6 +4,10 @@ import os
 import logging
 from datetime import datetime
 
+
+logging.basicConfig(level=logging.DEBUG, format='%(message)s')
+logger = logging.getLogger()
+
 # Precedencia para resolver conflictos
 precedence = (
     ('left', 'OR_OP'),
@@ -12,7 +16,7 @@ precedence = (
     ('left', 'PLUS', 'MINUS'),
     ('left', 'TIMES', 'DIVIDE', 'MOD'),
     ('right', 'NOT_OP'),
-    ('right', 'READLINE'),
+    ('right', 'READLINE'), 
     ('right', 'ASSIGN'),
     ('right', 'ELSE'),
 )
@@ -21,12 +25,22 @@ precedence = (
 # Bloque principal de PHP
 def p_php_block(p):
     '''php_block : PHP_OPEN statement_list PHP_CLOSE'''
-
+    pass
 
 # Lista de declaraciones o sentencias
 def p_statement_list(p):
     '''statement_list : statement
                       | statement_list statement'''
+    pass
+# Leer entrada desde teclado
+def p_input_statement(p):
+    '''input_statement : VARIABLE ASSIGN READLINE LPAREN STRING RPAREN SEMICOL'''
+    pass
+
+# Definición de una función
+def p_funcion(p):
+    '''funcion : FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE statement_list RBRACE'''
+    pass
 
 def p_statement(p):
     '''statement : asignacion
@@ -35,26 +49,15 @@ def p_statement(p):
                  | funcion
                  | declarar_array
                  | retorno
-                 | input_statement
-                 | for_statement
-                 | empty
-                 '''
-
-# Leer entrada desde teclado
-def p_input_statement(p):
-    '''input_statement : VARIABLE ASSIGN READLINE LPAREN STRING RPAREN SEMICOL'''
-
-
-# Definición de una función
-def p_funcion(p):
-    '''funcion : FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE statement_list RBRACE'''
+                 | input_statement'''  
+    pass
 
 # Asignación
 def p_asignacion(p):
     '''asignacion : VARIABLE ASSIGN expresion SEMICOL
                   | VARIABLE ASSIGN condicion SEMICOL
                   | array_access ASSIGN expresion SEMICOL'''
-
+    pass
 
 
 # Impresión
@@ -62,12 +65,12 @@ def p_impresion(p):
     '''impresion : ECHO SEMICOL
                  | ECHO expresion SEMICOL
                  | ECHO expresion_list SEMICOL'''
-
+    pass
 
 def p_expresion_list(p):
     '''expresion_list : expresion
                       | expresion COMA expresion_list'''
-
+    pass
 
 # Expresión
 def p_expresion(p):
@@ -78,7 +81,7 @@ def p_expresion(p):
                  | LPAREN expresion RPAREN
                  | llamada_funcion
                  | array_access'''
-
+    pass
 
 # Términos
 def p_termino(p):
@@ -86,7 +89,7 @@ def p_termino(p):
                | NUMBER
                | FLOAT
                | STRING'''
-
+    pass
 
 
 # Condición
@@ -96,7 +99,7 @@ def p_condicion(p):
                  | condicion OR_OP condicion
                  | NOT_OP condicion
                  | expresion'''
-
+    pass
 
 # Comparadores
 def p_comparador(p):
@@ -106,7 +109,7 @@ def p_comparador(p):
                   | LT
                   | GE
                   | LE'''
-
+    pass
 
 # Operadores
 def p_operador(p):
@@ -115,89 +118,52 @@ def p_operador(p):
                 | TIMES
                 | DIVIDE
                 | MOD'''
+    pass
 
-
-# Condición if/else/elseif
+# Condición if
 def p_if_statement(p):
     '''if_statement : IF LPAREN condicion RPAREN LBRACE statement_list RBRACE
-                    | IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
-                    | IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSE LBRACE statement_list RBRACE'''
+                    | IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE %prec ELSE'''
+    pass
 
-def p_elseif_blocks(p):
-    '''elseif_blocks : ELSEIF LPAREN condicion RPAREN LBRACE statement_list RBRACE
-                     | elseif_blocks ELSEIF LPAREN condicion RPAREN LBRACE statement_list RBRACE'''
-
-def p_for_statement(p):
-    '''for_statement : FOR LPAREN initialization SEMICOL condition SEMICOL increment RPAREN LBRACE statement_list RBRACE'''
-
-# Inicialización del bucle
-def p_initialization(p):
-    '''initialization : VARIABLE ASSIGN expresion
-                      | initialization COMA VARIABLE ASSIGN expresion
-                      | empty'''
-
-# Condición del bucle
-def p_condition(p):
-    '''condition : expresion comparador expresion'''
-
-# Incremento del bucle
-def p_increment(p):
-    '''increment : VARIABLE PLUS PLUS
-                 | VARIABLE MINUS MINUS
-                 | VARIABLE ASSIGN expresion'''
-
-# Inicialización del bucle
-def p_initialization(p):
-    '''initialization : VARIABLE ASSIGN expresion
-                      | initialization COMA VARIABLE ASSIGN expresion'''
-
-# Condición del bucle
-def p_condition(p):
-    '''condition : expresion comparador expresion'''
-
-# Incremento del bucle
-def p_increment(p):
-    '''increment : VARIABLE INCREMENT
-                 | VARIABLE DECREMENT'''
-    
 def p_parametros(p):
     '''parametros : VARIABLE
                   | VARIABLE COMA parametros
                   | empty'''
-
+    pass
 
 # Declaración de un array
 def p_declarar_array(p):
     '''declarar_array : VARIABLE ASSIGN ARRAY LPAREN argumentos RPAREN SEMICOL
                       | VARIABLE ASSIGN LBRACKET argumentos RBRACKET SEMICOL'''
-
+    pass
 
 def p_argumentos(p):
     '''argumentos : expresion
                   | expresion COMA argumentos
                   | empty'''
-
+    pass
 
 # Retorno
 def p_retorno(p):
     '''retorno : RETURN expresion SEMICOL'''
-
+    pass
 
 # Llamada a función
 def p_llamada_funcion(p):
     '''llamada_funcion : VARIABLE LPAREN argumentos RPAREN'''
-
+    pass
 
 
 # Acceso a arrays
 def p_array_access(p):
     '''array_access : VARIABLE LBRACKET expresion RBRACKET'''
-
+    pass
 
 # Producción vacía
 def p_empty(p):
     '''empty :'''
-
+    pass
 
 # Manejo de errores
 def p_error(p):
@@ -213,7 +179,7 @@ def p_error(p):
         raise SyntaxError(error_message)
 
 # Construcción del parser
-parser = yacc.yacc()
+parser = yacc.yacc(debug=True, debuglog=logger)
 
 # Análisis y generación de logs
 def analyze_php_file_with_logs(filename, user_git):
@@ -242,5 +208,25 @@ def analyze_php_file_with_logs(filename, user_git):
 
 # Prueba
 if __name__ == "__main__":
-    user_git = "kgjara"
+    user_git = "sebaescu"
     analyze_php_file_with_logs("algoritmos/fibonacci.php", user_git)
+
+def analyze_sintactico(filename):
+    with open(filename, 'r') as file:
+        data = file.read()
+
+    log_content = ""  # Para almacenar el contenido a mostrar en el área de texto
+
+    try:
+        # Ejecutar el análisis sintáctico con depuración
+        result = parser.parse(data)  # 'parser' es tu analizador sintáctico
+        log_content += f"Análisis sintáctico completado correctamente para {filename}.\n\n"
+        log_content += "Resultado del análisis sintáctico:\n"
+        log_content += str(result)  # Mostrar los resultados del análisis (esto dependerá de tu parser)
+    except SyntaxError as e:
+        # Capturamos el error de sintaxis y lo mostramos
+        log_content += f"Error de sintaxis: {str(e)}\n"
+    except Exception as e:
+        log_content += f"Error inesperado al analizar el archivo: {e}\n"
+
+    return log_content  # Retornar el contenido para mostrar en la interfaz

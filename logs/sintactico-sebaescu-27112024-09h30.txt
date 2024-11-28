@@ -1,0 +1,14 @@
+PLY: PARSE DEBUG START
+
+State  : 0
+Stack  : . LexToken(PHP_OPEN,'<?php',1,0)
+Action : Shift and goto state 2
+
+State  : 2
+Stack  : PHP_OPEN . LexToken(FUNCTION,'function',2,6)
+Action : Shift and goto state 16
+
+State  : 16
+Stack  : PHP_OPEN FUNCTION . LexToken(FUNCTION,'fibonacci',2,15)
+Error  : PHP_OPEN FUNCTION . LexToken(FUNCTION,'fibonacci',2,15)
+Error de sintaxis en la linea 2, token inesperado: fibonacci

@@ -1,7 +1,8 @@
 import tkinter as tk
 from tkinter import filedialog, messagebox, scrolledtext
 from php_Lexer import analyze_Lexico  
-from php_Syntactic import analyze_sintactico  
+from php_Syntactic import analyze_sintactico
+#from php_Semantic import analyze_php_semantic  
 import os
 
 
@@ -65,6 +66,14 @@ def handle_sintactico_analysis(filename):
         display_log_results(log_content)  
     except Exception as e:
         messagebox.showerror("Error", f"Error al analizar sintáctico: {str(e)}")
+def handle_semantico_analysis():
+    if not file_name:
+        messagebox.showerror("Error", "No se ha cargado ningún archivo.")
+        return
+
+    # Llamamos a la función analyze_php_code_semantic y pasamos el archivo PHP
+    log_content = analyze_php_semantic(file_name)  # Obtener el resultado del análisis semántico
+    display_log_results(log_content)  # Mostrar el resultado en el área de texto
 
 # Función para ejecutar el análisis basado en la opción seleccionada
 def analyze_selected_type(analysis_type):
@@ -77,7 +86,7 @@ def analyze_selected_type(analysis_type):
     elif analysis_type == "sintáctico":
         handle_sintactico_analysis(file_name)  
     elif analysis_type == "semántico":
-        analyze_semantic(code_content)
+        handle_semantico_analysis(file_name)
     else:
         messagebox.showerror("Error", "Tipo de análisis no reconocido.")
 

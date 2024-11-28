@@ -6,6 +6,7 @@ import os
 reserved = {
     "if": "IF",
     "else": "ELSE",
+    "elseif": "ELSEIF",
     "while": "WHILE",
     "for": "FOR",
     "echo": "ECHO",
@@ -24,7 +25,7 @@ reserved = {
     "new": "NEW",
     "SplStack": "STACK",
     "SplQueue": "QUEUE",
-    "readline": "READLINE",
+    "readline": "READLINE"
 }
 
 # Lista de nombres de tokens
@@ -67,7 +68,6 @@ tokens = (
     'PHP_OPEN',
     'PHP_CLOSE',
     'INPUT',
-    'READLINE',
     'NAMEFUNCTION'
 ) + tuple(reserved.values())
 
@@ -133,7 +133,7 @@ def t_NUMBER(t):
 
 def t_NAMEFUNCTION(t):
     r'[a-zA-Z_][a-zA-Z0-9_]*'
-    t.type = reserved.get(t.value, "FUNCTION")  # Verificar si es palabra reservada
+    t.type = reserved.get(t.value, "NAMEFUNCTION")  # Verificar si es palabra reservada
     return t
 
 # Patrón para el token INPUT
@@ -214,5 +214,5 @@ def analyze_file(filename, user_git):
 
 # Prueba
 if __name__ == "__main__":
-    user_git = "leoancab"
-    # analyze_file("algoritmos/prueba.php", user_git)
+    user_git = "kgjara"
+    analyze_file("algoritmos/fibonacci.php", user_git)

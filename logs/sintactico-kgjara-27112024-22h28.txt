@@ -1,0 +1,466 @@
+PLY: PARSE DEBUG START
+
+State  : 0
+Stack  : . LexToken(PHP_OPEN,'<?php',1,0)
+Action : Shift and goto state 2
+
+State  : 2
+Stack  : PHP_OPEN . LexToken(FUNCTION,'function',2,6)
+Action : Shift and goto state 17
+
+State  : 17
+Stack  : PHP_OPEN FUNCTION . LexToken(NAMEFUNCTION,'fibonacci',2,15)
+Action : Shift and goto state 37
+
+State  : 37
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION . LexToken(LPAREN,'(',2,24)
+Action : Shift and goto state 68
+
+State  : 68
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN . LexToken(VARIABLE,'$n',2,25)
+Action : Shift and goto state 95
+
+State  : 95
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN VARIABLE . LexToken(RPAREN,')',2,27)
+Action : Reduce rule [parametros -> VARIABLE] with ['$n'] and goto state 94
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 94
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros . LexToken(RPAREN,')',2,27)
+Action : Shift and goto state 109
+
+State  : 109
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN . LexToken(LBRACE,'{',2,29)
+Action : Shift and goto state 119
+
+State  : 119
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE . LexToken(IF,'if',3,35)
+Action : Shift and goto state 16
+
+State  : 16
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF . LexToken(LPAREN,'(',3,38)
+Action : Shift and goto state 36
+
+State  : 36
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN . LexToken(VARIABLE,'$n',3,39)
+Action : Shift and goto state 32
+
+State  : 32
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN VARIABLE . LexToken(LT,'<',3,42)
+Action : Reduce rule [termino -> VARIABLE] with ['$n'] and goto state 28
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 28
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN termino . LexToken(LT,'<',3,42)
+Action : Shift and goto state 61
+
+State  : 61
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN termino LT . LexToken(NUMBER,0,3,44)
+Action : Reduce rule [comparador -> LT] with ['<'] and goto state 52
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 52
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN termino comparador . LexToken(NUMBER,0,3,44)
+Action : Shift and goto state 33
+
+State  : 33
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN termino comparador NUMBER . LexToken(RPAREN,')',3,45)
+Action : Reduce rule [termino -> NUMBER] with [0] and goto state 89
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 89
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN termino comparador termino . LexToken(RPAREN,')',3,45)
+Action : Reduce rule [expresion -> termino comparador termino] with [None,None,None] and goto state 67
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 67
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN expresion . LexToken(RPAREN,')',3,45)
+Action : Reduce rule [condicion -> expresion] with [None] and goto state 66
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 66
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion . LexToken(RPAREN,')',3,45)
+Action : Shift and goto state 93
+
+State  : 93
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN . LexToken(LBRACE,'{',3,47)
+Action : Shift and goto state 108
+
+State  : 108
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE . LexToken(RETURN,'return',4,57)
+Action : Shift and goto state 18
+
+State  : 18
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE RETURN . LexToken(STRING,'El número debe ser mayor o igual a 0',4,64)
+Action : Shift and goto state 35
+
+State  : 35
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE RETURN STRING . LexToken(SEMICOL,';',4,103)
+Action : Reduce rule [termino -> STRING] with [<str @ 0x1ce8a23c180>] and goto state 28
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 28
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE RETURN termino . LexToken(SEMICOL,';',4,103)
+Action : Reduce rule [expresion -> termino] with [None] and goto state 38
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 38
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE RETURN expresion . LexToken(SEMICOL,';',4,103)
+Action : Shift and goto state 69
+
+State  : 69
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE RETURN expresion SEMICOL . LexToken(RBRACE,'}',5,109)
+Action : Reduce rule [retorno -> RETURN expresion SEMICOL] with ['return',None,';'] and goto state 10
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 10
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE retorno . LexToken(RBRACE,'}',5,109)
+Action : Reduce rule [statement -> retorno] with [None] and goto state 4
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 4
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement . LexToken(RBRACE,'}',5,109)
+Action : Reduce rule [statement_list -> statement] with [None] and goto state 118
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 118
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list . LexToken(RBRACE,'}',5,109)
+Action : Shift and goto state 124
+
+State  : 124
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE . LexToken(ELSEIF,'elseif',5,111)
+Action : Shift and goto state 130
+
+State  : 130
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSEIF . LexToken(LPAREN,'(',5,118)
+Action : Shift and goto state 136
+
+State  : 136
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSEIF LPAREN . LexToken(VARIABLE,'$n',5,119)
+Action : Shift and goto state 32
+
+State  : 32
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSEIF LPAREN VARIABLE . LexToken(EQ,'==',5,122)
+Action : Reduce rule [termino -> VARIABLE] with ['$n'] and goto state 28
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 28
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSEIF LPAREN termino . LexToken(EQ,'==',5,122)
+Action : Shift and goto state 58
+
+State  : 58
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSEIF LPAREN termino EQ . LexToken(NUMBER,0,5,125)
+Action : Reduce rule [comparador -> EQ] with ['=='] and goto state 52
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 52
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSEIF LPAREN termino comparador . LexToken(NUMBER,0,5,125)
+Action : Shift and goto state 33
+
+State  : 33
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSEIF LPAREN termino comparador NUMBER . LexToken(RPAREN,')',5,126)
+Action : Reduce rule [termino -> NUMBER] with [0] and goto state 89
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 89
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSEIF LPAREN termino comparador termino . LexToken(RPAREN,')',5,126)
+Action : Reduce rule [expresion -> termino comparador termino] with [None,None,None] and goto state 67
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 67
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSEIF LPAREN expresion . LexToken(RPAREN,')',5,126)
+Action : Reduce rule [condicion -> expresion] with [None] and goto state 141
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 141
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSEIF LPAREN condicion . LexToken(RPAREN,')',5,126)
+Action : Shift and goto state 146
+
+State  : 146
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSEIF LPAREN condicion RPAREN . LexToken(LBRACE,'{',5,128)
+Action : Shift and goto state 150
+
+State  : 150
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSEIF LPAREN condicion RPAREN LBRACE . LexToken(RETURN,'return',6,138)
+Action : Shift and goto state 18
+
+State  : 18
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSEIF LPAREN condicion RPAREN LBRACE RETURN . LexToken(NUMBER,0,6,145)
+Action : Shift and goto state 33
+
+State  : 33
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSEIF LPAREN condicion RPAREN LBRACE RETURN NUMBER . LexToken(SEMICOL,';',6,146)
+Action : Reduce rule [termino -> NUMBER] with [0] and goto state 28
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 28
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSEIF LPAREN condicion RPAREN LBRACE RETURN termino . LexToken(SEMICOL,';',6,146)
+Action : Reduce rule [expresion -> termino] with [None] and goto state 38
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 38
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSEIF LPAREN condicion RPAREN LBRACE RETURN expresion . LexToken(SEMICOL,';',6,146)
+Action : Shift and goto state 69
+
+State  : 69
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSEIF LPAREN condicion RPAREN LBRACE RETURN expresion SEMICOL . LexToken(RBRACE,'}',7,152)
+Action : Reduce rule [retorno -> RETURN expresion SEMICOL] with ['return',None,';'] and goto state 10
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 10
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSEIF LPAREN condicion RPAREN LBRACE retorno . LexToken(RBRACE,'}',7,152)
+Action : Reduce rule [statement -> retorno] with [None] and goto state 4
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 4
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSEIF LPAREN condicion RPAREN LBRACE statement . LexToken(RBRACE,'}',7,152)
+Action : Reduce rule [statement_list -> statement] with [None] and goto state 152
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 152
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSEIF LPAREN condicion RPAREN LBRACE statement_list . LexToken(RBRACE,'}',7,152)
+Action : Shift and goto state 154
+
+State  : 154
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSEIF LPAREN condicion RPAREN LBRACE statement_list RBRACE . LexToken(ELSEIF,'elseif',7,154)
+Action : Reduce rule [elseif_blocks -> ELSEIF LPAREN condicion RPAREN LBRACE statement_list RBRACE] with ['elseif','(',None,')','{',None,'}'] and goto state 129
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 129
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks . LexToken(ELSEIF,'elseif',7,154)
+Action : Shift and goto state 135
+
+State  : 135
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSEIF . LexToken(LPAREN,'(',7,161)
+Action : Shift and goto state 140
+
+State  : 140
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSEIF LPAREN . LexToken(VARIABLE,'$n',7,162)
+Action : Shift and goto state 32
+
+State  : 32
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSEIF LPAREN VARIABLE . LexToken(EQ,'==',7,165)
+Action : Reduce rule [termino -> VARIABLE] with ['$n'] and goto state 28
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 28
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSEIF LPAREN termino . LexToken(EQ,'==',7,165)
+Action : Shift and goto state 58
+
+State  : 58
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSEIF LPAREN termino EQ . LexToken(NUMBER,1,7,168)
+Action : Reduce rule [comparador -> EQ] with ['=='] and goto state 52
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 52
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSEIF LPAREN termino comparador . LexToken(NUMBER,1,7,168)
+Action : Shift and goto state 33
+
+State  : 33
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSEIF LPAREN termino comparador NUMBER . LexToken(RPAREN,')',7,169)
+Action : Reduce rule [termino -> NUMBER] with [1] and goto state 89
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 89
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSEIF LPAREN termino comparador termino . LexToken(RPAREN,')',7,169)
+Action : Reduce rule [expresion -> termino comparador termino] with [None,None,None] and goto state 67
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 67
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSEIF LPAREN expresion . LexToken(RPAREN,')',7,169)
+Action : Reduce rule [condicion -> expresion] with [None] and goto state 145
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 145
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSEIF LPAREN condicion . LexToken(RPAREN,')',7,169)
+Action : Shift and goto state 149
+
+State  : 149
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSEIF LPAREN condicion RPAREN . LexToken(LBRACE,'{',7,171)
+Action : Shift and goto state 151
+
+State  : 151
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSEIF LPAREN condicion RPAREN LBRACE . LexToken(RETURN,'return',8,181)
+Action : Shift and goto state 18
+
+State  : 18
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSEIF LPAREN condicion RPAREN LBRACE RETURN . LexToken(NUMBER,1,8,188)
+Action : Shift and goto state 33
+
+State  : 33
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSEIF LPAREN condicion RPAREN LBRACE RETURN NUMBER . LexToken(SEMICOL,';',8,189)
+Action : Reduce rule [termino -> NUMBER] with [1] and goto state 28
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 28
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSEIF LPAREN condicion RPAREN LBRACE RETURN termino . LexToken(SEMICOL,';',8,189)
+Action : Reduce rule [expresion -> termino] with [None] and goto state 38
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 38
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSEIF LPAREN condicion RPAREN LBRACE RETURN expresion . LexToken(SEMICOL,';',8,189)
+Action : Shift and goto state 69
+
+State  : 69
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSEIF LPAREN condicion RPAREN LBRACE RETURN expresion SEMICOL . LexToken(RBRACE,'}',9,195)
+Action : Reduce rule [retorno -> RETURN expresion SEMICOL] with ['return',None,';'] and goto state 10
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 10
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSEIF LPAREN condicion RPAREN LBRACE retorno . LexToken(RBRACE,'}',9,195)
+Action : Reduce rule [statement -> retorno] with [None] and goto state 4
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 4
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSEIF LPAREN condicion RPAREN LBRACE statement . LexToken(RBRACE,'}',9,195)
+Action : Reduce rule [statement_list -> statement] with [None] and goto state 153
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 153
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSEIF LPAREN condicion RPAREN LBRACE statement_list . LexToken(RBRACE,'}',9,195)
+Action : Shift and goto state 155
+
+State  : 155
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSEIF LPAREN condicion RPAREN LBRACE statement_list RBRACE . LexToken(ELSE,'else',9,197)
+Action : Reduce rule [elseif_blocks -> elseif_blocks ELSEIF LPAREN condicion RPAREN LBRACE statement_list RBRACE] with [None,'elseif','(',None,')','{',None,'}'] and goto state 129
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 129
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks . LexToken(ELSE,'else',9,197)
+Action : Shift and goto state 134
+
+State  : 134
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSE . LexToken(LBRACE,'{',9,202)
+Action : Shift and goto state 139
+
+State  : 139
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSE LBRACE . LexToken(VARIABLE,'$a',10,212)
+Action : Shift and goto state 13
+
+State  : 13
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSE LBRACE VARIABLE . LexToken(ASSIGN,'=',10,215)
+Action : Shift and goto state 22
+
+State  : 22
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSE LBRACE VARIABLE ASSIGN . LexToken(NUMBER,0,10,217)
+Action : Shift and goto state 33
+
+State  : 33
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSE LBRACE VARIABLE ASSIGN NUMBER . LexToken(SEMICOL,';',10,218)
+Action : Reduce rule [termino -> NUMBER] with [0] and goto state 28
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 28
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSE LBRACE VARIABLE ASSIGN termino . LexToken(SEMICOL,';',10,218)
+Action : Reduce rule [expresion -> termino] with [None] and goto state 40
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 40
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSE LBRACE VARIABLE ASSIGN expresion . LexToken(SEMICOL,';',10,218)
+Action : Shift and goto state 73
+
+State  : 73
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSE LBRACE VARIABLE ASSIGN expresion SEMICOL . LexToken(VARIABLE,'$b',11,228)
+Action : Reduce rule [asignacion -> VARIABLE ASSIGN expresion SEMICOL] with ['$a','=',None,';'] and goto state 5
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 5
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSE LBRACE asignacion . LexToken(VARIABLE,'$b',11,228)
+Action : Reduce rule [statement -> asignacion] with [None] and goto state 4
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 4
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSE LBRACE statement . LexToken(VARIABLE,'$b',11,228)
+Action : Reduce rule [statement_list -> statement] with [None] and goto state 144
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 144
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSE LBRACE statement_list . LexToken(VARIABLE,'$b',11,228)
+Action : Shift and goto state 13
+
+State  : 13
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSE LBRACE statement_list VARIABLE . LexToken(ASSIGN,'=',11,231)
+Action : Shift and goto state 22
+
+State  : 22
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSE LBRACE statement_list VARIABLE ASSIGN . LexToken(NUMBER,1,11,233)
+Action : Shift and goto state 33
+
+State  : 33
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSE LBRACE statement_list VARIABLE ASSIGN NUMBER . LexToken(SEMICOL,';',11,234)
+Action : Reduce rule [termino -> NUMBER] with [1] and goto state 28
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 28
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSE LBRACE statement_list VARIABLE ASSIGN termino . LexToken(SEMICOL,';',11,234)
+Action : Reduce rule [expresion -> termino] with [None] and goto state 40
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 40
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSE LBRACE statement_list VARIABLE ASSIGN expresion . LexToken(SEMICOL,';',11,234)
+Action : Shift and goto state 73
+
+State  : 73
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSE LBRACE statement_list VARIABLE ASSIGN expresion SEMICOL . LexToken(FOR,'for',12,244)
+Action : Reduce rule [asignacion -> VARIABLE ASSIGN expresion SEMICOL] with ['$b','=',None,';'] and goto state 5
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 5
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSE LBRACE statement_list asignacion . LexToken(FOR,'for',12,244)
+Action : Reduce rule [statement -> asignacion] with [None] and goto state 21
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 21
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSE LBRACE statement_list statement . LexToken(FOR,'for',12,244)
+Action : Reduce rule [statement_list -> statement_list statement] with [None,None] and goto state 144
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 144
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSE LBRACE statement_list . LexToken(FOR,'for',12,244)
+Action : Shift and goto state 19
+
+State  : 19
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSE LBRACE statement_list FOR . LexToken(LPAREN,'(',12,248)
+Action : Shift and goto state 39
+
+State  : 39
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSE LBRACE statement_list FOR LPAREN . LexToken(VARIABLE,'$i',12,249)
+Action : Shift and goto state 72
+
+State  : 72
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSE LBRACE statement_list FOR LPAREN VARIABLE . LexToken(ASSIGN,'=',12,252)
+Action : Shift and goto state 98
+
+State  : 98
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSE LBRACE statement_list FOR LPAREN VARIABLE ASSIGN . LexToken(NUMBER,2,12,254)
+Action : Shift and goto state 33
+
+State  : 33
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSE LBRACE statement_list FOR LPAREN VARIABLE ASSIGN NUMBER . LexToken(SEMICOL,';',12,255)
+Action : Reduce rule [termino -> NUMBER] with [2] and goto state 28
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 28
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSE LBRACE statement_list FOR LPAREN VARIABLE ASSIGN termino . LexToken(SEMICOL,';',12,255)
+Action : Reduce rule [expresion -> termino] with [None] and goto state 40
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 40
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSE LBRACE statement_list FOR LPAREN VARIABLE ASSIGN expresion . LexToken(SEMICOL,';',12,255)
+Action : Shift and goto state 73
+
+State  : 73
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSE LBRACE statement_list FOR LPAREN VARIABLE ASSIGN expresion SEMICOL . LexToken(VARIABLE,'$i',12,257)
+Action : Reduce rule [asignacion -> VARIABLE ASSIGN expresion SEMICOL] with ['$i','=',None,';'] and goto state 71
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 71
+Defaulted state 71: Reduce using 55
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSE LBRACE statement_list FOR LPAREN asignacion . LexToken(VARIABLE,'$i',12,257)
+Action : Reduce rule [for_initialization -> asignacion] with [None] and goto state 70
+Result : <NoneType @ 0x7ffe3d76acd8> (None)
+
+State  : 70
+Stack  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSE LBRACE statement_list FOR LPAREN for_initialization . LexToken(VARIABLE,'$i',12,257)
+Error  : PHP_OPEN FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSE LBRACE statement_list FOR LPAREN for_initialization . LexToken(VARIABLE,'$i',12,257)
+Error de sintaxis en la linea 12, token inesperado: $i

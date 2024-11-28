@@ -34,7 +34,7 @@ if ($array[0] > 50 && $numeroFlotante < 10 || $condicional) {
 
 // Declaracion de una funcion
 
-function sumar ( $a, $b ) {
+function sumar($a, $b) {
     return $a + $b;
 }
 /*

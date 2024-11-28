@@ -12,7 +12,7 @@ precedence = (
     ('left', 'PLUS', 'MINUS'),
     ('left', 'TIMES', 'DIVIDE', 'MOD'),
     ('right', 'NOT_OP'),
-    ('right', 'READLINE'), 
+    ('right', 'READLINE'),
     ('right', 'ASSIGN'),
     ('right', 'ELSE'),
 )
@@ -21,22 +21,12 @@ precedence = (
 # Bloque principal de PHP
 def p_php_block(p):
     '''php_block : PHP_OPEN statement_list PHP_CLOSE'''
-    pass
+
 
 # Lista de declaraciones o sentencias
 def p_statement_list(p):
     '''statement_list : statement
                       | statement_list statement'''
-    pass
-# Leer entrada desde teclado
-def p_input_statement(p):
-    '''input_statement : VARIABLE ASSIGN READLINE LPAREN STRING RPAREN SEMICOL'''
-    pass
-
-# Definición de una función
-def p_funcion(p):
-    '''funcion : FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE statement_list RBRACE'''
-    pass
 
 def p_statement(p):
     '''statement : asignacion
@@ -45,15 +35,26 @@ def p_statement(p):
                  | funcion
                  | declarar_array
                  | retorno
-                 | input_statement'''  
-    pass
+                 | input_statement
+                 | for_statement
+                 | empty
+                 '''
+
+# Leer entrada desde teclado
+def p_input_statement(p):
+    '''input_statement : VARIABLE ASSIGN READLINE LPAREN STRING RPAREN SEMICOL'''
+
+
+# Definición de una función
+def p_funcion(p):
+    '''funcion : FUNCTION NAMEFUNCTION LPAREN parametros RPAREN LBRACE statement_list RBRACE'''
 
 # Asignación
 def p_asignacion(p):
     '''asignacion : VARIABLE ASSIGN expresion SEMICOL
                   | VARIABLE ASSIGN condicion SEMICOL
                   | array_access ASSIGN expresion SEMICOL'''
-    pass
+
 
 
 # Impresión
@@ -61,12 +62,12 @@ def p_impresion(p):
     '''impresion : ECHO SEMICOL
                  | ECHO expresion SEMICOL
                  | ECHO expresion_list SEMICOL'''
-    pass
+
 
 def p_expresion_list(p):
     '''expresion_list : expresion
                       | expresion COMA expresion_list'''
-    pass
+
 
 # Expresión
 def p_expresion(p):
@@ -77,7 +78,7 @@ def p_expresion(p):
                  | LPAREN expresion RPAREN
                  | llamada_funcion
                  | array_access'''
-    pass
+
 
 # Términos
 def p_termino(p):
@@ -85,7 +86,7 @@ def p_termino(p):
                | NUMBER
                | FLOAT
                | STRING'''
-    pass
+
 
 
 # Condición
@@ -95,7 +96,7 @@ def p_condicion(p):
                  | condicion OR_OP condicion
                  | NOT_OP condicion
                  | expresion'''
-    pass
+
 
 # Comparadores
 def p_comparador(p):
@@ -105,7 +106,7 @@ def p_comparador(p):
                   | LT
                   | GE
                   | LE'''
-    pass
+
 
 # Operadores
 def p_operador(p):
@@ -114,52 +115,89 @@ def p_operador(p):
                 | TIMES
                 | DIVIDE
                 | MOD'''
-    pass
 
-# Condición if
+
+# Condición if/else/elseif
 def p_if_statement(p):
     '''if_statement : IF LPAREN condicion RPAREN LBRACE statement_list RBRACE
-                    | IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE %prec ELSE'''
-    pass
+                    | IF LPAREN condicion RPAREN LBRACE statement_list RBRACE ELSE LBRACE statement_list RBRACE
+                    | IF LPAREN condicion RPAREN LBRACE statement_list RBRACE elseif_blocks ELSE LBRACE statement_list RBRACE'''
 
+def p_elseif_blocks(p):
+    '''elseif_blocks : ELSEIF LPAREN condicion RPAREN LBRACE statement_list RBRACE
+                     | elseif_blocks ELSEIF LPAREN condicion RPAREN LBRACE statement_list RBRACE'''
+
+def p_for_statement(p):
+    '''for_statement : FOR LPAREN initialization SEMICOL condition SEMICOL increment RPAREN LBRACE statement_list RBRACE'''
+
+# Inicialización del bucle
+def p_initialization(p):
+    '''initialization : VARIABLE ASSIGN expresion
+                      | initialization COMA VARIABLE ASSIGN expresion
+                      | empty'''
+
+# Condición del bucle
+def p_condition(p):
+    '''condition : expresion comparador expresion'''
+
+# Incremento del bucle
+def p_increment(p):
+    '''increment : VARIABLE PLUS PLUS
+                 | VARIABLE MINUS MINUS
+                 | VARIABLE ASSIGN expresion'''
+
+# Inicialización del bucle
+def p_initialization(p):
+    '''initialization : VARIABLE ASSIGN expresion
+                      | initialization COMA VARIABLE ASSIGN expresion'''
+
+# Condición del bucle
+def p_condition(p):
+    '''condition : expresion comparador expresion'''
+
+# Incremento del bucle
+def p_increment(p):
+    '''increment : VARIABLE INCREMENT
+                 | VARIABLE DECREMENT'''
+    
 def p_parametros(p):
     '''parametros : VARIABLE
                   | VARIABLE COMA parametros
                   | empty'''
-    pass
+
 
 # Declaración de un array
 def p_declarar_array(p):
     '''declarar_array : VARIABLE ASSIGN ARRAY LPAREN argumentos RPAREN SEMICOL
                       | VARIABLE ASSIGN LBRACKET argumentos RBRACKET SEMICOL'''
-    pass
+
 
 def p_argumentos(p):
     '''argumentos : expresion
                   | expresion COMA argumentos
                   | empty'''
-    pass
+
 
 # Retorno
 def p_retorno(p):
     '''retorno : RETURN expresion SEMICOL'''
-    pass
+
 
 # Llamada a función
 def p_llamada_funcion(p):
     '''llamada_funcion : VARIABLE LPAREN argumentos RPAREN'''
-    pass
+
 
 
 # Acceso a arrays
 def p_array_access(p):
     '''array_access : VARIABLE LBRACKET expresion RBRACKET'''
-    pass
+
 
 # Producción vacía
 def p_empty(p):
     '''empty :'''
-    pass
+
 
 # Manejo de errores
 def p_error(p):
@@ -204,5 +242,5 @@ def analyze_php_file_with_logs(filename, user_git):
 
 # Prueba
 if __name__ == "__main__":
-    user_git = "leoancab"
-    analyze_php_file_with_logs("algoritmos/test.php", user_git)
+    user_git = "kgjara"
+    analyze_php_file_with_logs("algoritmos/fibonacci.php", user_git)

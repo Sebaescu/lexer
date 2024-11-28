@@ -1,0 +1,184 @@
+Tokens y Errores para algoritmos/test.php:
+
+LexToken(PHP_OPEN,'<?php',1,0)
+LexToken(VARIABLE,'$numeroEntero',3,106)
+LexToken(ASSIGN,'=',3,120)
+LexToken(NUMBER,10,3,122)
+LexToken(SEMICOL,';',3,124)
+LexToken(VARIABLE,'$numeroFlotante',4,126)
+LexToken(ASSIGN,'=',4,142)
+LexToken(FLOAT,5.75,4,144)
+LexToken(SEMICOL,';',4,148)
+LexToken(VARIABLE,'$cadena',5,150)
+LexToken(ASSIGN,'=',5,158)
+LexToken(STRING,'Hola, mundo!',5,160)
+LexToken(SEMICOL,';',5,174)
+LexToken(VARIABLE,'$condicional',6,176)
+LexToken(ASSIGN,'=',6,189)
+LexToken(LPAREN,'(',6,191)
+LexToken(VARIABLE,'$numeroEntero',6,192)
+LexToken(GT,'>',6,206)
+LexToken(VARIABLE,'$numeroFlotante',6,208)
+LexToken(RPAREN,')',6,223)
+LexToken(SEMICOL,';',6,224)
+LexToken(ECHO,'echo',9,297)
+LexToken(STRING,'',9,302)
+LexToken(SEMICOL,';',9,304)
+LexToken(ECHO,'echo',10,325)
+LexToken(STRING,'Un solo argumento',10,330)
+LexToken(SEMICOL,';',10,349)
+LexToken(ECHO,'echo',11,381)
+LexToken(VARIABLE,'$numeroEntero',11,386)
+LexToken(COMA,',',11,399)
+LexToken(STRING,', ',11,401)
+LexToken(COMA,',',11,405)
+LexToken(VARIABLE,'$numeroFlotante',11,407)
+LexToken(COMA,',',11,422)
+LexToken(STRING,', ',11,424)
+LexToken(COMA,',',11,428)
+LexToken(VARIABLE,'$cadena',11,430)
+LexToken(SEMICOL,';',11,437)
+LexToken(VARIABLE,'$entrada',14,513)
+LexToken(ASSIGN,'=',14,522)
+LexToken(READLINE,'readline',14,524)
+LexToken(LPAREN,'(',14,532)
+LexToken(STRING,'Introduce un valor: ',14,533)
+LexToken(RPAREN,')',14,555)
+LexToken(SEMICOL,';',14,556)
+LexToken(ECHO,'echo',15,559)
+LexToken(STRING,'Ingresaste: ',15,564)
+LexToken(COMA,',',15,578)
+LexToken(VARIABLE,'$entrada',15,580)
+LexToken(SEMICOL,';',15,588)
+LexToken(VARIABLE,'$resultadoAritmetico',18,644)
+LexToken(ASSIGN,'=',18,665)
+LexToken(LPAREN,'(',18,667)
+LexToken(VARIABLE,'$numeroEntero',18,668)
+LexToken(PLUS,'+',18,682)
+LexToken(VARIABLE,'$numeroFlotante',18,684)
+LexToken(RPAREN,')',18,699)
+LexToken(TIMES,'*',18,701)
+LexToken(NUMBER,2,18,703)
+LexToken(MINUS,'-',18,705)
+LexToken(NUMBER,3,18,707)
+LexToken(DIVIDE,'/',18,709)
+LexToken(NUMBER,2,18,711)
+LexToken(SEMICOL,';',18,712)
+LexToken(ECHO,'echo',19,736)
+LexToken(STRING,'Resultado de expresi贸n aritm茅tica: ',19,741)
+LexToken(COMA,',',19,780)
+LexToken(VARIABLE,'$resultadoAritmetico',19,782)
+LexToken(SEMICOL,';',19,802)
+LexToken(VARIABLE,'$array',22,832)
+LexToken(ASSIGN,'=',22,839)
+LexToken(ARRAY,'array',22,841)
+LexToken(LPAREN,'(',22,846)
+LexToken(NUMBER,1,22,847)
+LexToken(COMA,',',22,848)
+LexToken(NUMBER,2,22,850)
+LexToken(COMA,',',22,851)
+LexToken(NUMBER,3,22,853)
+LexToken(COMA,',',22,854)
+LexToken(VARIABLE,'$numeroEntero',22,856)
+LexToken(COMA,',',22,869)
+LexToken(VARIABLE,'$numeroFlotante',22,871)
+LexToken(COMA,',',22,886)
+LexToken(VARIABLE,'$cadena',22,888)
+LexToken(RPAREN,')',22,895)
+LexToken(SEMICOL,';',22,896)
+LexToken(VARIABLE,'$array',25,934)
+LexToken(LBRACKET,'[',25,940)
+LexToken(NUMBER,0,25,941)
+LexToken(RBRACKET,']',25,942)
+LexToken(ASSIGN,'=',25,944)
+LexToken(NUMBER,99,25,946)
+LexToken(SEMICOL,';',25,948)
+LexToken(ECHO,'echo',26,950)
+LexToken(STRING,'Primer elemento del array modificado: ',26,955)
+LexToken(COMA,',',26,995)
+LexToken(VARIABLE,'$array',26,997)
+LexToken(LBRACKET,'[',26,1003)
+LexToken(NUMBER,0,26,1004)
+LexToken(RBRACKET,']',26,1005)
+LexToken(SEMICOL,';',26,1006)
+LexToken(IF,'if',29,1049)
+LexToken(LPAREN,'(',29,1052)
+LexToken(VARIABLE,'$array',29,1053)
+LexToken(LBRACKET,'[',29,1059)
+LexToken(NUMBER,0,29,1060)
+LexToken(RBRACKET,']',29,1061)
+LexToken(GT,'>',29,1063)
+LexToken(NUMBER,50,29,1065)
+LexToken(AND_OP,'&&',29,1068)
+LexToken(VARIABLE,'$numeroFlotante',29,1071)
+LexToken(LT,'<',29,1087)
+LexToken(NUMBER,10,29,1089)
+LexToken(OR_OP,'||',29,1092)
+LexToken(VARIABLE,'$condicional',29,1095)
+LexToken(RPAREN,')',29,1107)
+LexToken(LBRACE,'{',29,1109)
+LexToken(ECHO,'echo',30,1115)
+LexToken(STRING,'Condici贸n verdadera',30,1120)
+LexToken(SEMICOL,';',30,1142)
+LexToken(RBRACE,'}',31,1144)
+LexToken(ELSE,'else',31,1146)
+LexToken(LBRACE,'{',31,1151)
+LexToken(ECHO,'echo',32,1157)
+LexToken(STRING,'Condici贸n falsa',32,1162)
+LexToken(SEMICOL,';',32,1180)
+LexToken(RBRACE,'}',33,1182)
+LexToken(FUNCTION,'function',37,1216)
+LexToken(NAMEFUNCTION,'sumar',37,1225)
+LexToken(LPAREN,'(',37,1230)
+LexToken(VARIABLE,'$a',37,1231)
+LexToken(COMA,',',37,1233)
+LexToken(VARIABLE,'$b',37,1235)
+LexToken(RPAREN,')',37,1237)
+LexToken(LBRACE,'{',37,1239)
+LexToken(RETURN,'return',38,1245)
+LexToken(VARIABLE,'$a',38,1252)
+LexToken(PLUS,'+',38,1255)
+LexToken(VARIABLE,'$b',38,1257)
+LexToken(SEMICOL,';',38,1259)
+LexToken(RBRACE,'}',39,1261)
+LexToken(PHP_CLOSE,'?>',41,1960)
+
+Comentarios:
+Comentario en la l韓ea 2: // Declaracion de variables con todos los tipos y almacenar resultados de expresiones/condicionales
+Comentario en la l韓ea 6: // Expresion condicional
+Comentario en la l韓ea 8: // Impresion con cero, uno o m谩s argumentos
+Comentario en la l韓ea 9: // Impresion vacia
+Comentario en la l韓ea 10: // Impresion con un argumento
+Comentario en la l韓ea 11: // Impresion con multiples argumentos
+Comentario en la l韓ea 13: // Solicitud de datos por teclado 
+Comentario en la l韓ea 17: // Expresiones aritmeticas con uno o mas operadores
+Comentario en la l韓ea 18: // Expresion compleja
+Comentario en la l韓ea 21: // Declaracion de un array
+Comentario en la l韓ea 24: // Acceso y modificacion de arrays
+Comentario en la l韓ea 28: // Condiciones con uno o mas conectores
+Comentario en la l韓ea 35: // Declaracion de una funcion
+Comentario en la l韓ea 40: /*
+// Definicion de una funcion con parametros opcionales y retorno
+
+function dividir($a, $b = 1) {
+    if ($b == 0) {
+        return "No se puede dividir por cero.";
+    }
+    return $a / $b;
+}
+
+// Llamada a funciones
+$resultadoSuma = sumar(5, 3);
+echo "Resultado de la suma: ", $resultadoSuma;
+
+$resultadoDivision = dividir(10); // Usando valor por defecto
+echo "Resultado de la divisi贸n: ", $resultadoDivision;
+
+$resultadoDivisionConError = dividir(10, 0); // Dividir por cero
+echo "Resultado con error: ", $resultadoDivisionConError;
+
+// Uso de un bucle para recorrer el array (estructura de control adicional)
+foreach ($array as $elemento) {
+    echo "Elemento del array: ", $elemento;
+}
+*/

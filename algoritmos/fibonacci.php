@@ -1,7 +1,7 @@
 <?php
 function fibonacci($n) {
     if ($n < 0) {
-        return "El número debe ser mayor o igual a 0";
+        return "El numero debe ser mayor o igual a 0";
     } elseif ($n == 0) {
         return 0;
     } elseif ($n == 1) {
@@ -20,5 +20,5 @@ function fibonacci($n) {
 
 // Ejemplo 
 $position = 4; 
-echo "El número Fibonacci en la posición $position es: " . fibonacci($position);
+echo "El numero Fibonacci en la posicion $position es: " . fibonacci($position);
 ?>

@@ -1,13 +1,13 @@
 import tkinter as tk
 from tkinter import filedialog, messagebox, scrolledtext
-from php_Lexer import analyze_Lexico  # Asegúrate de que esta función esté correctamente importada
-from php_Syntactic import analyze_sintactico  # Asegúrate de que esta función esté correctamente importada
+from php_Lexer import analyze_Lexico  
+from php_Syntactic import analyze_sintactico  
 import os
 
-# Crear una instancia de la ventana principal de Tkinter
+
 root = tk.Tk()
 root.title("Analizador de Lenguaje PHP")
-root.state('zoomed')  # Ventana maximizada al iniciar
+root.state('zoomed')  
 
 # Crear un área de texto donde se mostrarán los resultados
 output_text = scrolledtext.ScrolledText(root, width=100, height=30, wrap=tk.WORD)
@@ -26,15 +26,15 @@ def open_file():
         try:
             with open(file_path, "r") as file:
                 code_content = file.read()
-            file_name = os.path.basename(file_path)  # Solo el nombre del archivo
+            file_name = os.path.basename(file_path)  
             file_label.config(text=f"Archivo seleccionado: {file_name}")
         except Exception as e:
             messagebox.showerror("Error", f"No se pudo abrir el archivo: {str(e)}")
 
 # Función para mostrar los resultados del log en el área de texto
 def display_log_results(log_content):
-    output_text.delete(1.0, tk.END)  # Limpiar el área de texto antes de agregar nuevos resultados
-    output_text.insert(tk.END, log_content)  # Mostrar el contenido del log en el área de texto
+    output_text.delete(1.0, tk.END) 
+    output_text.insert(tk.END, log_content)  
 
 # Nueva función para analizar léxicamente el archivo y mostrar resultados en pantalla
 def handle_lexico_analysis(filename):
@@ -45,7 +45,7 @@ def handle_lexico_analysis(filename):
     try:
         # Llamada a la función analyze_Lexico del archivo php_Lexer.py
         log_content = analyze_Lexico(f"algoritmos/{filename}")
-        display_log_results(log_content)  # Mostrar los resultados del análisis léxico en pantalla
+        display_log_results(log_content)  
     except Exception as e:
         messagebox.showerror("Error", f"Error al analizar léxico: {str(e)}")
 
@@ -58,11 +58,11 @@ def handle_sintactico_analysis(filename):
     try:
         # Llamada a la función analyze_sintactico del archivo php_Syntactic.py
         log_content = analyze_sintactico(f"algoritmos/{filename}")
-        display_log_results(log_content)  # Mostrar los resultados del análisis sintáctico en pantalla
+        display_log_results(log_content)  
     except SyntaxError as e:
         # Mostrar el error de sintaxis en el área de texto
         log_content = f"Error de sintaxis: {str(e)}"
-        display_log_results(log_content)  # Mostrar el mensaje de error en el área de texto
+        display_log_results(log_content)  
     except Exception as e:
         messagebox.showerror("Error", f"Error al analizar sintáctico: {str(e)}")
 
@@ -73,9 +73,9 @@ def analyze_selected_type(analysis_type):
         return
     
     if analysis_type == "léxico":
-        handle_lexico_analysis(file_name)  # Llamar a la nueva función handle_lexico_analysis
+        handle_lexico_analysis(file_name) 
     elif analysis_type == "sintáctico":
-        handle_sintactico_analysis(file_name)  # Llamar a la nueva función handle_sintactico_analysis
+        handle_sintactico_analysis(file_name)  
     elif analysis_type == "semántico":
         analyze_semantic(code_content)
     else:

@@ -9,7 +9,6 @@ reserved = {
     "while": "WHILE",
     "for": "FOR",
     "echo": "ECHO",
-    "class": "CLASS",
     "function": "FUNCTION",
     "return": "RETURN",
     "true": "TRUE",
